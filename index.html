@@ -1,0 +1,2912 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>영어 에세이 첨삭 아틀리에</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Nanum+Myeongjo:wght@400;700&display=swap">
+<style>
+:root{
+  --ink:#1B2440; --ink-soft:#4A5470; --ink-faint:#7D869F;
+  --paper:#F6F7FB; --surface:#FFFFFF; --surface-2:#EEF1F7; --rule:#D7DDE9;
+  --mark:#C0392B; --mark-bg:#FBEDEB;
+  --grow:#2C7A62; --grow-bg:#E7F2EE;
+  --muse:#9C6B1F; --muse-bg:#F8F1E3;
+  --focus:#3355C4; --acc:#3355C4; --acc-soft:rgba(51,85,196,.14);
+  --shadow:0 1px 2px rgba(27,36,64,.06), 0 8px 24px rgba(27,36,64,.06);
+  --bar:rgba(255,255,255,.88);
+  --serif:'Newsreader','Nanum Myeongjo',Georgia,serif;
+  --sans:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E6E9F2; --ink-soft:#AEB6CB; --ink-faint:#7B849B;
+    --paper:#111420; --surface:#171B29; --surface-2:#1F2434; --rule:#2C3348;
+    --mark:#F0857A; --mark-bg:#2A1B1B;
+    --grow:#63C4A5; --grow-bg:#132720;
+    --muse:#DCA84F; --muse-bg:#2A2113;
+    --focus:#7E9BFF; --acc:#6E8BF5; --acc-soft:rgba(110,139,245,.20);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --bar:rgba(23,27,41,.9);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E6E9F2; --ink-soft:#AEB6CB; --ink-faint:#7B849B;
+  --paper:#111420; --surface:#171B29; --surface-2:#1F2434; --rule:#2C3348;
+  --mark:#F0857A; --mark-bg:#2A1B1B;
+  --grow:#63C4A5; --grow-bg:#132720;
+  --muse:#DCA84F; --muse-bg:#2A2113;
+  --focus:#7E9BFF; --acc:#6E8BF5; --acc-soft:rgba(110,139,245,.20);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  --bar:rgba(23,27,41,.9);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--focus)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+h2,h3,h4{text-wrap:balance}
+
+/* ============ top bar ============ */
+.bar{position:sticky;top:0;z-index:40;background:var(--bar);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.bar-in{max-width:1140px;margin:0 auto;padding:11px 20px 0;display:flex;align-items:center;gap:18px}
+.brand{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:-.01em;white-space:nowrap;flex:none}
+.brand span{color:var(--muse)}
+.tools{margin-left:auto;display:flex;gap:7px;flex:none}
+.mini{font-family:var(--sans);font-size:12.5px;padding:5px 11px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:3px;cursor:pointer;white-space:nowrap}
+.mini:hover{border-color:var(--ink-faint);color:var(--ink)}
+.steps{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;max-width:1140px;margin:0 auto;padding:8px 20px 0}
+.steps::-webkit-scrollbar{display:none}
+.stepbtn{flex:none;display:flex;align-items:baseline;gap:7px;font-family:var(--sans);font-size:13px;font-weight:400;background:none;border:0;border-bottom:2px solid transparent;padding:7px 12px 9px;color:var(--ink-faint);cursor:pointer;white-space:nowrap;border-radius:3px 3px 0 0}
+.stepbtn em{font-family:var(--mono);font-size:10.5px;font-style:normal;letter-spacing:.06em;opacity:.75}
+.stepbtn:hover{color:var(--ink-soft);background:var(--surface-2)}
+.stepbtn[aria-selected="true"]{color:var(--ink);font-weight:500;border-bottom-color:var(--ink)}
+.stepbtn.done em{color:var(--grow);opacity:1}
+.progress{height:2px;background:var(--rule);max-width:100%}
+.progress i{display:block;height:2px;background:var(--muse);transition:width .25s ease}
+
+/* ============ context strip ============ */
+.ctx{max-width:1140px;margin:0 auto;padding:12px 20px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctxbit{display:flex;align-items:baseline;gap:7px;font-size:13px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:4px 13px;max-width:100%}
+.ctxbit b{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;flex:none}
+.ctxbit span{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:52ch}
+.ctxbit.empty span{color:var(--ink-faint)}
+
+/* ============ panels ============ */
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px 40px}
+.panel{padding:34px 0 10px}
+.panel[hidden]{display:none}
+.phead{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.pnum{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muse);margin:0 0 9px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(25px,3.4vw,34px);line-height:1.2;margin:0 0 10px;letter-spacing:-.015em}
+.sub{color:var(--ink-soft);margin:0;max-width:66ch;font-size:15.5px}
+h3{font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.01em;margin:34px 0 12px}
+h3:first-child{margin-top:0}
+.note{font-size:13px;color:var(--ink-faint);margin:14px 0 0;max-width:70ch;line-height:1.65}
+.note b{color:var(--ink-soft);font-weight:500}
+
+/* pager */
+.pager{display:flex;gap:12px;justify-content:space-between;align-items:stretch;margin-top:40px;padding-top:22px;border-top:1px solid var(--rule)}
+.pg{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:3px;text-align:left;background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:13px 17px;cursor:pointer;font-family:var(--sans);transition:.15s}
+.pg:hover{border-color:var(--ink-faint)}
+.pg[disabled]{opacity:.35;cursor:default}
+.pg em{font-family:var(--mono);font-size:10px;font-style:normal;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+.pg b{font-size:14.5px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg.next{text-align:right;align-items:flex-end;background:var(--ink);border-color:var(--ink)}
+.pg.next b{color:var(--paper)}
+.pg.next em{color:var(--paper);opacity:.72}
+.pg.next:hover{opacity:.88}
+.pg.next[disabled]{background:var(--surface);border-color:var(--rule)}
+.pg.next[disabled] b,.pg.next[disabled] em{color:var(--ink-faint)}
+
+/* ============ shared bits ============ */
+.btn{font-family:var(--sans);font-size:13.5px;font-weight:500;padding:8px 16px;border-radius:3px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:.15s}
+.btn:hover{opacity:.86}
+.btn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--ink-faint);color:var(--ink)}
+
+/* persona */
+.persona-row{display:flex;flex-wrap:wrap;gap:7px}
+.persona{font-family:var(--sans);font-size:14px;padding:9px 17px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:999px;cursor:pointer;transition:.15s}
+.persona:hover{border-color:var(--ink-faint)}
+.persona[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:500}
+.pgroup{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:26px 0 10px}
+.profile{margin-top:26px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+@media (max-width:860px){.profile{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.profile{grid-template-columns:1fr}}
+.pf{background:var(--surface);padding:14px 17px}
+.pf span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+.pf b{font-size:14.5px;font-weight:500;line-height:1.45;display:block}
+.pf.wide{grid-column:1/-1}
+.pf.wide b{font-weight:400;color:var(--ink-soft);font-size:14px}
+
+/* topic bank */
+.mine-form{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) auto;gap:12px;align-items:end;padding:17px 19px;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+.mine-form label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);min-width:0}
+.mine-form input{font-family:var(--sans);font-size:14.5px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--paper);color:var(--ink);width:100%;min-width:0}
+.mine-form input:focus{outline:none;border-color:var(--focus)}
+.mine-form .btn{height:39px;white-space:nowrap}
+.domains{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.domain{font-family:var(--sans);font-size:13.5px;padding:7px 14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:999px;cursor:pointer;transition:.15s}
+.domain:hover{border-color:var(--ink-faint)}
+.domain[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:500}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:12px}
+.topics:empty{display:none}
+.topic{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:17px 19px 15px;display:flex;flex-direction:column;transition:.15s}
+.topic:hover{border-color:var(--ink-faint)}
+.topic.on{border-color:var(--grow);box-shadow:inset 3px 0 0 var(--grow)}
+.topic .lvl{align-self:flex-start;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muse);background:var(--muse-bg);padding:2px 8px;border-radius:2px;margin-bottom:10px}
+.topic .q{font-family:var(--serif);font-size:17.5px;line-height:1.35;margin:0 0 4px}
+.topic .qk{font-size:13.5px;color:var(--ink-faint);margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 8px;background:var(--surface-2);border-radius:2px;color:var(--ink-soft)}
+.chip.hit{background:var(--grow-bg);color:var(--grow);font-weight:500}
+.topic .why{font-size:12.5px;color:var(--ink-soft);line-height:1.55;margin:12px 0 0;padding-top:10px;border-top:1px dashed var(--rule)}
+.topic .why b{color:var(--muse);font-weight:600}
+.trow{display:flex;gap:8px;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.pick{font-family:var(--sans);font-size:12.5px;padding:5px 13px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:3px;cursor:pointer}
+.pick:hover{border-color:var(--ink);color:var(--ink)}
+.topic.on .pick{background:var(--grow);border-color:var(--grow);color:#fff}
+.del{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-faint);background:none;border:0;cursor:pointer;padding:3px 4px}
+.del:hover{color:var(--mark)}
+
+/* editors */
+.editor{border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+textarea{width:100%;border:0;padding:20px;font-family:var(--serif);font-size:16.5px;line-height:1.85;background:transparent;color:var(--ink);resize:vertical;min-height:200px;display:block}
+textarea:focus{outline:none}
+.editor-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:10px 14px 10px 20px;border-top:1px solid var(--rule);background:var(--surface-2)}
+.counts{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.findings{margin-top:14px;display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.findings:empty{display:none}
+.finding{background:var(--surface);padding:13px 16px;display:grid;grid-template-columns:66px minmax(0,1fr);gap:14px;align-items:start}
+.code{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.05em;color:var(--mark);background:var(--mark-bg);padding:3px 2px;text-align:center;border-radius:2px}
+.hit{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--surface-2);padding:1px 5px;border-radius:2px}
+.finding p{margin:5px 0 0;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+.kwcheck{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;font-size:13px;color:var(--ink-faint)}
+
+/* korean → english */
+.kmap{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)}
+.krow{display:grid;grid-template-columns:112px minmax(0,1fr);border-top:1px solid var(--rule)}
+.krow:first-child{border-top:0}
+.klabel{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;color:var(--ink-faint);padding:14px 13px;text-transform:uppercase}
+.kbody{padding:13px 18px;font-size:15.5px;line-height:1.7;min-width:0;overflow-wrap:anywhere}
+.kbody .bad{color:var(--mark);font-family:var(--serif);font-size:16px}
+.kbody .good{color:var(--grow);font-family:var(--serif);font-size:16.5px;font-weight:500}
+.kbody.note-in{font-size:14px;color:var(--ink-soft);background:var(--surface-2)}
+.shift{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:0 30px}
+.sh{padding:14px 0;border-top:1px solid var(--rule)}
+.sh b{display:block;font-size:14.5px;font-weight:600;margin-bottom:4px}
+.sh span{display:block;font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+.sh i{font-family:var(--serif);font-style:italic;color:var(--ink)}
+
+/* diff */
+.diff{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)}
+.diff-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 92px;border-top:1px solid var(--rule)}
+.diff-row:first-child{border-top:0}
+.diff-head{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+.diff-row>div{padding:11px 16px;font-size:14.5px;line-height:1.65;min-width:0;overflow-wrap:anywhere}
+.diff-row .before{color:var(--ink-soft);border-right:1px solid var(--rule)}
+.diff-row .after{border-right:1px solid var(--rule)}
+.diff-row .why{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink-faint);padding-top:14px}
+del{text-decoration:none;color:var(--mark);background:var(--mark-bg);padding:0 3px;border-radius:2px;text-decoration-line:line-through;text-decoration-thickness:1px}
+ins{text-decoration:none;color:var(--grow);background:var(--grow-bg);padding:0 3px;border-radius:2px;font-weight:500}
+
+/* evaluation: chart + rubric */
+.evalgrid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:980px){.evalgrid{grid-template-columns:1fr}}
+.chartbox{margin:0;border:1px solid var(--rule);border-radius:4px;background:var(--surface);padding:18px 18px 15px}
+.chartbox figcaption{margin-bottom:6px}
+.chartbox figcaption b{display:block;font-size:14.5px;font-weight:600}
+.chartbox figcaption span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.chartwrap{position:relative;margin:4px 0 2px}
+#radar{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding-top:10px;border-top:1px solid var(--rule)}
+.lg{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft)}
+.lg i{width:16px;height:10px;flex:none;border-radius:2px}
+.sw-fill{background:var(--acc);opacity:.85}
+.sw-dash{height:0;border-top:2px dashed var(--ink-faint);border-radius:0}
+.figcap{font-size:12.5px;color:var(--ink-faint);line-height:1.6;margin:10px 0 0}
+.figcap b{color:var(--ink-soft);font-weight:500}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-size:12px;line-height:1.5;padding:6px 10px;border-radius:4px;white-space:nowrap;transform:translate(-50%,-130%);z-index:5}
+.tip b{font-weight:600}
+.rubric{border:1px solid var(--rule);border-radius:4px;background:var(--surface);overflow:hidden}
+.crit{display:grid;grid-template-columns:152px 132px minmax(0,1fr);gap:16px;align-items:center;padding:14px 18px;border-top:1px solid var(--rule)}
+.crit:first-child{border-top:0}
+.crit .name{font-size:14px;font-weight:500}
+.crit .name small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink-faint);font-weight:400;text-transform:uppercase}
+.dots{display:flex;gap:5px;align-items:center}
+.dot{width:15px;height:15px;padding:0;border-radius:50%;border:1.5px solid var(--rule);background:transparent;cursor:pointer;transition:.12s}
+.dot:hover{border-color:var(--acc);transform:scale(1.15)}
+.dot.on{background:var(--acc);border-color:var(--acc)}
+.dots .score{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin-left:6px;font-variant-numeric:tabular-nums}
+.crit .say{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+.verdict{display:flex;flex-wrap:wrap;gap:26px;align-items:center;padding:18px;background:var(--surface-2);border-top:1px solid var(--rule)}
+.verdict .btn{padding:7px 14px;font-size:13px}
+.verdict b{font-family:var(--serif);font-size:27px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.verdict span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:5px}
+.threecol{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:26px;margin-top:28px}
+.threecol h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px;padding-bottom:7px;border-bottom:1px solid var(--rule);color:var(--ink-faint)}
+.threecol ol,.threecol ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-soft);line-height:1.7}
+.threecol li{margin-bottom:8px}
+.threecol li b{color:var(--ink);font-weight:500}
+
+/* tones */
+.tonebar{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule)}
+.tonebtn{font-family:var(--sans);font-size:13.5px;background:none;border:0;border-bottom:2px solid transparent;padding:10px 16px;color:var(--ink-faint);cursor:pointer;margin-bottom:-1px}
+.tonebtn[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:500}
+.tonepanel{padding:24px 0 0}
+.tonepanel[hidden]{display:none}
+.toneline{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 14px;display:flex;flex-wrap:wrap;gap:14px}
+.prose{font-family:var(--serif);font-size:17.5px;line-height:1.8;max-width:64ch;margin:0}
+.prose p{margin:0 0 15px}
+.tonewhy{margin-top:18px;padding-left:16px;border-left:2px solid var(--rule);font-size:13.5px;color:var(--ink-soft);max-width:62ch}
+
+/* humanities */
+.muse-item{display:grid;grid-template-columns:120px minmax(0,1fr);gap:0 26px;padding:24px 0;border-top:1px solid var(--rule)}
+.muse-item:first-child{border-top:2px solid var(--muse)}
+.muse-kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muse);padding-top:5px}
+.muse-item h4{font-family:var(--serif);font-size:19px;font-weight:600;margin:0 0 2px;line-height:1.3}
+.muse-item .who{font-size:13px;color:var(--ink-faint);margin:0 0 12px}
+blockquote{margin:0 0 12px;padding:12px 16px;background:var(--muse-bg);border-radius:3px;font-family:var(--serif);font-style:italic;font-size:15.5px;line-height:1.65;color:var(--ink)}
+blockquote .tr{display:block;font-style:normal;font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-top:7px}
+.muse-item .link{font-size:14px;color:var(--ink-soft);margin:0}
+.muse-item .link b{color:var(--ink);font-weight:500}
+.check{border:1px solid var(--rule);border-radius:4px;background:var(--surface);padding:6px 4px}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:9px 16px;font-size:14.5px;cursor:pointer;line-height:1.55}
+.check label:hover{background:var(--surface-2)}
+.check input{margin-top:5px;accent-color:var(--grow);width:15px;height:15px;flex:none}
+.check input:checked+span{color:var(--ink-faint);text-decoration:line-through}
+.check span{color:var(--ink-soft)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(14px);background:var(--ink);color:var(--paper);font-size:13.5px;padding:10px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:.22s;z-index:80}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:820px){
+  .bar-in{gap:10px;padding:10px 16px 0}
+  .brand{font-size:14.5px}
+  .steps{padding:6px 16px 0}
+  .ctx,.wrap{padding-left:16px;padding-right:16px}
+  .diff-row{grid-template-columns:1fr}
+  .diff-row .before,.diff-row .after{border-right:0;border-bottom:1px solid var(--rule)}
+  .diff-row .why{padding:8px 16px 12px}
+  .crit{grid-template-columns:1fr;gap:8px}
+  .muse-item,.krow{grid-template-columns:1fr}
+  .klabel{padding:9px 16px}
+  .mine-form{grid-template-columns:1fr}
+  .pager{flex-direction:column}
+  .ctxbit span{max-width:30ch}
+}
+
+/* ============ AI / capability UI ============ */
+.freshbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.freshbar input{flex:1 1 260px;min-width:0;font-family:var(--sans);font-size:14.5px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink)}
+.freshbar input:focus{outline:none;border-color:var(--focus)}
+.regen{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.regen span{font-size:13px;color:var(--ink-faint)}
+.srcnote{font-size:13px;color:var(--muse);background:var(--muse-bg);border-radius:6px;padding:9px 14px;margin:0 0 18px;line-height:1.6}
+.srcnote b{font-weight:600}
+.saverow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.saverow input{flex:0 1 220px;min-width:0;font-family:var(--sans);font-size:14.5px;padding:9px 12px;border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink)}
+.saverow input:focus{outline:none;border-color:var(--focus)}
+.spin{display:inline-block;width:13px;height:13px;border:2px solid var(--rule);border-top-color:var(--acc);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:7px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none;border-top-color:var(--rule)}}
+.aibadge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:var(--acc-soft);padding:3px 9px;border-radius:3px;margin-bottom:14px}
+
+/* report */
+.rep h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.rep h3:first-child{margin-top:0}
+.rep .lead{font-size:16px;line-height:1.8;color:var(--ink);max-width:66ch;margin:0 0 6px}
+.rep ul{margin:0;padding-left:19px;font-size:15px;line-height:1.75;color:var(--ink-soft)}
+.rep li{margin-bottom:9px}
+.rep li b{color:var(--ink);font-weight:600}
+.repcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:12px}
+.repcard{border:1px solid var(--rule);border-radius:5px;background:var(--surface);padding:16px 18px}
+.repcard .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muse);display:block;margin-bottom:7px}
+.repcard h4{font-family:var(--serif);font-size:17px;font-weight:600;margin:0 0 3px;line-height:1.35}
+.repcard .by{font-size:12.5px;color:var(--ink-faint);margin:0 0 9px}
+.repcard p{font-size:13.5px;color:var(--ink-soft);line-height:1.65;margin:0}
+.rephead{border:1px solid var(--rule);border-radius:5px;background:var(--surface-2);padding:18px 20px;display:flex;flex-wrap:wrap;gap:24px;margin-bottom:8px}
+.rephead div span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+.rephead div b{font-size:17px;font-weight:600}
+.plan{counter-reset:w}
+.plan li{margin-bottom:10px}
+
+@media print{
+  body[data-print="report"] .panel:not([data-s="8"]){display:none!important}
+  body[data-print="report"] .regen{display:none!important}
+}
+
+/* code filter */
+.codebar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;align-items:center}
+.codebar .lb{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-right:4px}
+.codechip{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;padding:5px 11px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:999px;cursor:pointer;transition:.13s}
+.codechip:hover{border-color:var(--ink-faint);color:var(--ink)}
+.codechip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:500}
+.codechip .n{opacity:.6;margin-left:5px}
+.diff-row.off,li.off{display:none}
+.groupnote{font-size:13.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:5px;padding:10px 14px;margin:0 0 12px;line-height:1.6}
+
+/* 가이드 토글 */
+.phead{position:relative}
+.gtoggle{position:absolute;top:0;right:0;font-family:var(--sans);font-size:12.5px;padding:5px 12px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-soft);border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.15s}
+.gtoggle:hover{border-color:var(--ink-faint);color:var(--ink)}
+.gtoggle .car{font-family:var(--mono);font-size:10px;transition:transform .18s}
+.gtoggle[aria-expanded="true"]{background:var(--surface-2);color:var(--ink)}
+.gtoggle[aria-expanded="true"] .car{transform:rotate(180deg)}
+.panel[data-guide="off"] > .note,
+.panel[data-guide="off"] > .sub,
+.panel[data-guide="off"] > .srcnote,
+.panel[data-guide="off"] > .phead .sub{display:none}
+@media (max-width:640px){.gtoggle{position:static;margin-bottom:12px}}
+@media print{.gtoggle{display:none}.panel[data-guide="off"] > .note,.panel[data-guide="off"] > .sub,.panel[data-guide="off"] > .srcnote,.panel[data-guide="off"] > .phead .sub{display:block!important}}
+
+/* 다음 단계로 보내기 — 눈에 띄게 (색·크기는 그대로) */
+.handoff{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:22px 0 0;padding:15px 18px;background:var(--surface-2);border:1px solid var(--rule);border-left:4px solid var(--acc);border-radius:6px}
+.handoff .ho-lb{display:flex;align-items:baseline;gap:9px;min-width:0}
+.handoff .ho-lb b{font-size:14.5px;font-weight:600;color:var(--ink)}
+.handoff .ho-lb span{font-size:13px;color:var(--ink-soft)}
+.handoff .arrow{font-family:var(--mono);color:var(--acc);font-size:16px;flex:none}
+.handoff .bridge-note{margin-left:auto}
+@media (max-width:640px){.handoff{flex-direction:column;align-items:stretch}.handoff .btn{width:100%}.handoff .bridge-note{margin-left:0}}
+
+/* 문장 대조 */
+.pairs{border:1px solid var(--rule);border-radius:5px;overflow:hidden;background:var(--surface);margin-bottom:18px}
+.pairrow{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);border-top:1px solid var(--rule);align-items:start}
+.pairrow:first-child{border-top:0}
+.pairrow.head{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+.pairrow>div{padding:12px 16px;font-size:15px;line-height:1.65;min-width:0;overflow-wrap:anywhere}
+.pairrow .ko{color:var(--ink-soft)}
+.pairrow .en{font-family:var(--serif);font-size:16px;color:var(--ink)}
+.pairrow .mid{padding:12px 0;text-align:center;font-family:var(--mono);color:var(--acc);font-size:14px}
+@media (max-width:720px){.pairrow{grid-template-columns:1fr}.pairrow .mid{display:none}.pairrow.head{display:none}.pairrow .ko{padding-bottom:2px}.pairrow .en{padding-top:2px}}
+
+/* 4주 활동지 */
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:14px;margin-top:8px}
+.week{border:1px solid var(--rule);border-radius:6px;background:var(--surface);padding:18px 20px;display:flex;flex-direction:column}
+.week .wn{align-self:flex-start;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--paper);background:var(--ink);padding:3px 10px;border-radius:3px;margin-bottom:11px}
+.week h4{font-family:var(--serif);font-size:18px;font-weight:600;margin:0 0 4px;line-height:1.35}
+.week .focus{font-family:var(--mono);font-size:11px;color:var(--mark);background:var(--mark-bg);padding:2px 8px;border-radius:3px;align-self:flex-start;margin-bottom:12px}
+.week .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint);margin:14px 0 6px}
+.week ol,.week ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7;color:var(--ink-soft)}
+.week li{margin-bottom:7px}
+.week li b{color:var(--ink);font-weight:500}
+.week .min{font-family:var(--mono);font-size:11px;color:var(--muse)}
+.week .out{font-size:14px;color:var(--ink);background:var(--grow-bg);border-radius:5px;padding:10px 13px;line-height:1.6}
+.week .out b{color:var(--grow)}
+.week .chk label{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink-soft);line-height:1.55;padding:4px 0;cursor:pointer}
+.week .chk input{margin-top:4px;accent-color:var(--grow);width:14px;height:14px;flex:none}
+@media print{.weeks{grid-template-columns:1fr 1fr}.week{break-inside:avoid}}
+
+/* recommended translation */
+.transwrap{margin-top:22px}
+.tips{margin:16px 0 0;padding-left:19px;font-size:14px;line-height:1.75;color:var(--ink-soft)}
+.tips li{margin-bottom:7px}
+.traps{border:1px solid var(--rule);border-radius:5px;overflow:hidden;background:var(--surface);margin-bottom:18px}
+.traprow{display:grid;grid-template-columns:minmax(0,1.1fr) 104px minmax(0,1.3fr);border-top:1px solid var(--rule)}
+.traprow:first-child{border-top:0}
+.traprow>div{padding:11px 15px;font-size:14px;line-height:1.6;min-width:0;overflow-wrap:anywhere}
+.traprow.head{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+.traprow .tg{font-family:var(--mono);font-size:11px;color:var(--mark);align-self:start}
+@media (max-width:720px){.traprow{grid-template-columns:1fr}.traprow>div{padding:8px 15px}.traprow.head{display:none}}
+
+/* bridge (앱판 AI 연결) */
+.bridge{margin:0 0 22px}
+.bridge-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bridge-note{font-size:13px;color:var(--grow)}
+.bridge-box{margin-top:12px;border:1px solid var(--rule);border-radius:5px;background:var(--surface);padding:12px;display:flex;flex-direction:column;gap:10px}
+.bridge-box[hidden]{display:none}
+.bridge-box textarea{width:100%;min-height:110px;border:1px solid var(--rule);border-radius:4px;padding:11px 13px;font-family:var(--mono);font-size:12.5px;line-height:1.6;background:var(--paper);color:var(--ink);resize:vertical}
+.bridge-box textarea:focus{outline:none;border-color:var(--focus)}
+@media (max-width:640px){.bridge-row{flex-direction:column;align-items:stretch}.bridge-row .btn{width:100%}}
+
+/* ============ 쉬운 화면 (easy mode) ============ */
+.easy-only{display:none}
+.mini.easy{border-color:var(--muse);color:var(--muse);font-weight:500}
+.mini.easy[aria-pressed="true"]{background:var(--muse);border-color:var(--muse);color:#fff}
+.doNow{gap:13px;align-items:flex-start;background:var(--muse-bg);border:1px solid var(--muse-bg);border-radius:12px;padding:15px 19px;margin:0 0 24px;font-size:17px;line-height:1.6;color:var(--ink)}
+.doNow .ic{font-size:23px;line-height:1.25;flex:none}
+.doNow b{font-weight:600}
+
+body[data-easy="1"]{font-size:18px}
+body[data-easy="1"] .easy-only{display:flex}
+body[data-easy="1"] p.easy-only,body[data-easy="1"] div.easy-only:not(.doNow){display:block}
+body[data-easy="1"] .pro-only{display:none!important}
+body[data-easy="1"] h2{font-size:clamp(29px,4.2vw,40px)}
+body[data-easy="1"] .sub{font-size:17.5px;line-height:1.85;color:var(--ink)}
+body[data-easy="1"] h3{font-size:17px}
+body[data-easy="1"] .pnum{font-size:12.5px}
+body[data-easy="1"] .brand{font-size:17px}
+body[data-easy="1"] .stepbtn{font-size:15.5px;padding:9px 15px 11px}
+body[data-easy="1"] .stepbtn em{font-size:12.5px}
+body[data-easy="1"] .btn,body[data-easy="1"] .mini{font-size:16px;padding:12px 22px;border-radius:9px}
+body[data-easy="1"] .persona{font-size:16.5px;padding:13px 24px}
+body[data-easy="1"] .domain{font-size:15.5px;padding:10px 19px}
+body[data-easy="1"] .ctxbit{font-size:15px;padding:7px 16px}
+body[data-easy="1"] .ctxbit b{font-size:11px}
+body[data-easy="1"] .topic{padding:20px 22px}
+body[data-easy="1"] .topic .q{font-size:20px;line-height:1.4}
+body[data-easy="1"] .topic .qk{font-size:17px;color:var(--ink);font-weight:400}
+body[data-easy="1"] .chip{font-size:14px;padding:5px 12px}
+body[data-easy="1"] .pick{font-size:16px;padding:11px 22px;border-radius:9px}
+body[data-easy="1"] textarea{font-size:20px;line-height:2.05;min-height:240px;padding:22px}
+body[data-easy="1"] #korean{font-size:19px}
+body[data-easy="1"] .counts{font-size:14px}
+body[data-easy="1"] .finding{grid-template-columns:88px minmax(0,1fr);padding:16px 18px}
+body[data-easy="1"] .code{font-size:13px;padding:5px 4px}
+body[data-easy="1"] .finding p{font-size:16px;line-height:1.7}
+body[data-easy="1"] .hit{font-size:15px;padding:2px 7px}
+body[data-easy="1"] .dot{width:24px;height:24px}
+body[data-easy="1"] .dots{gap:8px}
+body[data-easy="1"] .crit .name{font-size:17px}
+body[data-easy="1"] .crit .say{font-size:15.5px}
+body[data-easy="1"] .note{font-size:15.5px;color:var(--ink-soft)}
+body[data-easy="1"] .pg{padding:17px 21px;border-radius:10px}
+body[data-easy="1"] .pg b{font-size:17px}
+body[data-easy="1"] .pg em{font-size:12px}
+body[data-easy="1"] .mine-form label{font-size:12px}
+body[data-easy="1"] .mine-form input{font-size:17px;padding:12px 14px}
+body[data-easy="1"] .check label{font-size:17px;padding:13px 18px}
+body[data-easy="1"] .check input{width:20px;height:20px}
+body[data-easy="1"] .prose{font-size:19px;line-height:1.9}
+body[data-easy="1"] .tonebtn{font-size:15.5px;padding:12px 18px}
+body[data-easy="1"] blockquote{font-size:17px}
+body[data-easy="1"] .muse-item h4{font-size:21px}
+body[data-easy="1"] .diff-row>div{font-size:16px}
+body[data-easy="1"] .tonebtn[data-tone="acad"],body[data-easy="1"] .tonebtn[data-tone="paper"]{display:none}
+body[data-easy="1"] .srcnote{font-size:15px}
+body[data-easy="1"] .rep .lead{font-size:17.5px}
+body[data-easy="1"] .rep ul{font-size:16.5px}
+body[data-easy="1"] .topic .why{display:none}
+body[data-easy="1"] .topic .lvl{font-size:12px}
+body[data-easy="1"] .domain[data-domain="issue"],body[data-easy="1"] .domain[data-domain="society"],body[data-easy="1"] .domain[data-domain="tech"]{display:none}
+body:not([data-easy="1"]) .domain[data-domain="kid"]{display:none}
+
+@media (max-width:640px){
+  .bar-in{gap:10px}
+  .brand{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mini{font-size:12px;padding:5px 10px}
+  .mini.pro-only{display:none}
+  .ctxbit span{max-width:26ch}
+  .repcards{grid-template-columns:1fr}
+  .saverow,.regen,.freshbar{flex-direction:column;align-items:stretch}
+  .saverow input,.freshbar input{flex:1 1 auto}
+  .acts{width:100%}
+  .acts .btn{flex:1 1 auto}
+  .editor-bar{gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  .bar,.ctx,.pager,.toast,.trow,.acts{display:none!important}
+  .panel[hidden]{display:block!important}
+  .panel{page-break-after:always;padding-top:0}
+  .tonepanel[hidden]{display:block!important}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand">✍ 영어 에세이 <span>첨삭 아틀리에</span></div>
+    <div class="tools">
+      <button class="mini easy" id="easyBtn" aria-pressed="false">🧸 쉬운 화면</button>
+      <button class="mini pro-only" id="printBtn">전체 인쇄</button>
+      <button class="mini pro-only" id="resetBtn">초기화</button>
+    </div>
+  </div>
+  <nav class="steps" role="tablist" aria-label="단계"></nav>
+  <div class="progress"><i id="bar-fill" style="width:0"></i></div>
+</header>
+
+<div class="ctx" id="ctx"></div>
+
+<main class="wrap">
+
+<!-- ===== 0 ===== -->
+<section class="panel" data-s="0">
+  <div class="phead">
+    <p class="pnum">Step 0 / 8</p>
+    <h2 data-easy="누가 쓸 거예요?">누가 쓰나요?</h2>
+    <p class="sub" data-easy="나에게 맞는 것을 하나 눌러요. 초등학생을 누르면 화면이 더 쉬워져요.">유형을 고르면 이후 모든 단계의 목표 분량·난이도·추천 톤이 그에 맞춰 표시됩니다. 선택은 이 브라우저에 저장됩니다.</p>
+  <div class="doNow easy-only"><span class="ic">👋</span><span><b>지금 할 일</b> — 아래에서 <b>나</b>를 골라 누르세요.</span></div>
+  </div>
+
+  <p class="pgroup" style="margin-top:0" data-easy="글 쓰는 사람">쓰는 사람</p>
+  <div class="persona-row" role="tablist" aria-label="학습자 유형">
+    <button class="persona" role="tab" aria-selected="false" data-p="elem">초등학생</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="mid">중학생</button>
+    <button class="persona" role="tab" aria-selected="true" data-p="high">고등학생</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="uni">대학생</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="adult">일반 성인 학습자</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="writer">작가·창작자</button>
+  </div>
+  <p class="pgroup pro-only">가르치는 사람</p>
+  <div class="persona-row pro-only" role="tablist" aria-label="교수자 유형">
+    <button class="persona" role="tab" aria-selected="false" data-p="teacher">선생님</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="lecturer">강사</button>
+    <button class="persona" role="tab" aria-selected="false" data-p="prof">교수</button>
+  </div>
+  <div class="profile pro-only" id="profile"></div>
+  <div class="easy-only" id="easyProfile"></div>
+</section>
+
+<!-- ===== 1 ===== -->
+<section class="panel" data-s="1" hidden>
+  <div class="phead">
+    <p class="pnum">Step 1 / 8</p>
+    <h2 data-easy="무엇을 쓸까요?">주제와 키워드</h2>
+    <p class="sub pro-only">직접 넣어도 되고 은행에서 골라도 됩니다. <b>고르기</b>를 누르면 위 띠에 남아 이후 단계까지 따라옵니다. 어느 쪽이든 키워드 3개를 본문에 쓰는 것이 이 과제의 유일한 제약입니다.</p>
+    <p class="sub easy-only">쓰고 싶은 질문을 하나 골라서 <b>고르기</b>를 누르세요. 그 아래 낱말 3개는 꼭 글 안에 넣어야 해요.</p>
+  </div>
+
+  <div class="doNow easy-only"><span class="ic">🔎</span><span><b>지금 할 일</b> — 마음에 드는 질문을 하나 골라 <b>고르기</b>를 누르세요.</span></div>
+  <h3 class="pro-only">내 주제 직접 넣기</h3>
+  <div class="mine-form pro-only">
+    <label>질문 (영어 또는 한국어)<input type="text" id="myq" placeholder="예) Should phones be banned during class?"></label>
+    <label>키워드 (쉼표로)<input type="text" id="myk" placeholder="예) phone, rule, focus"></label>
+    <button class="btn" id="myadd">담기</button>
+  </div>
+  <div class="topics pro-only" id="mytopics" style="margin-top:12px"></div>
+
+  <h3 data-easy="질문 고르기">주제 은행</h3>
+  <div class="freshbar pro-only" id="freshbar">
+    <input type="text" id="freshTheme" placeholder="주제 테마 — 예) AI와 학교, 기후, 지역소멸, 독서">
+    <button class="btn" id="freshBtn">🔄 새 질문 요청문 복사</button>
+  </div>
+  <div class="bridge-box" id="freshPaste" hidden><textarea id="freshText" placeholder="AI가 준 JSON 답을 붙여넣으세요"></textarea><div class="bridge-row"><button class="btn" id="freshApply">적용하기</button></div></div>
+  <div class="domains" role="tablist" aria-label="주제 영역">
+    <button class="domain" role="tab" aria-selected="false" data-domain="kid">쉬운 질문</button>
+    <button class="domain" role="tab" aria-selected="true" data-domain="curric">교육과정 연계</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="issue">시사·이슈 2026</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="fresh" id="freshTab" hidden>✨ 새로 만든 질문</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="self">나와 성장</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="society">사회와 타인</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="nature">자연과 시간</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="tech">기술과 미래</button>
+    <button class="domain" role="tab" aria-selected="false" data-domain="art">예술과 아름다움</button>
+  </div>
+  <div class="topics" id="topics"></div>
+  <p class="note pro-only" id="domain-note"></p>
+</section>
+
+<!-- ===== 2 ===== -->
+<section class="panel" data-s="2" hidden>
+  <div class="phead">
+    <p class="pnum">Step 2 / 8</p>
+    <h2 data-easy="한글로 먼저 써 봐요">한국어로 먼저 쓰고, 영어로 옮기기</h2>
+    <p class="sub pro-only">영어로 바로 쓰면 아는 문장만 씁니다. 한국어로 먼저 쓰면 <em>하고 싶은 말</em>을 씁니다. 대신 그대로 옮기면 반드시 어색해지므로, 옮기기 전에 <b>한국어 쪽에서 먼저 손을 봅니다.</b></p>
+    <p class="sub easy-only">영어부터 쓰면 아는 말만 쓰게 돼요. <b>한글로 먼저</b> 쓰면 진짜 하고 싶은 말을 쓸 수 있어요.</p>
+    <div class="doNow easy-only"><span class="ic">✏️</span><span><b>지금 할 일</b> — 아래 칸에 <b>한글로 3~5문장</b>을 쓰고 <b>번역 함정 찾기</b>를 누르세요.</span></div>
+  </div>
+
+  <div class="editor">
+    <label for="korean" style="position:absolute;left:-9999px">한국어 문장 입력란</label>
+    <textarea id="korean" spellcheck="false" style="font-family:var(--sans);font-size:16px">실패는 끝이 아니라고 생각한다. 중학교 때 수학 시험을 망쳤는데, 정말 너무 슬펐고 나는 수학적인 재능이 없는 사람인 것 같다고 느꼈다. 하지만 어머니의 말씀 때문에 다시 시작할 수 있었고, 3개월 동안 매일 공부해서 결국 성적이 향상되어졌다. 그래서 실패를 두려워하지 않아야 한다고 생각한다.</textarea>
+    <div class="editor-bar">
+      <span class="counts" id="kcounts">문장 0 · 글자 0</span>
+      <span class="acts">
+        <button class="btn ghost" id="kclear">비우기</button>
+        <button class="btn" id="kscan">번역 함정 찾기</button>
+      </span>
+    </div>
+  </div>
+  <div class="findings" id="kfindings"></div>
+  <div class="regen" style="margin-top:16px"><span id="transState"></span></div>
+  <div id="trans"></div>
+
+  <h3 data-easy="한 문장이 어떻게 바뀔까?">한 문장이 세 번 옮겨지는 과정</h3>
+  <p class="sub pro-only" style="margin-bottom:14px">번역기는 ②에서 멈춥니다. 배움은 ②와 ③의 <em>차이</em>에서 일어나므로, 첨삭할 때도 직역판을 먼저 보여 준 뒤 자연스러운 판을 보여 주세요.</p>
+  <div class="kmap">
+    <div class="krow"><div class="klabel">① 한국어</div><div class="kbody">중학교 때 수학 시험을 망쳤는데, 정말 너무 슬펐고 나는 수학적인 재능이 없는 사람인 것 같다고 느꼈다.</div></div>
+    <div class="krow"><div class="klabel">② 직역</div><div class="kbody"><span class="bad">When middle school time, math exam was ruined, and really too sad, and felt that I am a person who has no mathematical talent.</span></div></div>
+    <div class="krow"><div class="klabel">③ 자연스러운 영어</div><div class="kbody"><span class="good">In middle school I failed a math exam. I was crushed, and I decided I simply had no talent for numbers.</span></div></div>
+    <div class="krow"><div class="klabel">무엇이 바뀌었나</div><div class="kbody note-in">주어를 되살리고(→ I), 한 문장을 두 문장으로 끊고, "정말 너무 슬펐다"를 한 단어(crushed)로 압축하고, "~인 것 같다고 느꼈다"의 겹친 완충 표현을 하나(decided)로 줄였습니다. <b>한국어 한 문장 = 영어 한 문장이 아닙니다.</b></div></div>
+  </div>
+
+  <h3 data-easy="한글을 영어로 바꿀 때 기억할 6가지">한국어 → 영어에서 반복되는 여섯 가지 이동</h3>
+  <div class="shift">
+    <div class="sh"><b>주어를 되살린다</b><span>한국어는 주어를 생략하지만 영어 문장은 주어 없이 서지 못합니다. "슬펐다" → <i>I was sad.</i></span></div>
+    <div class="sh"><b>문장을 끊는다</b><span>"~하는데, ~고, ~해서"로 이어진 한 문장은 대개 영어 두세 문장입니다.</span></div>
+    <div class="sh"><b>동사를 앞으로</b><span>한국어는 서술어가 끝에, 영어는 주어 바로 뒤. 옮길 때 <em>동사부터</em> 정하면 문장이 빨리 섭니다.</span></div>
+    <div class="sh"><b>완충 표현을 줄인다</b><span>"~인 것 같다고 생각한다"처럼 겹친 완곡은 영어에서 하나만. <i>I think</i> 또는 <i>seems</i> 중 하나.</span></div>
+    <div class="sh"><b>한자어 추상명사를 동사로</b><span>"성적의 향상이 있었다" → <i>my grades improved.</i> 영어는 명사보다 동사로 밀고 갑니다.</span></div>
+    <div class="sh"><b>강조어를 단어 하나로</b><span>"정말 너무 많이" → <i>very very</i>가 아니라 정확한 형용사 하나: <i>crushed, thrilled, exhausted.</i></span></div>
+  </div>
+  <p class="note pro-only">한국어 원문과 영어 번역을 <b>나란히 남겨 두세요.</b> "원래 하려던 말"과 "영어로 나온 말"의 간극이 가장 좋은 첨삭 재료입니다.</p>
+</section>
+
+<!-- ===== 3 ===== -->
+<section class="panel" data-s="3" hidden>
+  <div class="phead">
+    <p class="pnum">Step 3 / 8</p>
+    <h2 data-easy="영어로 써 봐요">영어로 쓰고, 1차로 점검하기</h2>
+    <p class="sub pro-only">한국인 학습자에게 자주 나타나는 오류 패턴 16가지를 기계적으로 훑어 줍니다. 문법 검사기가 아니라 <em>다시 볼 자리를 짚어 주는 손가락</em>입니다.</p>
+    <p class="sub easy-only">다 쓰고 <b>1차 점검하기</b>를 누르면, 다시 볼 곳을 알려 줘요. 틀렸다고 혼내는 게 아니라 <b>한 번 더 보라</b>는 표시예요.</p>
+    <div class="doNow easy-only"><span class="ic">🖊️</span><span><b>지금 할 일</b> — 한글로 쓴 것을 영어로 옮겨 쓰고, <b>1차 점검하기</b>를 누르세요.</span></div>
+  </div>
+
+  <div class="kwcheck" id="kwcheck"></div>
+  <div class="editor">
+    <label for="essay" style="position:absolute;left:-9999px">에세이 입력란</label>
+    <textarea id="essay" spellcheck="false">Many people is afraid of failure. When I was a middle school student, I failed the math exam. I was very sad and I thought I am a stupid person. My mother said me that failure is not end. She told me to try again.
+
+After that, I studied math everyday for three month. I made a plan and I follow it. Sometimes I want to give up but I remember my mother's word. Finally, my score was improved a lot.
+
+Through this experience, I learned failure teach us many things. Failure is not the end but the begin of new start. So we should not afraid of failure.</textarea>
+    <div class="editor-bar">
+      <span class="counts" id="counts">단어 0 · 문장 0</span>
+      <span class="acts">
+        <button class="btn ghost" id="clear">비우기</button>
+        <button class="btn ghost" id="copyPrompt">요청문 복사</button>
+        <button class="btn" id="scan">1차 점검하기 → 자동 분석</button>
+      </span>
+    </div>
+  </div>
+  <div class="regen" id="corrHost" style="margin:18px 0 6px"><span id="aistate"></span></div>
+  <div class="findings" id="findings"></div>
+  <p class="note"><b>1차 점검하기 → 자동 분석</b>을 누르면 규칙 점검과 함께 <b>4·5단계 첨삭표·점수·코멘트가 이 글로 즉시 채워집니다</b>. 6·7·8·9단계도 각 화면의 버튼만 누르면 바로 만들어집니다. 요청문 복사는 더 정밀한 결과가 필요할 때만 쓰세요.</p>
+    <p class="note pro-only"><b>요청문 복사</b>를 누르면 유형·주제·키워드·한국어 초안·영어 글이 하나의 요청문으로 묶여 클립보드에 담깁니다. Claude에 그대로 붙여넣으면 아래 04–07단계가 이 글에 맞춰 만들어집니다.</p>
+  <p class="note pro-only">지금 들어 있는 글은 전형적 오류를 모아 만든 예시입니다 — 04~07단계는 모두 이 글 하나를 끝까지 따라갑니다.</p>
+</section>
+
+<!-- ===== 4 ===== -->
+<section class="panel" data-s="4" hidden>
+  <div class="phead">
+    <p class="pnum">Step 4 / 8 · 예시 글 기준</p>
+    <h2 data-easy="어디를 고칠까?">문장 첨삭 — 무엇을, 왜</h2>
+    <p class="sub pro-only">고친 것만 보여 주면 학생은 다음에 또 틀립니다. 첨삭은 <b>원문 · 수정문 · 오류 코드</b> 세 칸이 한 세트여야 하고, 코드는 학생이 자기 오류 지도를 그릴 수 있을 만큼만 단순해야 합니다.</p>
+  </div>
+
+  <div id="ai4"></div>
+  <div id="ex4">
+  <p class="srcnote">아래는 <b>예시 학생 글</b>에 대한 첨삭입니다. 3단계에서 자기 글을 넣고 첨삭을 받으면 이 자리에 그 글의 첨삭이 들어옵니다.</p>
+  <div class="diff">
+    <div class="diff-row diff-head"><div class="before">원문</div><div class="after">수정</div><div class="why">코드</div></div>
+    <div class="diff-row"><div class="before">Many people <del>is</del> afraid of failure.</div><div class="after">Many people <ins>are</ins> afraid of failure.</div><div class="why">SVA</div></div>
+    <div class="diff-row"><div class="before">I thought I <del>am</del> a stupid person.</div><div class="after">I thought I <ins>was</ins> a stupid person.</div><div class="why">TENSE</div></div>
+    <div class="diff-row"><div class="before">My mother <del>said me</del> that failure is not <del>end</del>.</div><div class="after">My mother <ins>told me</ins> that failure is not <ins>the end</ins>.</div><div class="why">VERB·ART</div></div>
+    <div class="diff-row"><div class="before">I studied math <del>everyday</del> for three <del>month</del>.</div><div class="after">I studied math <ins>every day</ins> for three <ins>months</ins>.</div><div class="why">SPELL·PLUR</div></div>
+    <div class="diff-row"><div class="before">I made a plan and I <del>follow</del> it.</div><div class="after">I made a plan and <ins>followed</ins> it.</div><div class="why">TENSE</div></div>
+    <div class="diff-row"><div class="before"><del>Sometimes I want to give up but I remember</del> my mother's <del>word</del>.</div><div class="after"><ins>Sometimes I wanted to give up, but I remembered</ins> my mother's <ins>words</ins>.</div><div class="why">TENSE·PLUR</div></div>
+    <div class="diff-row"><div class="before">my score <del>was improved</del> a lot.</div><div class="after">my score <ins>improved</ins> a lot.</div><div class="why">VOICE</div></div>
+    <div class="diff-row"><div class="before">I learned <del>failure teach</del> us many things.</div><div class="after">I learned <ins>that failure teaches</ins> us many things.</div><div class="why">CLAUSE·SVA</div></div>
+    <div class="diff-row"><div class="before">the <del>begin of new start</del>.</div><div class="after">the <ins>beginning of something new</ins>.</div><div class="why">FORM·REDUN</div></div>
+    <div class="diff-row"><div class="before">we should <del>not afraid of</del> failure.</div><div class="after">we should <ins>not be afraid of</ins> failure.</div><div class="why">BE</div></div>
+  </div>
+
+  <div class="doNow easy-only"><span class="ic">🔧</span><span><b>보는 법</b> — 왼쪽은 <b>쓴 문장</b>, 가운데는 <b>고친 문장</b>이에요. <span style="color:var(--mark)">빨간 글씨</span>가 고칠 곳, <span style="color:var(--grow)">초록 글씨</span>가 바른 말이에요.</span></div>
+  <h3 class="pro-only">이 학생의 오류 지도</h3>
+  <p class="sub pro-only">10개 중 4개가 <b>시제</b>, 2개가 <b>수 일치</b>입니다. 관사·태·어형은 각 1회. → 다음 수업은 문법 전체가 아니라 <b>과거시제 서사 쓰기</b> 하나만 잡습니다. 오류를 세는 이유는 점수가 아니라 <em>다음 한 가지</em>를 고르기 위해서입니다.</p>
+  </div>
+</section>
+
+<!-- ===== 5 ===== -->
+<section class="panel" data-s="5" hidden>
+  <div class="phead">
+    <p class="pnum">Step 5 / 8 · 예시 글 기준</p>
+    <h2 data-easy="내 글 점수 보기">분석과 평가</h2>
+    <p class="sub pro-only">문법 점수 하나로 글을 판단하지 않습니다. 다섯 항목을 따로 재면, 문법이 약해도 내용과 구성이 강한 학생이 자기 강점을 잃지 않습니다.</p>
+    <p class="sub easy-only">점수는 다섯 가지로 따로 봐요. 문법이 약해도 <b>이야기가 재미있으면</b> 그 점수는 그대로 높아요.</p>
+    <div class="doNow easy-only"><span class="ic">⭐</span><span><b>보는 법</b> — 그림이 <b>바깥으로 넓을수록</b> 잘한 거예요. 안으로 쏙 들어간 쪽이 다음에 연습할 곳!</span></div>
+  </div>
+
+  <p class="srcnote" id="src5">아래 점수는 <b>예시 학생 글</b> 기준입니다. 3단계에서 첨삭을 받으면 자기 글의 점수로 바뀝니다.</p>
+  <div class="evalgrid">
+    <figure class="chartbox">
+      <figcaption>
+        <b>5항목 점수 프로필</b>
+        <span id="chartsub">고등학생 기준선과 비교</span>
+      </figcaption>
+      <div class="chartwrap">
+        <svg id="radar" viewBox="0 0 460 340" role="img" aria-labelledby="radar-t"></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend">
+        <span class="lg"><i class="sw-fill"></i>이 글</span>
+        <span class="lg"><i class="sw-dash"></i><span id="lg-target">유형 기준선</span></span>
+      </div>
+      <p class="figcap pro-only">축은 0–5점. 넓이가 아니라 <b>모양</b>을 보세요 — 어느 쪽으로 찌그러졌는지가 다음 수업 주제입니다.</p>
+    </figure>
+
+    <div class="rubric" id="rubric">
+      <div class="crit" data-c="0"><div class="name">내용 <small>Content</small></div><div class="dots"></div><div class="say">개인 경험이 구체적이고 주제와 정확히 맞물립니다. 다만 "점수가 올랐다"가 전부라, <em>무엇이 달라졌는지</em>가 아직 비어 있습니다.</div></div>
+      <div class="crit" data-c="1"><div class="name">구성 <small>Organization</small></div><div class="dots"></div><div class="say">도입–사건–교훈의 3단 구조가 분명합니다. 문단 연결어(After that, Through this experience)를 이미 쓰고 있습니다.</div></div>
+      <div class="crit" data-c="2"><div class="name">문법 <small>Grammar</small></div><div class="dots"></div><div class="say">과거 이야기를 현재시제로 흘리는 패턴이 반복됩니다. 오류의 종류는 적고 <em>같은 오류가 여러 번</em>이라, 고치기 쉬운 유형입니다.</div></div>
+      <div class="crit" data-c="3"><div class="name">어휘 <small>Vocabulary</small></div><div class="dots"></div><div class="say">sad, very, a lot 같은 기본어에 머물러 있습니다. 감정 어휘 하나만 정확히 바꿔도(sad → discouraged) 인상이 달라집니다.</div></div>
+      <div class="crit" data-c="4"><div class="name">표현력 <small>Expression</small></div><div class="dots"></div><div class="say">마지막 문장의 대조 구조(not the end but the beginning)는 이 학생이 스스로 만든 좋은 문장입니다. 여기를 칭찬해야 다음 글에서 또 시도합니다.</div></div>
+      <div class="verdict">
+        <div><span>총점</span><b id="v-total">16 / 25</b></div>
+        <div><span>CEFR 추정</span><b id="v-cefr">A2+ → B1</b></div>
+        <div><span>다음 목표</span><b id="v-next">과거시제 일관성</b></div>
+        <button class="btn" id="resetScore" style="margin-left:auto">예시 점수로</button>
+      </div>
+    </div>
+  </div>
+  <div class="saverow pro-only">
+    <input type="text" id="stuName" placeholder="학생 이름 (기록용)">
+    <button class="btn" id="saveDb">결과 저장</button>
+    <button class="btn" id="csvBtn">CSV 내려받기</button>
+    <button class="btn ghost" id="clearRec">기록 비우기</button>
+  </div>
+  <p class="note" id="dbnote"></p>
+  <p class="note pro-only"><b>점을 눌러 점수를 바꿀 수 있습니다.</b> 실제 학생 글을 채점하실 때 그대로 쓰세요 — 차트·총점·CEFR·다음 목표가 바로 다시 계산됩니다. 오른쪽 코멘트는 예시 글에 대한 것이므로 학생 글에 맞게 바꿔 쓰셔야 합니다.</p>
+
+  <div class="threecol">
+    <div>
+      <h4 style="color:var(--grow);border-color:var(--grow)">살릴 것 · Keep</h4>
+      <ul>
+        <li><b>구체적인 사건 하나</b>로 글 전체를 지탱한 점</li>
+        <li><b>대조 구조</b>(not A but B)를 스스로 만든 점</li>
+        <li>문단마다 <b>시간 표지</b>를 넣어 흐름을 만든 점</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:var(--mark);border-color:var(--mark)">고칠 것 · Fix</h4>
+      <ol>
+        <li><b>과거시제 일관성</b> — 이야기 전체를 과거로 (오류 4건)</li>
+        <li><b>수 일치</b> — people are, three months, her words</li>
+        <li><b>감정 어휘 확장</b> — sad / very 대신 정확한 한 단어</li>
+      </ol>
+    </div>
+    <div>
+      <h4>다음 과제 · Next</h4>
+      <ul>
+        <li>같은 글을 <b>전부 과거시제로</b> 다시 쓰기 (10분)</li>
+        <li>2문단에 <b>구체적 장면 2문장</b> 추가 — 몇 시에, 어디서, 무엇을 보며 공부했는지</li>
+        <li>sad·happy·good을 각각 <b>더 정확한 단어</b>로 바꾸기</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 ===== -->
+<section class="panel" data-s="6" hidden>
+  <div class="phead">
+    <p class="pnum">Step 6 / 8 · 예시 글 기준</p>
+    <h2 data-easy="같은 이야기, 목소리 바꾸기">같은 생각, 여섯 가지 목소리</h2>
+    <p class="sub pro-only">리라이팅의 원칙은 하나입니다 — <b>학생의 생각과 사건은 건드리지 않는다.</b> 바꾸는 것은 문장의 길이, 어휘의 온도, 청자와의 거리뿐입니다. 탭은 <b>왼쪽이 가장 편한 말, 오른쪽이 가장 격식 있는 말</b> 순서입니다.</p>
+    <p class="sub easy-only">이야기는 똑같아요. <b>말투만</b> 바뀌어요. 왼쪽일수록 편한 말, 오른쪽일수록 어른스러운 말이에요.</p>
+    <div class="doNow easy-only"><span class="ic">🎭</span><span><b>지금 할 일</b> — ①②③을 읽어 보고, <b>제일 마음에 드는 말투</b>를 하나 고르세요.</span></div>
+  </div>
+
+  <div class="regen pro-only"><button class="btn" id="regenTone">내 글로 여섯 톤 다시 만들기</button><span id="toneState"></span></div>
+  <div class="tonebar" role="tablist" aria-label="톤 선택">
+    <button class="tonebtn" role="tab" aria-selected="true" data-tone="min">① 최소 수정</button>
+    <button class="tonebtn" role="tab" aria-selected="false" data-tone="casual">② 캐주얼</button>
+    <button class="tonebtn" role="tab" aria-selected="false" data-tone="narr">③ 서사적</button>
+    <button class="tonebtn" role="tab" aria-selected="false" data-tone="persu">④ 설득·연설조</button>
+    <button class="tonebtn" role="tab" aria-selected="false" data-tone="acad">⑤ 학술적</button>
+    <button class="tonebtn" role="tab" aria-selected="false" data-tone="paper">⑥ 아카데믹 · 논문체</button>
+  </div>
+
+  <div class="tonepanel" data-panel="min">
+    <p class="toneline"><span>격식 ▁▃▁▁▁</span><span>평균 12 words</span><span>원문 보존율 ≈ 90%</span></p>
+    <div class="prose">
+      <p>Many people are afraid of failure. When I was a middle school student, I failed a math exam. I was very sad, and I thought I was a stupid person. My mother told me that failure is not the end. She told me to try again.</p>
+      <p>After that, I studied math every day for three months. I made a plan and followed it. Sometimes I wanted to give up, but I remembered my mother's words. Finally, my score improved a lot.</p>
+      <p>Through this experience, I learned that failure teaches us many things. Failure is not the end but the beginning of something new. So we should not be afraid of failure.</p>
+    </div>
+    <p class="tonewhy"><b>언제 쓰나</b> — 제출용. 오류만 걷어 내고 학생의 목소리는 그대로 둡니다. 첨삭본은 언제나 이 버전이 기준이며, 아래 세 버전은 <em>가능성을 보여 주는 참고</em>이지 정답이 아닙니다.</p>
+  </div>
+
+  <div class="tonepanel" data-panel="casual" hidden>
+    <p class="toneline"><span>격식 ▁▁▁▁▁</span><span>평균 8 words</span><span>구어체 · 축약형 · 문장 조각</span></p>
+    <div class="prose">
+      <p>Okay, so. Math exam, second year of middle school. Thirty-eight out of a hundred.</p>
+      <p>I folded the paper up small and decided I just wasn't a math person. Which is a really comfortable thing to believe, by the way. Costs you nothing.</p>
+      <p>Mom read it, said "This isn't the end," and went back to washing rice. Honestly? That annoyed me more than the score did.</p>
+      <p>But I did it anyway. Twenty problems a night, three months. Not fun. Not inspiring. Just twenty problems.</p>
+      <p>And the score went up. Not dramatically. It just went up.</p>
+      <p>So — I'm not going to tell you failing is great. It isn't. But it's not the end either, and it turns out that's enough.</p>
+    </div>
+    <p class="tonewhy"><b>무엇이 달라졌나</b> — 축약형(isn't, wasn't), 담화 표지(Okay so, by the way, Honestly, So), 문장 조각("Not fun.")이 들어갔습니다. 교과서 영어에는 없지만 <b>실제 영어에는 가득한</b> 요소들입니다. 블로그·이메일·SNS·영어 일기에 바로 쓰이고, 성인 학습자와 초·중학생이 가장 빨리 자기 목소리를 찾는 톤이기도 합니다. <em>다만 시험 답안에는 쓰지 않습니다</em> — 그 구분을 가르치는 것이 이 톤의 진짜 목적입니다.</p>
+  </div>
+
+  <div class="tonepanel" data-panel="narr" hidden>
+    <p class="toneline"><span>격식 ▁▃▁▁▁</span><span>평균 9 words</span><span>장면 · 감각</span></p>
+    <div class="prose">
+      <p>The paper came back with a number circled in red. Thirty-eight. I folded it twice before I left the classroom, as if a smaller piece of paper would be a smaller failure.</p>
+      <p>At home my mother read it without changing her face. "This is not the end," she said, and went back to washing rice. I remember being angry that she was so calm.</p>
+      <p>For three months I did twenty problems every night at the kitchen table, under the light that was always slightly too yellow. Some nights I closed the book after four. Most nights I finished. The score, when it finally moved, moved quietly — no celebration, just a different number.</p>
+      <p>I still fail things. I fold the paper less often now.</p>
+    </div>
+    <p class="tonewhy"><b>무엇이 달라졌나</b> — 설명을 <em>장면</em>으로 바꿨습니다. "I was very sad"는 사라지고, 종이를 두 번 접는 동작이 그 자리를 대신합니다. <b>Show, don't tell</b>을 추상적으로 가르치는 대신 자기 문장이 이렇게 변하는 것을 보게 하는 편이 빠릅니다.</p>
+  </div>
+
+  <div class="tonepanel" data-panel="persu" hidden>
+    <p class="toneline"><span>격식 ▁▃▅▁▁</span><span>평균 11 words</span><span>2인칭 · 반복 · 질문</span></p>
+    <div class="prose">
+      <p>Let me ask you something. What was the last thing you did badly on purpose?</p>
+      <p>You probably can't remember one — and that is the problem. We have been taught to protect our record instead of building our ability. I failed a math exam at fourteen and decided, that same afternoon, that I was simply not a math person. It took my mother one sentence to show me how lazy that conclusion was.</p>
+      <p>Three months. Twenty problems a night. No talent arrived. Only the work did.</p>
+      <p>So here is what I want from you: fail on purpose this week. Take the harder question. Enter the competition you will not win. A record with no failures in it is not a record of success — it is a record of caution.</p>
+    </div>
+    <p class="tonewhy"><b>무엇이 달라졌나</b> — 청자를 <em>you</em>로 불러 세우고, 질문으로 열고, 짧은 문장을 리듬으로 씁니다. 마지막 문장은 <b>대조 반전</b> 구조 — 학생이 원문에서 이미 시도했던 "not A but B"를 확장한 것입니다. <em>학생의 씨앗을 키워 돌려주는 것</em>이 이 단계의 목표입니다.</p>
+  </div>
+  <div class="tonepanel" data-panel="acad" hidden>
+    <p class="toneline"><span>격식 ▁▃▅▇▁</span><span>평균 21 words</span><span>3인칭 · 유보 표현</span></p>
+    <div class="prose">
+      <p>Failure is widely regarded as something to be avoided, yet personal experience suggests that it may function as a necessary stage in learning. In my second year of middle school, I failed a mathematics examination, and I initially interpreted the result as evidence of a fixed lack of ability.</p>
+      <p>My mother offered a different interpretation: that a single outcome does not define a capacity. Acting on this, I studied mathematics daily for three months according to a fixed plan. The improvement in my score was gradual rather than sudden, which suggests that the decisive variable was persistence rather than talent.</p>
+      <p>This experience supports a modest conclusion. Failure is informative: it identifies precisely where effort is required. Understood in this way, it is less an endpoint than a form of feedback.</p>
+    </div>
+    <p class="tonewhy"><b>무엇이 달라졌나</b> — 감정어(sad, stupid)가 판단어(interpreted, evidence)로 바뀌고, 주장이 <em>단정</em>에서 <em>유보</em>로(may, suggests, modest conclusion) 이동했습니다. 학술 글의 핵심은 어려운 단어가 아니라 <b>주장의 강도를 조절하는 힘</b>입니다. 수능·토플·대입 논술에 직결됩니다.</p>
+  </div>
+
+
+  <div class="tonepanel" data-panel="paper" hidden>
+    <p class="toneline"><span>격식 ▇▇▇▇▇</span><span>평균 24 words</span><span>논문체 · 인용 · 한계 진술</span></p>
+    <div class="prose">
+      <p>Failure is commonly framed as an outcome to be minimised. This account argues, on the basis of a single reflective case, that failure functions less as an endpoint than as diagnostic information about a method.</p>
+      <p>The case concerns one mathematics examination, failed in the second year of lower secondary school. The initial interpretation was attributional and fixed: the result was read as evidence of stable low ability rather than of insufficient preparation. Dweck (2006) describes this pattern as a fixed mindset, in which an outcome is treated as a measurement of the self rather than of a process.</p>
+      <p>A revised interpretation was adopted, and a fixed study routine was maintained over three months. The subsequent improvement was gradual rather than abrupt, which is consistent with an account in which persistence, not aptitude, is the operative variable. The evidence is nevertheless anecdotal: a single case cannot separate practice effects from regression to the mean, and the interpretation is retrospective.</p>
+      <p>The conclusion is therefore a modest one. Where failure is read as information about a method, it is corrigible; where it is read as information about a person, it is not.</p>
+    </div>
+    <p class="tonewhy"><b>무엇이 달라졌나</b> — ⑤ 학술적보다 한 단계 더 갑니다. 1인칭이 거의 사라지고(<em>The case concerns…</em>), 출처를 인용하고(Dweck, 2006), <b>자기 논증의 한계를 스스로 적습니다</b>("a single case cannot separate…"). 논문에서 한계 진술은 약점이 아니라 <em>신뢰의 근거</em>입니다 — 대학생·대학원생·연구자가 가장 자주 놓치는 지점이라, 여기만 따로 연습시켜도 글의 격이 달라집니다.</p>
+  </div>
+
+</section>
+
+<!-- ===== 7 ===== -->
+<section class="panel" data-s="7" hidden>
+  <div class="phead">
+    <p class="pnum">Step 7 / 8 · 예시 주제 “실패”</p>
+    <h2 data-easy="더 읽어 볼 이야기">이 주제를 먼저 살아낸 글들</h2>
+    <p class="sub pro-only">첨삭이 끝나는 곳에서 읽기가 시작됩니다. 같은 주제를 인물 · 책 · 시 · 예술 · 철학 다섯 방향에서 하나씩 붙여 주면, 학생은 자기 글이 훨씬 큰 대화의 일부였다는 걸 알게 됩니다.</p>
+    <p class="sub easy-only">나와 <b>같은 생각을 먼저 한 사람들</b>이 있어요. 사람 · 책 · 시 · 그림 · 생각 다섯 가지로 만나 봐요.</p>
+    <div class="doNow easy-only"><span class="ic">📚</span><span><b>지금 할 일</b> — 다섯 개 중 <b>하나만</b> 골라 읽고, 아래 질문 하나에 답해 보세요.</span></div>
+  </div>
+
+  <div class="regen pro-only"><button class="btn" id="regenMuse">내 주제로 다시 만들기</button><span id="museState"></span></div>
+  <div id="ai7"></div>
+  <div id="ex7">
+  <div class="muse-item">
+    <div class="muse-kind">인물</div>
+    <div>
+      <h4>J. K. 롤링, 하버드 졸업 연설</h4>
+      <p class="who">“The Fringe Benefits of Failure, and the Importance of Imagination”, 2008</p>
+      <blockquote>“It is impossible to live without failing at something, unless you live so cautiously that you might as well not have lived at all — in which case, you fail by default.”
+      <span class="tr">무언가에 실패하지 않고 사는 것은 불가능합니다. 아예 살지 않은 것이나 다름없을 만큼 조심스럽게 살지 않는 한 — 그렇다면 당신은 이미 기본값으로 실패한 것입니다.</span></blockquote>
+      <p class="link"><b>왜 이 글인가</b> — 학생의 마지막 문장 "we should not be afraid of failure"와 정확히 같은 주장을, <em>반대 방향에서</em> 증명합니다. 실패를 피한 삶이 더 큰 실패라는 역설. 논증 구조를 뒤집는 법을 배울 수 있는 짧은 텍스트입니다.</p>
+    </div>
+  </div>
+
+  <div class="muse-item">
+    <div class="muse-kind">책</div>
+    <div>
+      <h4>사뮈엘 베케트, 『Worstward Ho』</h4>
+      <p class="who">1983 · 산문. 그리고 캐럴 드웩, 『Mindset』(2006)</p>
+      <blockquote>“Ever tried. Ever failed. No matter. Try again. Fail again. Fail better.”
+      <span class="tr">해 봤다. 실패했다. 상관없다. 다시 해라. 다시 실패해라. 더 잘 실패해라.</span></blockquote>
+      <p class="link"><b>왜 이 글인가</b> — 여섯 문장 전부가 두세 단어입니다. <em>짧은 문장만으로 리듬을 만드는 법</em>의 교과서. ④ 설득조 리라이팅의 "Three months. Twenty problems a night."가 바로 이 호흡입니다. 드웩의 『마인드셋』은 같은 이야기를 심리학 연구로 설명합니다 — "나는 수학형 인간이 아니다"라는 이 학생의 문장이 바로 고정 마인드셋의 표본입니다.</p>
+    </div>
+  </div>
+
+  <div class="muse-item">
+    <div class="muse-kind">시</div>
+    <div>
+      <h4>러디어드 키플링, 「If—」 / 에밀리 디킨슨, 「Success is counted sweetest」</h4>
+      <p class="who">1910 / 1859년 작·1864년 발표</p>
+      <blockquote>“If you can meet with Triumph and Disaster / And treat those two impostors just the same…”
+      <span class="tr">승리와 재앙을 만나고도 / 그 두 사기꾼을 똑같이 대할 수 있다면…</span></blockquote>
+      <blockquote>“Success is counted sweetest / By those who ne'er succeed.”
+      <span class="tr">성공은 한 번도 성공해 본 적 없는 이들이 / 가장 달게 여긴다.</span></blockquote>
+      <p class="link"><b>왜 이 시인가</b> — 키플링은 성공과 실패를 <em>둘 다 사기꾼</em>이라 부릅니다. 학생의 글은 실패를 성공으로 가는 계단으로만 봤는데, 이 시는 성공까지 의심합니다. 디킨슨은 여덟 단어로 같은 말을 합니다. <b>과제</b>: 두 시 중 하나의 첫 두 행을 자기 문장으로 바꿔 써 보기.</p>
+    </div>
+  </div>
+
+  <div class="muse-item">
+    <div class="muse-kind">예술</div>
+    <div>
+      <h4>가쓰시카 호쿠사이의 후기 / 킨츠기(金継ぎ)</h4>
+      <p class="who">『후가쿠 백경』 발문, 1834 · 깨진 도자기를 금으로 잇는 일본 수리 기법</p>
+      <blockquote>“Nothing I drew before the age of seventy was worthy of notice. At seventy-three I began to grasp the structure of birds and beasts, insects and fish…”
+      <span class="tr">일흔 이전에 그린 것 중 볼 만한 것은 없다. 일흔셋에 이르러 비로소 새와 짐승, 벌레와 물고기의 구조를 조금 알게 되었다…</span></blockquote>
+      <p class="link"><b>왜 이 작품인가</b> — 호쿠사이는 이미 「가나가와 해변의 높은 파도 아래」를 그린 뒤에 이 글을 썼습니다. 세계적 걸작을 그려 놓고도 <em>아직 못 그린다</em>고 말하는 사람. 킨츠기는 깨진 자리를 감추지 않고 금으로 도드라지게 만듭니다 — 흉터가 곧 이력이 되는 미학. <b>과제</b>: 킨츠기 사진 한 장을 보고 세 문장으로 묘사하기.</p>
+    </div>
+  </div>
+
+  <div class="muse-item">
+    <div class="muse-kind">철학</div>
+    <div>
+      <h4>니체 · 포퍼 · 에픽테토스</h4>
+      <p class="who">『우상의 황혼』(1888) · 『추측과 논박』(1963) · 『엥케이리디온』(2세기경)</p>
+      <blockquote>“Was mich nicht umbringt, macht mich stärker.” — 나를 죽이지 못하는 것은 나를 더 강하게 만든다.
+      <span class="tr">니체, 『우상의 황혼』 「잠언과 화살」 8절. 다만 니체 자신은 이 말을 <em>모든</em> 고통에 적용하지 않았습니다 — 무엇이 예외인지 토론해 볼 것.</span></blockquote>
+      <p class="link"><b>왜 이 철학인가</b> — 포퍼는 과학이 <em>반증</em>으로만 전진한다고 봤습니다. 틀린 가설이 버려져야 지식이 자라는 것이죠. 실패가 개인의 미덕이 아니라 <b>지식의 작동 방식</b>이라는 관점입니다. 에픽테토스는 반대로 묻습니다 — 시험 결과는 애초에 내가 통제할 수 있는 것이었나? <b>토론 과제</b>: 세 사람 중 누구의 관점이 이 학생에게 가장 필요한가, 근거를 들어 한 문단.</p>
+    </div>
+  </div>
+
+  </div>
+  <h3 data-easy="다시 쓸 때 생각해 볼 것">다시 쓰기 위한 질문</h3>
+  <div class="check" id="checklist">
+    <label><input type="checkbox" data-k="q1"><span>키플링처럼 <b>성공도 의심</b>한다면, 내 글의 결론은 어떻게 달라지는가?</span></label>
+    <label><input type="checkbox" data-k="q2"><span>내 실패 중 <b>고쳐지지 않은 것</b> 하나를 쓴다면? (해피엔딩 없이 끝내 보기)</span></label>
+    <label><input type="checkbox" data-k="q3"><span>에픽테토스의 질문 — 그 일에서 <b>내가 통제할 수 있었던 것</b>은 정확히 무엇이었나?</span></label>
+    <label><input type="checkbox" data-k="q4"><span>세 인용문 중 하나를 <b>도입 문장</b>으로 삼아 글을 다시 열어 보기</span></label>
+  </div>
+
+  <p class="note pro-only">02·03단계의 자동 점검은 표층 패턴 검사입니다. 문맥상 옳은 문장을 잘못 짚을 수 있으니 최종 판단은 사람이 하세요. 인용문은 원문 표기를 따랐고 번역은 교육용 의역이며, 예시 에세이는 실제 학생 글이 아니라 전형적 오류 패턴을 모아 구성한 것입니다.</p>
+</section>
+
+
+<!-- ===== 8 ===== -->
+<section class="panel" data-s="8" hidden>
+  <div class="phead">
+    <p class="pnum">Step 8 / 8</p>
+    <h2 data-easy="내 공부 계획서">학습 결과보고서</h2>
+    <p class="sub pro-only"><b>보고서 만들기</b> 버튼만 누르면 바로 만들어집니다. 더 정밀한 보고서가 필요할 때만 아래 ①②로 AI에 물어보세요. 지금 수준과 다음에 무엇을 공부해야 하는지를 한 장으로 정리합니다. 문법만이 아니라 <b>무엇을 읽고 어떤 배경지식을 더 쌓아야 하는지</b>까지 포함합니다. 인쇄 화면에서 <b>PDF로 저장</b>을 고르면 그대로 PDF가 됩니다.</p>
+    <p class="sub easy-only">내가 지금 어디쯤 있고, 다음에 무엇을 하면 좋은지 정리해 줘요. 읽으면 좋은 책도 알려 줘요.</p>
+    <div class="doNow easy-only"><span class="ic">📄</span><span><b>지금 할 일</b> — <b>보고서 만들기</b>를 누르고, 다 나오면 <b>PDF로 저장</b>을 누르세요.</span></div>
+  </div>
+
+  <div class="regen">
+    <button class="btn" id="repBtn">보고서 만들기</button>
+    <button class="btn" id="repPrint" disabled>PDF로 저장 (인쇄)</button>
+    <button class="btn" id="repSave" disabled>파일로 내려받기</button>
+    <span id="repState"></span>
+  </div>
+  <div id="report"></div>
+
+  <div class="regen" style="margin-top:34px">
+    <button class="btn" id="weekBtn" hidden>1~4주차 활동지 만들기</button>
+    <span id="weekState"></span>
+  </div>
+  <div id="weeks"></div>
+</section>
+
+<nav class="pager">
+  <button class="pg prev" id="prevBtn"><em>이전</em><b></b></button>
+  <button class="pg next" id="nextBtn"><em>다음</em><b></b></button>
+</nav>
+
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+  function idle(el, msg){ if (el) el.textContent = msg || ""; }
+  function get(k,d){ try{ var v = localStorage.getItem(k); return v===null?d:v; }catch(e){ return d; } }
+  function set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+  var toastEl = $("toast"), toastT;
+  function toast(msg){
+    toastEl.textContent = msg; toastEl.classList.add("show");
+    clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove("show"); }, 1900);
+  }
+
+  /* ============ step navigation ============ */
+  var STEPS = [
+    {n:"유형", t:"누가 쓰나요?", en:"나", et:"누가 쓸 거예요?"},
+    {n:"주제", t:"주제와 키워드", en:"고르기", et:"무엇을 쓸까요?"},
+    {n:"한→영", t:"한국어로 먼저 쓰기", en:"한글", et:"한글로 먼저 써요"},
+    {n:"쓰기", t:"영어로 쓰고 점검", en:"영어", et:"영어로 써 봐요"},
+    {n:"첨삭", t:"문장 첨삭", en:"고치기", et:"어디를 고칠까?"},
+    {n:"평가", t:"분석과 평가", en:"점수", et:"내 글 점수 보기"},
+    {n:"톤", t:"여섯 가지 목소리", en:"말투", et:"목소리 바꾸기"},
+    {n:"확장", t:"인문 확장", en:"더 읽기", et:"더 읽어 볼 이야기"},
+    {n:"보고서", t:"학습 결과보고서", en:"보고서", et:"내 공부 계획서"}
+  ];
+  var EASY = false;
+  var navEl = document.querySelector(".steps");
+  var panels = document.querySelectorAll(".panel");
+  var cur = 0, visited = {0:1};
+
+  var navHTML = "";
+  for (var i=0;i<STEPS.length;i++){
+    navHTML += '<button class="stepbtn" role="tab" aria-selected="'+(i===0)+'" data-go="'+i+'"><em>'+i+'</em><span class="lbl">'+STEPS[i].n+'</span></button>';
+  }
+  navEl.innerHTML = navHTML;
+  var navBtns = navEl.querySelectorAll(".stepbtn");
+
+  function go(n, noScroll){
+    if (n < 0 || n >= STEPS.length) return;
+    cur = n; visited[n] = 1;
+    for (var i=0;i<panels.length;i++){ panels[i].hidden = (parseInt(panels[i].getAttribute("data-s"),10) !== n); }
+    for (var j=0;j<navBtns.length;j++){
+      navBtns[j].setAttribute("aria-selected", j===n ? "true":"false");
+      if (visited[j]) navBtns[j].classList.add("done");
+    }
+    stampSource();
+    var done = 0; for (var v in visited){ if (visited[v]) done++; }
+    $("bar-fill").style.width = Math.round(done/STEPS.length*100) + "%";
+
+    var pv = $("prevBtn"), nx = $("nextBtn");
+    pv.disabled = (n===0); nx.disabled = (n===STEPS.length-1);
+    pv.querySelector("b").textContent = n>0 ? (EASY?STEPS[n-1].et:STEPS[n-1].t) : "—";
+    nx.querySelector("b").textContent = n<STEPS.length-1 ? (EASY?STEPS[n+1].et:STEPS[n+1].t) : "다 했어요!";
+    set("ea_step", String(n));
+    if (!noScroll) window.scrollTo({top:0, behavior:"smooth"});
+  }
+  /* ---------- 오류 코드별 묶어 보기 ---------- */
+  function buildCodeFilter(scope){
+    if (!scope) return;
+    var diff = scope.querySelector(".diff"); if (!diff) return;
+    var rows = diff.querySelectorAll(".diff-row"), counts = {}, order = [], total = 0;
+    for (var i=0;i<rows.length;i++){
+      if (rows[i].classList.contains("diff-head")) continue;
+      var whyEl = rows[i].querySelector(".why"); if (!whyEl) continue;
+      var codes = whyEl.textContent.split(/[·,\s]+/).map(function(x){return x.trim();}).filter(Boolean);
+      rows[i].setAttribute("data-codes", " " + codes.join(" ") + " ");
+      total++;
+      for (var c=0;c<codes.length;c++){
+        if (!(codes[c] in counts)){ counts[codes[c]] = 0; order.push(codes[c]); }
+        counts[codes[c]]++;
+      }
+    }
+    order.sort(function(a,b){ return counts[b]-counts[a] || a.localeCompare(b); });
+    var lis = scope.querySelectorAll("ul li[data-code]");
+    var bar = scope.querySelector(".codebar");
+    if (!bar){
+      bar = document.createElement("div");
+      bar.className = "codebar";
+      diff.parentNode.insertBefore(bar, diff);
+    }
+    var h = '<span class="lb">코드별 보기</span><button class="codechip" aria-pressed="true" data-code="*">전체<span class="n">' + total + '</span></button>';
+    for (var k=0;k<order.length;k++){
+      h += '<button class="codechip" aria-pressed="false" data-code="'+order[k]+'">'+order[k]+'<span class="n">'+counts[order[k]]+'</span></button>';
+    }
+    bar.innerHTML = h;
+    var note = scope.querySelector(".groupnote");
+    if (!note){ note = document.createElement("p"); note.className = "groupnote"; note.hidden = true; bar.parentNode.insertBefore(note, diff); }
+    var chips = bar.querySelectorAll(".codechip");
+    for (var m=0;m<chips.length;m++){
+      chips[m].addEventListener("click", function(e){
+        var code = e.currentTarget.getAttribute("data-code");
+        for (var x=0;x<chips.length;x++){ chips[x].setAttribute("aria-pressed", chips[x]===e.currentTarget ? "true":"false"); }
+        for (var r=0;r<rows.length;r++){
+          if (rows[r].classList.contains("diff-head")) continue;
+          var has = code === "*" || (rows[r].getAttribute("data-codes")||"").indexOf(" "+code+" ") !== -1;
+          rows[r].classList.toggle("off", !has);
+        }
+        for (var l=0;l<lis.length;l++){
+          var lc = lis[l].getAttribute("data-code") || "";
+          lis[l].classList.toggle("off", !(code === "*" || lc === code));
+        }
+        note.hidden = (code === "*");
+        if (code !== "*") note.innerHTML = "<b>" + esc(code) + "</b> — " + (CODEDESC[code] || "이 코드로 묶인 수정만 보고 있습니다.") + " 같은 종류를 몰아서 보면 <b>왜 반복되는지</b>가 보입니다.";
+      });
+    }
+  }
+  var CODEDESC = {
+    SVA:"주어와 동사의 수를 맞추는 문제입니다.", TENSE:"시제를 하나로 통일하는 문제입니다.",
+    VERB:"동사가 목적어를 받는 방식(문형) 문제입니다.", BE:"be동사가 빠진 자리입니다.",
+    VOICE:"능동·수동을 잘못 고른 자리입니다.", ART:"관사(a/the)를 넣고 빼는 문제입니다.",
+    PLUR:"단수·복수형 문제입니다.", PREP:"전치사 선택 문제입니다.",
+    CLAUSE:"접속사와 절의 구조 문제입니다.", FORM:"품사 형태(동사→명사 등) 문제입니다.",
+    WC:"더 정확한 낱말을 고르는 문제입니다.", REDUN:"같은 뜻을 두 번 쓴 자리입니다.",
+    SPELL:"철자와 띄어쓰기 문제입니다.", AWK:"뜻은 통하지만 영어답지 않은 자리입니다."
+  };
+
+  /* ---------- 추천 영어 글 (2단계) ---------- */
+  function renderTrans(){
+    var box = $("trans"); if (!box) return;
+    var d = (typeof AI !== "undefined") && AI ? AI.trans : null;
+    if (!d){ box.innerHTML = ""; return; }
+    var h = '<div class="transwrap"><div class="aibadge">✦ 내 한국어 초안</div>';
+    var pr2 = (Array.isArray(d.pairs) ? d.pairs : []).filter(function(x){ return x && (String(x.ko||"").trim() || String(x.en||"").trim()); });
+    if (pr2.length){
+      h += '<h3>한국어와 추천 영어, 문장끼리 맞대어 보기</h3>';
+      h += '<div class="pairs"><div class="pairrow head"><div>내가 쓴 한국어</div><div class="mid"></div><div>추천 영어</div></div>';
+      for (var q=0;q<pr2.length;q++){
+        h += '<div class="pairrow"><div class="ko">'+esc(pr2[q].ko||"")+'</div><div class="mid">→</div><div class="en">'+esc(pr2[q].en||"")+'</div></div>';
+      }
+      h += '</div>';
+    }
+    var tr2 = (Array.isArray(d.traps) ? d.traps : []).filter(function(x){ return x && (String(x.ko||"").trim() || String(x.how||"").trim()); });
+    if (tr2.length){
+      h += '<h3>함정이 어떻게 처리됐나</h3><div class="traps"><div class="traprow head"><div>한국어</div><div>함정</div><div>영어에서의 처리</div></div>';
+      for (var i=0;i<tr2.length;i++){
+        h += '<div class="traprow"><div>'+esc(tr2[i].ko||"")+'</div><div class="tg">'+esc(tr2[i].trap||"")+'</div><div>'+esc(tr2[i].how||"")+'</div></div>';
+      }
+      h += '</div>';
+    }
+    var koSrc = kEssay.value.trim();
+    h += '<h3>세 판 나란히 보기</h3><div class="kmap">';
+    if (koSrc) h += '<div class="krow"><div class="klabel">① 한국어</div><div class="kbody">'+esc(koSrc)+'</div></div>';
+    if (String(d.literal||"").trim()) h += '<div class="krow"><div class="klabel">② 직역</div><div class="kbody"><span class="bad">'+esc(d.literal)+'</span></div></div>';
+    if (String(d.natural||"").trim()){
+      var paras = String(d.natural).split(/\n{2,}/), np = "";
+      for (var j=0;j<paras.length;j++){ if (paras[j].trim()) np += '<span class="good" style="display:block;margin-bottom:9px">'+esc(paras[j].trim())+'</span>'; }
+      h += '<div class="krow"><div class="klabel">③ 추천 글</div><div class="kbody">'+np+'</div></div>';
+    }
+    h += '</div>';
+    var tp2 = (Array.isArray(d.tips) ? d.tips : []).filter(function(x){ return String(x||"").trim(); });
+    if (tp2.length){
+      h += '<h3>다음에 옮길 때</h3><ul class="tips">';
+      for (var k=0;k<tp2.length;k++){ h += '<li>'+esc(tp2[k])+'</li>'; }
+      h += '</ul>';
+    }
+    if (String(d.natural||"").trim()) h += '<div class="handoff"><span class="arrow">▸</span><span class="ho-lb"><b>다음 단계</b><span>이 추천 글로 3단계 작성란을 채웁니다</span></span><button class="btn" id="useTrans">이 글을 3단계로 보내기 →</button><span class="bridge-note" id="useTransNote"></span></div>';
+    h += '</div>';
+    box.innerHTML = h;
+    var ut = $("useTrans");
+    if (ut) ut.addEventListener("click", function(){
+      essay.value = String(d.natural).replace(/\n{3,}/g,"\n\n").trim();
+      updateCounts(); scan();
+      $("useTransNote").textContent = "3단계에 넣었습니다";
+      toast("추천 글을 3단계 작성란에 넣었습니다");
+      go(3);
+    });
+  }
+
+  /* ---------- 1~4주차 활동지 ---------- */
+  function renderWeeks(){
+    var box = $("weeks"); if (!box) return;
+    var d = (typeof AI !== "undefined") && AI ? AI.weeks : null;
+    if (!d || !Array.isArray(d.weeks) || !d.weeks.length){ box.innerHTML = ""; return; }
+    var h = '<h3>1~4주차 활동지</h3><p class="note" style="margin:0 0 14px">보고서의 4주 계획을 그대로 실행할 수 있게 풀어 놓은 것입니다. 인쇄해서 학생에게 한 장씩 주셔도 됩니다.</p><div class="weeks">';
+    for (var i=0;i<d.weeks.length;i++){
+      var w = d.weeks[i];
+      h += '<div class="week"><span class="wn">' + esc(String(w.n || (i+1))) + '주차</span>';
+      h += '<h4>'+esc(w.goal||"")+'</h4>';
+      if (w.focus) h += '<span class="focus">'+esc(w.focus)+'</span>';
+      if (Array.isArray(w.activities) && w.activities.length){
+        h += '<p class="lbl">활동</p><ol>';
+        for (var a=0;a<w.activities.length;a++){
+          var ac = w.activities[a];
+          h += '<li><b>'+esc(ac.title||"")+'</b>'+(ac.min?' <span class="min">'+esc(String(ac.min))+'분</span>':'')+'<br>'+esc(ac.how||"")+'</li>';
+        }
+        h += '</ol>';
+      }
+      if (w.reading && (w.reading.what || w.reading.why)){
+        h += '<p class="lbl">이번 주 읽기</p><ul><li><b>'+esc(w.reading.what||"")+'</b><br>'+esc(w.reading.why||"")+'</li></ul>';
+      }
+      if (Array.isArray(w.check) && w.check.length){
+        h += '<p class="lbl">스스로 확인</p><div class="chk">';
+        for (var c=0;c<w.check.length;c++){ h += '<label><input type="checkbox"><span>'+esc(w.check[c])+'</span></label>'; }
+        h += '</div>';
+      }
+      if (w.output) h += '<p class="lbl">이번 주 결과물</p><p class="out"><b>제출</b> '+esc(w.output)+'</p>';
+      h += '</div>';
+    }
+    h += '</div>';
+    box.innerHTML = h;
+  }
+
+
+  /* ---------- 요청문 만들기 (공용) ---------- */
+  function ctxBlock(){
+    var v = PERSONA[pKey], L = [];
+    L.push("[쓴 사람] " + v.name + " · 목표 분량 " + v.len + " · 목표 CEFR " + v.cefr);
+    if (picked){ L.push("[주제] " + picked.q); L.push("[필수 키워드] " + picked.k.join(", ")); }
+    if (kEssay.value.trim()){ L.push("[한국어 초안]"); L.push(kEssay.value.trim()); }
+    L.push("[영어 글]"); L.push(essay.value.trim());
+    return L.join("\n");
+  }
+  function jsonTail(){
+    return "\n[반드시 지킬 것]\n" +
+      "- JSON 하나만 출력한다. 코드펜스나 인사말, 설명 문장을 앞뒤에 붙이지 않는다.\n" +
+      "- 위 [항목 설명]에 적힌 문장을 값으로 그대로 옮겨 적지 않는다. 값에는 이 학생의 글에서 나온 실제 내용만 넣는다.\n" +
+      "- 빈 문자열이나 '…' 같은 자리표시를 남기지 않는다.\n";
+  }
+  var BADSEED = ["학생 글에 실제로 있는","고친 조각","왜 고쳤는지","어떤 코드가 몇 번","직역판","추천 영어 글","목표 CEFR에 맞춘","문단은 빈 줄로","기억할 것 3","한국어 문장 하나","그 문장에 대응하는","함정 이름","영어에서 어떻게 처리","무엇이 달라졌는지 한국어","그 톤으로 다시 쓴","지금 수준을","공부할 항목","이 학생에게 왜","난이도 한마디","필요한 배경지식 영역","무엇부터 시작할지","이번 주 목표 한 문장","집중할 항목","학생이 읽고 바로","스스로 확인할 문장","이번 주에 내는 결과물","영어 질문 한 문장","이 질문이 왜 좋은","원문 인용","짧은 과제 한 줄","작가·연도","왜 이 글인가 —","항목별 한국어 코멘트","고칠 것 3가지","잘한 것 3가지"];
+  function hasTemplateEcho(o){
+    var hit = null;
+    (function walk(x){
+      if (hit) return;
+      if (typeof x === "string"){
+        var s = x.trim();
+        for (var i=0;i<BADSEED.length;i++){
+          if (s.indexOf(BADSEED[i]) === 0 || (s.length < 130 && s.indexOf(BADSEED[i]) !== -1)){ hit = s; return; }
+        }
+      } else if (Array.isArray(x)){ for (var j=0;j<x.length;j++) walk(x[j]); }
+      else if (x && typeof x === "object"){ for (var k in x) walk(x[k]); }
+    })(o);
+    return hit;
+  }
+  function countFilled(o){
+    var n = 0;
+    (function walk(x){
+      if (typeof x === "string"){ if (x.trim().length > 1) n++; }
+      else if (Array.isArray(x)){ for (var j=0;j<x.length;j++) walk(x[j]); }
+      else if (x && typeof x === "object"){ for (var k in x) walk(x[k]); }
+    })(o);
+    return n;
+  }
+  function guard(d, minFilled){
+    if (!d || typeof d !== "object") throw { code:"invalid_json" };
+    var echo = hasTemplateEcho(d);
+    if (echo) throw { code:"template_echo", sample: echo };
+    if (countFilled(d) < (minFilled || 3)) throw { code:"empty_fill" };
+    return d;
+  }
+
+  function promptCorrection(){
+    return "너는 한국 학생의 영어 글쓰기를 첨삭하는 교사다.\n\n" + ctxBlock() +
+      "\n\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      '{"corrections":[{"before":"","after":"","code":"","why":""}],"errorMap":"","rubric":{"content":0,"organization":0,"grammar":0,"vocabulary":0,"expression":0},"says":{"content":"","organization":"","grammar":"","vocabulary":"","expression":""},"keep":["","",""],"fix":["","",""],"next":["","",""]}\n' +
+      "\n[항목 설명]\n" +
+      "corrections.before — 학생 글에 그대로 들어 있는 문자열 조각\n" +
+      "corrections.after — 그 조각을 고친 것\n" +
+      "corrections.code — " + CODES.join(" ") + " 가운데 하나\n" +
+      "corrections.why — 고친 까닭, 한국어 한 문장\n" +
+      "errorMap — 어느 코드가 몇 번 나왔고 다음에 무엇 하나를 고칠지, 한국어 두세 문장\n" +
+      "rubric — 다섯 항목 각 0~5 정수, 목표 CEFR에 비추어 매김\n" +
+      "says — 항목마다 한국어 코멘트 한두 문장, 글에서 근거를 들 것\n" +
+      "keep — 학생이 잘한 점 세 가지, 한국어\n" +
+      "fix — 고쳐야 할 점 세 가지, 빈도가 높은 순, 한국어\n" +
+      "next — 10~15분 안에 끝낼 수 있는 과제 세 가지, 한국어\n" +
+      "\n[제한] corrections는 최대 12개. 설명은 한국어로, 예문만 영어로." + jsonTail();
+  }
+
+  function promptTranslate(){
+    var v = PERSONA[pKey];
+    return "아래 한국어 초안을 영어로 옮긴다. 옮길 때 걸리는 지점을 먼저 찾고, 그 처리를 보인 뒤 추천 영어 글을 쓴다.\n\n" +
+      "[쓴 사람] " + v.name + " · 목표 분량 " + v.len + " · 목표 CEFR " + v.cefr + "\n" +
+      (picked ? "[주제] " + picked.q + "\n[필수 키워드] " + picked.k.join(", ") + "\n" : "") +
+      "[한국어 초안]\n" + kEssay.value.trim() +
+      "\n\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      '{"pairs":[{"ko":"","en":""}],"traps":[{"ko":"","trap":"","how":""}],"literal":"","natural":"","tips":["","",""]}\n' +
+      "\n[항목 설명]\n" +
+      "pairs.ko — 위 한국어 초안의 문장 하나를 그대로. 모든 문장을 순서대로 담을 것\n" +
+      "pairs.en — 그 문장이 natural에서 어떤 영어가 되었는지. 한 문장이 둘로 나뉘면 둘 다\n" +
+      "traps.ko — 문제가 된 한국어 조각\n" +
+      "traps.trap — 주어 생략 / 겹친 완충 / 강조어 겹침 / 긴 문장 / 이중피동 / 사동 / 명사 중심 / 접속사 반복 / 이중부정 / 직역투 가운데 하나\n" +
+      "traps.how — 영어로 옮기며 그것을 어떻게 처리했는지, 한국어 한 문장\n" +
+      "literal — 한국어 구조를 그대로 따라 옮긴 영어. 일부러 어색하게 둘 것\n" +
+      "natural — 이 학생 수준에 맞는 자연스러운 영어. 문단은 빈 줄로 나눔\n" +
+      "tips — 다음에 옮길 때 기억할 세 가지, 한국어\n" +
+      "\n[제한] traps는 3~6개. natural에는 학생이 쓴 내용만 담고 새 내용을 지어내지 않는다. 필수 키워드가 있으면 반드시 넣는다." + jsonTail();
+  }
+
+  var TONEDEF = {
+    min:  "min — 오류만 고치고 학생 문장을 90% 이상 그대로 둠",
+    casual:"casual — 축약형, 담화 표지, 문장 조각을 쓴 구어체",
+    narr: "narr — 설명 대신 장면. 감정 단어를 동작과 사물로 바꿈",
+    persu:"persu — 2인칭 호명, 질문으로 열기, 짧은 문장의 반복",
+    acad: "acad — 유보 표현과 3인칭, 긴 문장",
+    paper:"paper — 논문체. 출처 인용과 스스로의 한계 진술을 포함"
+  };
+  function promptTones(keys){
+    keys = keys || ["min","casual","narr","persu","acad","paper"];
+    var skel = keys.map(function(k){ return '"' + k + '":{"text":"","why":""}'; }).join(",");
+    var defs = keys.map(function(k){ return TONEDEF[k]; }).join("\n");
+    return "아래 학생 글을 " + keys.length + "가지 톤으로 다시 쓴다. 생각·사건·결론은 그대로 두고 문장 길이, 어휘의 온도, 청자와의 거리만 바꾼다.\n\n" + ctxBlock() +
+      "\n\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      "{" + skel + "}\n" +
+      "\n[항목 설명]\n" +
+      "text — 그 톤으로 다시 쓴 영어 글 전체. 문단은 빈 줄로 나눔\n" +
+      "why — 원문과 견주어 무엇이 달라졌는지, 한국어 두세 문장\n" +
+      "\n[톤]\n" + defs +
+      "\n\n[분량] 각 판은 학생 원문과 비슷한 길이로. 원문보다 길게 늘리지 않는다." + jsonTail();
+  }
+
+  function promptMuse(){
+    var topic = picked ? picked.q : (essay.value.trim().slice(0,300) || "실패와 성장");
+    return "다음 주제로 글을 쓴 " + PERSONA[pKey].name + "에게 소개할 읽을거리를 인물·책·시·예술·철학 다섯 방향에서 하나씩 고른다.\n\n[주제] " + topic +
+      "\n\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      '{"items":[{"kind":"","title":"","who":"","quote":"","tr":"","why":"","task":""}]}\n' +
+      "\n[항목 설명]\n" +
+      "kind — 인물 / 책 / 시 / 예술 / 철학 (이 순서로 정확히 다섯 개)\n" +
+      "title — 작품이나 글의 제목\n" +
+      "who — 지은이와 연도\n" +
+      "quote — 원문에서 따온 한두 문장\n" +
+      "tr — 그 인용문의 한국어 번역\n" +
+      "why — 학생의 주제와 어떻게 이어지는지, 한국어 두세 문장\n" +
+      "task — 학생에게 줄 짧은 과제 한 줄, 한국어\n" +
+      "\n[제한] 실제로 있는 작품만 고르고 연도를 밝힌다. 출처가 불확실한 인용문은 쓰지 않는다. 서양 것만 고르지 말고 동아시아·한국 텍스트도 섞는다." + jsonTail();
+  }
+
+  function promptReport(){
+    var v = PERSONA[pKey], total = scores.reduce(function(a,b){return a+b;},0);
+    return "아래 학생의 영어 글쓰기 학습 진단 보고서를 쓴다.\n\n" + ctxBlock() +
+      "\n\n[채점] 내용 "+scores[0]+" 구성 "+scores[1]+" 문법 "+scores[2]+" 어휘 "+scores[3]+" 표현력 "+scores[4]+" · 총 "+total+"/25\n" +
+      (AI.corr && AI.corr.errorMap ? "[오류 지도] " + AI.corr.errorMap + "\n" : "") +
+      "\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      '{"level":"","study":[{"topic":"","why":"","how":""}],"readings":[{"title":"","author":"","kind":"","level":"","why":""}],"background":[{"area":"","why":"","start":""}],"plan30":["","","",""]}\n' +
+      "\n[항목 설명]\n" +
+      "level — 지금 수준을 한국어 서너 문장으로. 무엇은 이미 되고 무엇이 아직 안 되는지 구체적으로\n" +
+      "study.topic — 이번에 붙잡을 학습 항목\n" +
+      "study.why — 이 학생에게 지금 왜 그것인지\n" +
+      "study.how — 10~20분짜리 연습 방법을 지시문으로\n" +
+      "readings.title / readings.author — 실제로 있는 책·글·시·영상의 제목과 지은이\n" +
+      "readings.kind — 책 / 글 / 시 / 영상 중 하나\n" +
+      "readings.level — 난이도를 한마디로\n" +
+      "readings.why — 이 학생에게 왜 그것인지\n" +
+      "background.area — 이 주제를 더 잘 쓰려면 알아야 할 영역 (문법이 아니라 역사·과학·사회 맥락이나 장르 관습)\n" +
+      "background.why — 왜 필요한지 / background.start — 무엇부터 시작할지\n" +
+      "plan30 — 1주차부터 4주차까지 각 한 줄\n" +
+      "\n[분량] 각 항목은 두세 문장을 넘기지 않는다.\n[제한] study 3개, readings 4~6개, background 2~3개. readings는 " + v.name + " 수준에서 실제로 구해 읽을 수 있는 것으로 고르고, 영어 원문이 어려우면 한국어 번역본을 함께 적는다. 설명은 한국어, 제목과 인용만 원어." + jsonTail();
+  }
+
+  function promptWeeks(){
+    var v = PERSONA[pKey], r = AI.report || {};
+    var L = [];
+    L.push("아래 학습 진단을 바탕으로 " + v.name + "이(가) 혼자서도 할 수 있는 1~4주차 활동지를 만든다.");
+    L.push("");
+    L.push("[쓴 사람] " + v.name + " · 목표 분량 " + v.len + " · 목표 CEFR " + v.cefr);
+    if (picked) L.push("[주제] " + picked.q);
+    if (r.level) L.push("[지금 수준] " + r.level);
+    if (Array.isArray(r.study)) L.push("[공부할 항목] " + r.study.map(function(x){ return (x.topic||"") + "(" + (x.how||"") + ")"; }).join(" / "));
+    if (Array.isArray(r.readings)) L.push("[추천 읽을거리] " + r.readings.map(function(x){ return (x.title||"") + " — " + (x.author||""); }).join(" / "));
+    if (Array.isArray(r.plan30)) L.push("[4주 계획] " + r.plan30.join(" / "));
+    if (AI.corr && AI.corr.errorMap) L.push("[오류 지도] " + AI.corr.errorMap);
+    L.push("");
+    L.push("[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.");
+    L.push('{"weeks":[{"n":1,"goal":"","focus":"","activities":[{"title":"","how":"","min":0}],"reading":{"what":"","why":""},"check":["","",""],"output":""}]}');
+    L.push("");
+    L.push("[항목 설명]");
+    L.push("goal — 그 주의 목표 한 문장, 한국어");
+    L.push("focus — 그 주에 붙잡을 오류 코드나 영역");
+    L.push("activities.title — 활동 이름 / activities.min — 걸리는 시간(분)");
+    L.push("activities.how — 학생이 읽고 그대로 따라 할 수 있는 지시문. 예: 어제 쓴 글을 열고 동사에 모두 밑줄을 친 다음, 과거형이 아닌 것만 고쳐 쓴다");
+    L.push("reading.what — 그 주에 읽을 것 / reading.why — 왜 이번 주에 그것인지");
+    L.push("check — 학생이 스스로 표시할 수 있는 확인 문장 세 개");
+    L.push("output — 그 주에 내는 결과물 한 가지. 종이 한 장이나 짧은 글처럼 눈에 보이는 것");
+    L.push("");
+    L.push("[분량] 각 항목은 한두 문장으로 짧게 쓴다.");
+    L.push("[제한] weeks는 n=1부터 4까지 정확히 네 개. 1주차는 반드시 성공하는 쉬운 것으로 시작한다. 활동은 주당 2~3개, 각 10~25분. 위 [공부할 항목]과 [오류 지도]에서 실제로 짚인 것만 다루고 없는 문제를 만들지 않는다. 설명은 한국어.");
+    return L.join("\n") + jsonTail();
+  }
+
+  function promptFresh(theme, forWeb){
+    return "한국 " + PERSONA[pKey].name + "이(가) 영어 에세이를 쓸 주제 질문 다섯 개를 만든다." +
+      (forWeb ? " 최신 상황을 웹에서 확인한 뒤 답한다." : "") + "\n[테마] " + theme +
+      "\n\n[출력 형식] 아래 구조로만 답한다. 큰따옴표 안은 비어 있으니 실제 내용으로 채운다.\n" +
+      '{"items":[{"q":"","qk":"","k":["","",""],"why":""}]}\n' +
+      "\n[항목 설명]\n" +
+      "q — 영어 질문 한 문장\n" +
+      "qk — 그 질문의 한국어 번역\n" +
+      "k — 본문에 꼭 넣을 쉬운 영어 낱말 세 개\n" +
+      "why — 이 질문이 왜 좋은 과제인지, 한국어 한두 문장\n" +
+      "\n[제한] 찬반이 갈리거나 학생 자신의 경험을 요구하는 질문으로." + jsonTail();
+  }
+
+  /* ---------- 저장 기록 (전문 + 보고서 포함) ---------- */
+  var CSV_HEAD = ["날짜","학생","유형","주제","키워드","단어수","내용","구성","문법","어휘","표현력","총점","CEFR","다음 목표","주요 오류코드",
+    "한국어 초안","영어 원문","첨삭 요약","살릴 것","고칠 것","다음 과제","지금 수준","공부가 필요한 부분","읽으면 좋은 책·글","더 필요한 배경지식","4주 계획","1~4주차 활동지"];
+  function joinList(a, f){
+    if (!Array.isArray(a)) return "";
+    return a.map(f || function(x){ return typeof x === "string" ? x : ""; }).filter(Boolean).join("\n");
+  }
+  function recordRow(){
+    var v = PERSONA[pKey], total = scores.reduce(function(a,b){return a+b;},0);
+    var cefr = total<=8?"A1":total<=14?"A2":total<=18?"A2+ → B1":total<=22?"B1+ → B2":"B2 이상";
+    var lo = 0; for (var i=1;i<5;i++){ if (scores[i] < scores[lo]) lo = i; }
+    var c = (typeof AI !== "undefined" && AI) ? AI.corr : null;
+    var codes = "";
+    if (c && Array.isArray(c.corrections)){
+      var cnt = {};
+      c.corrections.forEach(function(x){ if(x.code) cnt[x.code] = (cnt[x.code]||0)+1; });
+      codes = Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a];}).map(function(k){return k+"×"+cnt[k];}).join(" ");
+    }
+    var r = (typeof AI !== "undefined" && AI) ? (AI.report || {}) : {};
+    var w = (typeof AI !== "undefined" && AI) ? (AI.weeks || {}) : {};
+    var words = essay.value.trim() ? essay.value.trim().split(/\s+/).length : 0;
+    return {
+      date: new Date().toISOString().slice(0,10),
+      student: ($("stuName") && $("stuName").value.trim()) || "",
+      persona: v.name,
+      topic: picked ? picked.q : "",
+      keywords: picked ? picked.k.join(" / ") : "",
+      words: words,
+      content: scores[0], organization: scores[1], grammar: scores[2], vocabulary: scores[3], expression: scores[4],
+      total: total, cefr: cefr, next: CRIT[lo].goal, codes: codes,
+      korean: kEssay.value.trim(),
+      english: essay.value.trim(),
+      errorMap: (c && c.errorMap) || "",
+      keep: c ? joinList(c.keep) : "",
+      fix: c ? joinList(c.fix) : "",
+      nextTasks: c ? joinList(c.next) : "",
+      level: r.level || "",
+      study: joinList(r.study, function(x){ return x && x.topic ? ("· " + x.topic + " — " + (x.why||"") + " / 연습: " + (x.how||"")) : ""; }),
+      readings: joinList(r.readings, function(x){ return x && x.title ? ("· " + x.title + " (" + (x.author||"") + ", " + (x.kind||"") + ") — " + (x.why||"")) : ""; }),
+      background: joinList(r.background, function(x){ return x && x.area ? ("· " + x.area + " — " + (x.why||"") + " / 시작: " + (x.start||"")) : ""; }),
+      plan30: joinList(r.plan30),
+      weeks: joinList(w.weeks, function(x){
+        if (!x) return "";
+        var acts = Array.isArray(x.activities) ? x.activities.map(function(a){ return (a.title||"") + "(" + (a.min||"") + "분): " + (a.how||""); }).join(" | ") : "";
+        return "[" + (x.n||"") + "주차] " + (x.goal||"") + " · 집중 " + (x.focus||"") + " · 활동 " + acts + " · 결과물 " + (x.output||"");
+      }),
+      savedAt: Date.now()
+    };
+  }
+  function rowCells(r){
+    return [r.date,r.student,r.persona,r.topic,r.keywords,r.words,r.content,r.organization,r.grammar,r.vocabulary,r.expression,
+            r.total,r.cefr,r.next,r.codes,r.korean,r.english,r.errorMap,r.keep,r.fix,r.nextTasks,
+            r.level,r.study,r.readings,r.background,r.plan30,r.weeks];
+  }
+  function csvEsc(x){ x = String(x==null?"":x); return /[",\n]/.test(x) ? '"'+x.replace(/"/g,'""')+'"' : x; }
+  function buildCsv(rows){
+    return "﻿" + CSV_HEAD.join(",") + "\n" + rows.map(function(r){ return rowCells(r).map(csvEsc).join(","); }).join("\n") + "\n";
+  }
+
+  /* ---------- 가이드 토글 ---------- */
+  function buildGuides(){
+    for (var i=0;i<panels.length;i++){
+      (function(panel){
+        var head = panel.querySelector(".phead"); if (!head || head.querySelector(".gtoggle")) return;
+        var n = panel.getAttribute("data-s");
+        var open = get("ea_guide_" + n, "0") === "1";
+        panel.setAttribute("data-guide", open ? "on" : "off");
+        var b = document.createElement("button");
+        b.className = "gtoggle";
+        b.setAttribute("aria-expanded", open ? "true" : "false");
+        b.innerHTML = '설명 <span class="car">▾</span>';
+        b.addEventListener("click", function(){
+          var nowOpen = panel.getAttribute("data-guide") !== "on";
+          panel.setAttribute("data-guide", nowOpen ? "on" : "off");
+          b.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+          set("ea_guide_" + n, nowOpen ? "1" : "0");
+        });
+        head.appendChild(b);
+      })(panels[i]);
+    }
+  }
+
+  var SRCKEY = {4:"corr",5:"corr",6:"tones",7:"muse"};
+  function stampSource(){
+    for (var n in SRCKEY){
+      var panel = document.querySelector('.panel[data-s="'+n+'"]'); if (!panel) continue;
+      var pn = panel.querySelector(".pnum"); if (!pn) continue;
+      if (!pn.hasAttribute("data-base")) pn.setAttribute("data-base", pn.textContent);
+      var base = pn.getAttribute("data-base");
+      var mine = (typeof AI !== "undefined") && AI && AI[SRCKEY[n]];
+      pn.textContent = mine ? base.replace(/·.*$/, "· 내 글 기준") : base;
+    }
+  }
+  for (var b=0;b<navBtns.length;b++){
+    navBtns[b].addEventListener("click", function(e){ go(parseInt(e.currentTarget.getAttribute("data-go"),10)); });
+  }
+  $("prevBtn").addEventListener("click", function(){ go(cur-1); });
+  $("nextBtn").addEventListener("click", function(){ go(cur+1); });
+  document.addEventListener("keydown", function(e){
+    var t = e.target.tagName;
+    if (t==="INPUT" || t==="TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "ArrowRight") go(cur+1);
+    if (e.key === "ArrowLeft") go(cur-1);
+  });
+  $("printBtn").addEventListener("click", function(){ window.print(); });
+  $("resetBtn").addEventListener("click", function(){
+    try{ ["ea_persona","ea_mine","ea_pick","ea_step","ea_scores","ea_easy","ea_q1","ea_q2","ea_q3","ea_q4"].forEach(function(k){ localStorage.removeItem(k); }); }catch(e){}
+    location.reload();
+  });
+
+  /* ============ 쉬운 화면 ============ */
+  var EASY_EN = {
+    "SVA":"누가 하는지에 따라 동사 모양이 달라져요. 여러 명이면 are·have, 한 명이면 is·has예요.",
+    "VERB":"say 뒤에는 사람을 바로 못 붙여요. told me 라고 써요.",
+    "SPELL":"everyday는 ‘일상의’, every day는 ‘매일’이에요. 띄어 써야 ‘매일’이 돼요.",
+    "PLUR":"둘 이상이면 낱말 뒤에 s를 붙여요. three months 처럼요.",
+    "BE":"be(is·are·be)를 빠뜨렸어요. should not be afraid 처럼 넣어요.",
+    "VOICE":"이 동사는 ‘되어졌다’처럼 쓰지 않아요. my score improved 라고 그냥 써요.",
+    "ART":"the를 빠뜨렸어요. in the morning 처럼요.",
+    "WORD":"낱말 모양이 달라요. begin → beginning.",
+    "CLAUSE":"learned 뒤에는 that을 넣어요. I learned that…",
+    "TENSE":"지나간 이야기예요. 동사를 모두 과거로 바꿔요. (go → went)",
+    "REDUN":"같은 뜻을 두 번 썼어요. 하나만 남겨요.",
+    "WEAK":"very 대신 딱 맞는 낱말 하나를 찾아봐요."
+  };
+  var EASY_KO = {
+    "주어":"누가 했는지 안 썼어요. 영어는 ‘누가’를 꼭 써야 해요.",
+    "완충":"‘~인 것 같다’가 겹쳤어요. 하나만 남겨요.",
+    "강조":"‘정말 너무’처럼 겹쳐 썼어요. 딱 맞는 낱말 하나로 바꿔요.",
+    "긴문장":"문장이 너무 길어요. 두 문장으로 나눠요.",
+    "피동":"‘되어졌다’는 두 번 꼬였어요. ‘좋아졌다’처럼 써요.",
+    "사동":"‘~시켰다’는 영어에서 그냥 동사예요.",
+    "명사화":"‘성적의 향상이 있었다’보다 ‘성적이 올랐다’처럼 써요.",
+    "연결":"‘그리고·그래서’가 계속 나와요. 하나는 빼요.",
+    "이유":"‘때문에’가 두 번이에요. 하나만 써요.",
+    "이중부정":"‘~하지 않을 수 없다’는 어려워요. 그냥 ‘한다’로 써요.",
+    "우리":"‘우리나라’는 영어로 Korea 라고 써요.",
+    "열거":"‘등등’ 대신 세 가지만 정확히 써요.",
+    "반복":"‘~라고 생각한다’가 여러 번이에요. 한 번만 써요."
+  };
+  var CRIT_EASY = ["이야기","순서","문장 규칙","낱말","멋진 표현"];
+  var GOAL_EASY = ["있었던 일 한 장면 더 넣기","순서대로 이어 쓰기","동사를 모두 과거로 바꾸기","딱 맞는 낱말 찾기","짧은 문장 섞어 쓰기"];
+
+  var easyBtn = $("easyBtn");
+  function applyEasyText(){
+    var nodes = document.querySelectorAll("main [data-easy]");
+    for (var i=0;i<nodes.length;i++){
+      var n = nodes[i];
+      if (!n.hasAttribute("data-full")) n.setAttribute("data-full", n.innerHTML);
+      n.innerHTML = EASY ? n.getAttribute("data-easy") : n.getAttribute("data-full");
+    }
+    var lbls = navEl.querySelectorAll(".lbl");
+    for (var j=0;j<lbls.length;j++){ lbls[j].textContent = EASY ? STEPS[j].en : STEPS[j].n; }
+  }
+  function setEasy(on, quiet){
+    EASY = !!on;
+    document.body.setAttribute("data-easy", EASY ? "1" : "0");
+    easyBtn.setAttribute("aria-pressed", EASY ? "true" : "false");
+    easyBtn.textContent = EASY ? "🧸 쉬운 화면 켜짐" : "🧸 쉬운 화면";
+    set("ea_easy", EASY ? "1" : "0");
+    applyEasyText();
+    if (EASY) { selectDomain("kid"); renderMine(); }
+    else { renderTopics(curDomain); renderMine(); }
+    renderProfile(); renderRubric(); renderVerdict(); go(cur, true);
+    kScan(); scan();
+    if (!quiet) toast(EASY ? "쉬운 화면을 켰어요 — 글자가 커지고 설명이 쉬워집니다" : "원래 화면으로 돌아왔습니다");
+  }
+  easyBtn.addEventListener("click", function(){ setEasy(!EASY); });
+
+  /* ============ persona ============ */
+  var PERSONA = {
+    elem:{name:"초등학생", len:"60 – 100 words", cefr:"A1 – A2", tone:"③ 서사적", focus:"문장 하나에 생각 하나. 짧게 끊어 쓰기",
+      tip:"고칠 것은 한 번에 두 가지까지만. 틀린 곳보다 <b>재미있게 쓴 곳</b>을 먼저 찾아 이름 붙여 주세요."},
+    mid:{name:"중학생", len:"100 – 150 words", cefr:"A2 – B1", tone:"① 최소 수정 → ③ 서사적", focus:"과거시제 일관성, 복수형",
+      tip:"한국 중학생 오류의 절반은 시제와 수 일치입니다. 오류 코드를 세어 <b>가장 많은 하나</b>만 다음 과제로 주세요."},
+    high:{name:"고등학생", len:"150 – 250 words", cefr:"B1 – B2", tone:"⑤ 학술적", focus:"주장–근거–재진술, 유보 표현",
+      tip:"내신 서술형·수능 어법에 직결됩니다. 단정(<i>must, always</i>)을 유보(<i>may, tends to</i>)로 바꾸는 연습이 가장 점수를 많이 올립니다."},
+    uni:{name:"대학생", len:"250 – 400 words", cefr:"B2 – C1", tone:"⑤ 학술적 → ⑥ 아카데믹", focus:"반론 수용, 인용으로 논증하기",
+      tip:"07단계의 인용문을 실제 근거로 삼아 한 문단을 쓰게 하세요. 남의 말을 자기 논지에 <b>복무시키는</b> 법이 이 수준의 핵심입니다."},
+    adult:{name:"일반 성인 학습자", len:"100 – 200 words", cefr:"A2 – B1", tone:"① 최소 수정 · ② 캐주얼", focus:"실제로 쓸 상황의 문장",
+      tip:"교과서 문장 대신 <b>실제로 쓸 자리</b>(이메일, 자기소개, 여행)를 주제로 고르세요. 02단계처럼 한국어로 먼저 쓰는 방식이 특히 잘 맞습니다."},
+    writer:{name:"작가·창작자", len:"300 – 600 words", cefr:"C1 이상", tone:"③ 서사적 + 시적", focus:"리듬, 이미지, 문장 길이의 설계",
+      tip:"문법 첨삭보다 <b>문장 운용</b>이 대상입니다. 06단계에서 같은 단락을 여섯 톤으로 모두 써 보고, 어느 톤이 자기 목소리에 가까운지 찾으세요."},
+    teacher:{name:"선생님", len:"학생 글 기준", cefr:"진단용", tone:"① 최소 수정을 정본으로", focus:"오류 코드 → 다음 한 가지 고르기",
+      tip:"교수자용 보기입니다. 04단계 코드표와 05단계 루브릭을 그대로 채점에 쓰세요. <b>전체 인쇄</b>를 누르면 여덟 단계가 한 번에 인쇄됩니다."},
+    lecturer:{name:"강사", len:"활동 단위 100 – 200 words", cefr:"수강생 혼합", tone:"④ 설득·연설조", focus:"말하기로 이어지는 쓰기",
+      tip:"교수자용 보기입니다. 쓴 글을 소리 내어 읽히면 ④ 설득조의 짧은 문장 리듬이 바로 체감됩니다."},
+    prof:{name:"교수", len:"400 words 이상", cefr:"C1 – C2", tone:"⑥ 아카데믹 · 논문체", focus:"hedging, 인용 규범, 한계 진술",
+      tip:"교수자용 보기입니다. 05단계 루브릭의 ‘표현력’ 항목을 <b>장르 적합성</b>으로 바꿔 쓰면 학술 글쓰기 평가에 그대로 적용됩니다. ⑥ 아카데믹 톤의 <b>한계 진술</b> 문단만 따로 떼어 연습시키면 효과가 큽니다."}
+  };
+  var pKey = get("ea_persona","high"); if (!PERSONA[pKey]) pKey = "high";
+  var profileEl = $("profile");
+  var personaBtns = document.querySelectorAll(".persona");
+
+  function renderProfile(){
+    var v = PERSONA[pKey];
+    profileEl.innerHTML =
+      '<div class="pf"><span>권장 분량</span><b>'+v.len+'</b></div>'+
+      '<div class="pf"><span>목표 CEFR</span><b>'+v.cefr+'</b></div>'+
+      '<div class="pf"><span>추천 톤</span><b>'+v.tone+'</b></div>'+
+      '<div class="pf"><span>이번 시간의 초점</span><b>'+v.focus+'</b></div>'+
+      '<div class="pf wide"><span>운영 메모</span><b>'+v.tip+'</b></div>';
+    for (var x=0;x<personaBtns.length;x++){
+      personaBtns[x].setAttribute("aria-selected", personaBtns[x].getAttribute("data-p")===pKey ? "true":"false");
+    }
+    var ep = $("easyProfile");
+    if (ep){
+      ep.innerHTML = '<div class="doNow"><span class="ic">🎒</span><span>나는 <b>'+esc(v.name)+
+        '</b>예요. 이번에는 <b>'+esc(v.len.replace(" words"," 단어"))+'</b>쯤 쓰고, <b>'+esc(v.focus)+'</b>을 연습해요.</span></div>';
+    }
+  }
+  for (var pi=0; pi<personaBtns.length; pi++){
+    personaBtns[pi].addEventListener("click", function(e){
+      pKey = e.currentTarget.getAttribute("data-p");
+      set("ea_persona", pKey); renderProfile(); renderCtx();
+      if (typeof drawRadar === "function"){ drawRadar(); renderVerdict(); }
+      if (pKey === "elem" && !EASY) setEasy(true);
+      else if ((pKey === "uni" || pKey === "prof" || pKey === "writer") && EASY) setEasy(false);
+    });
+  }
+
+  /* ============ context strip ============ */
+  var picked = null;
+  try { picked = JSON.parse(get("ea_pick","null")); } catch(e){ picked = null; }
+  var ctxEl = $("ctx");
+
+  function renderCtx(){
+    var v = PERSONA[pKey];
+    var html = '<span class="ctxbit"><b>유형</b><span>'+esc(v.name)+' · '+esc(v.len)+'</span></span>';
+    if (picked){
+      var ks = picked.k.join(", ");
+      html += '<span class="ctxbit"><b>주제</b><span>'+esc(picked.q)+'</span></span>';
+      html += '<span class="ctxbit"><b>키워드</b><span>'+esc(ks)+'</span></span>';
+    } else {
+      html += '<span class="ctxbit empty"><b>주제</b><span>아직 고르지 않음 — 1단계에서 고르세요</span></span>';
+    }
+    ctxEl.innerHTML = html;
+    renderKw();
+  }
+
+  /* ============ topic bank ============ */
+  var BANK = {
+    kid: [
+      {q:"What is your favorite place at school? Why?", qk:"학교에서 제일 좋아하는 곳은? 왜 좋아요?", k:["place","like","because"], lvl:"쉬운 질문"},
+      {q:"Tell me about food your family makes.", qk:"우리 집에서 자주 해 먹는 음식 이야기", k:["food","family","good"], lvl:"쉬운 질문"},
+      {q:"What animal do you want to be for one day?", qk:"하루만 되어 보고 싶은 동물은?", k:["animal","day","because"], lvl:"쉬운 질문"},
+      {q:"What did you do well today?", qk:"오늘 내가 잘한 일 한 가지", k:["today","did","happy"], lvl:"쉬운 질문"},
+      {q:"Draw your room with words.", qk:"낱말로 그리는 내 방", k:["room","big","small"], lvl:"쉬운 질문"},
+      {q:"Who makes you laugh?", qk:"나를 웃게 하는 사람은 누구예요?", k:["laugh","friend","funny"], lvl:"쉬운 질문"}
+    ],
+    curric: [
+      {q:"What do you do at home that nobody thanks you for?", qk:"집에서 아무도 고마워하지 않는 내 일은?", k:["help","every day","notice"], lvl:"초 5–6",
+       why:"<b>일상 소재를 묘사하는 말하기·쓰기</b> 성취기준에 붙습니다. 아는 단어만으로 쓸 수 있으면서 내용은 각자 다르게 나옵니다."},
+      {q:"Describe one place in your town that should be protected.", qk:"우리 동네에서 지켜야 할 곳 한 군데를 묘사하라.", k:["place","protect","change"], lvl:"중 2",
+       why:"<b>생태전환교육</b>과 묘사문 쓰기를 함께 겁니다. 사진을 찍어 와서 쓰게 하면 형용사 어휘가 자연히 늘어납니다."},
+      {q:"You choose your own subjects now. What did you give up to do it?", qk:"이제 과목을 스스로 고른다. 그러려고 무엇을 포기했는가?", k:["choose","give up","path"], lvl:"고 2",
+       why:"<b>고교학점제</b>(2025년 신입생부터 전면 시행)를 학생 자신의 경험으로 씁니다. 선택에는 대가가 있다는 논지 구조를 연습하기 좋습니다."},
+      {q:"What job do you want that does not exist yet?", qk:"아직 세상에 없는데 내가 갖고 싶은 직업은?", k:["job","future","invent"], lvl:"진로 연계",
+       why:"<b>진로연계학기</b> 활동과 묶어 쓸 수 있습니다. 조건법(would, could) 연습이 자연스럽게 붙습니다."},
+      {q:"Explain one thing you learned this year to someone two years younger.", qk:"올해 배운 것 하나를 두 살 어린 사람에게 설명하라.", k:["explain","simple","learn"], lvl:"공통 · 전 학년",
+       why:"<b>이해–표현 통합</b> 활동. 설명 대상을 정해 주면 문장 난이도를 학생이 스스로 조절하게 됩니다."}
+    ],
+    issue: [
+      {q:"From March 2026, phones are banned during class in Korean schools. Was that the right call?", qk:"2026년 3월부터 수업 중 휴대전화 사용이 금지됐다. 옳은 결정이었나?", k:["phone","rule","focus"],
+       why:"초·중등교육법 개정으로 <b>2026년 3월부터 수업 중 스마트폰 사용이 법으로 제한</b>됩니다. 학생이 매일 겪는 일이라 근거가 저절로 나옵니다 — 찬반 양쪽 다 써 보게 하세요."},
+      {q:"Your school may use AI learning materials. What should a teacher do that AI cannot?", qk:"학교가 AI 교육자료를 쓸 수 있다. 그렇다면 교사만이 할 수 있는 일은?", k:["teacher","AI","cannot"],
+       why:"AI 디지털교과서는 2025년 8월 법 개정으로 <b>‘교과서’에서 ‘교육자료’로 지위가 바뀌어</b> 학교 자율 선택이 되었습니다. ‘기계가 못 하는 일’을 정의하는 글은 논지가 분명해집니다."},
+      {q:"If a classmate used AI to write an essay, is that cheating? Where is the line?", qk:"친구가 AI로 에세이를 썼다면 부정행위인가? 선은 어디인가?", k:["AI","honest","line"],
+       why:"학생 스스로 <b>기준을 세워 보게</b> 하는 주제입니다. 금지·허용의 이분법 대신 ‘선을 어디에 긋는가’로 물으면 훨씬 좋은 글이 나옵니다."},
+      {q:"Name one thing your school should stop doing for the climate — and what it costs.", qk:"기후를 위해 우리 학교가 그만둬야 할 일 하나와, 그 대가는?", k:["climate","stop","cost"],
+       why:"‘해야 할 일’이 아니라 <b>‘그만둘 일 + 대가’</b>를 묻습니다. 대가를 함께 쓰게 하면 공허한 구호 대신 논증이 됩니다."},
+      {q:"Would you stay in your hometown? Give one honest reason, not a polite one.", qk:"고향에 남을 것인가? 예의 바른 이유 말고 솔직한 이유 하나.", k:["hometown","stay","leave"],
+       why:"지역소멸·청년 유출을 <b>통계가 아니라 자기 자리에서</b> 쓰게 합니다. 창원·경남 학생에게는 특히 실감이 큰 주제입니다."},
+      {q:"Who should be responsible when a machine makes a mistake?", qk:"기계가 실수했을 때 책임은 누구에게 있는가?", k:["mistake","responsible","machine"],
+       why:"자율주행·AI 판단 오류 논쟁의 핵심 질문입니다. <b>책임 주체를 정하는 글</b>은 논술 구조 연습에 그대로 쓰입니다."}
+    ],
+    self: [
+      {q:"What is the most useful mistake you have ever made?", qk:"내가 저지른 가장 쓸모 있었던 실수는?", k:["failure","courage","learn"]},
+      {q:"Who taught you something without meaning to?", qk:"가르칠 생각 없이 나를 가르친 사람은?", k:["influence","silence","notice"]},
+      {q:"What habit would you defend to a stranger?", qk:"처음 보는 사람 앞에서도 변호할 내 습관은?", k:["routine","discipline","worth"]}
+    ],
+    society: [
+      {q:"Should kindness be taught, or only shown?", qk:"친절은 가르쳐야 하는가, 보여 주기만 하면 되는가?", k:["kindness","example","teach"]},
+      {q:"What rule in your school or town deserves to change?", qk:"우리 학교·동네에서 바뀌어야 할 규칙 하나는?", k:["rule","fairness","change"]},
+      {q:"Is it braver to speak or to listen?", qk:"말하는 것과 듣는 것 중 무엇이 더 용기 있는가?", k:["voice","listen","brave"]}
+    ],
+    nature: [
+      {q:"Describe one tree you would recognize anywhere.", qk:"어디서든 알아볼 수 있는 나무 한 그루를 묘사하라.", k:["tree","season","memory"]},
+      {q:"What does your city sound like at 5 a.m.?", qk:"새벽 5시의 도시는 어떤 소리인가?", k:["sound","empty","light"]},
+      {q:"Is time something we spend, or something that spends us?", qk:"시간은 우리가 쓰는 것인가, 우리를 쓰는 것인가?", k:["time","spend","slow"]}
+    ],
+    tech: [
+      {q:"What should a machine never be allowed to decide?", qk:"기계가 절대 결정해서는 안 되는 일은?", k:["decide","limit","human"]},
+      {q:"Has any technology made you lonelier?", qk:"나를 더 외롭게 만든 기술이 있는가?", k:["connect","alone","screen"]},
+      {q:"If AI writes your essay, what is left of you in it?", qk:"AI가 내 글을 쓴다면, 그 글에 남는 ‘나’는 무엇인가?", k:["voice","original","tool"]}
+    ],
+    art: [
+      {q:"What is one work of art you did not understand — and still remember?", qk:"이해하지 못했는데 아직 기억나는 작품은?", k:["art","confuse","remain"]},
+      {q:"Can something ugly be beautiful?", qk:"추한 것이 아름다울 수 있는가?", k:["ugly","beauty","honest"]},
+      {q:"Which song would explain you to a stranger?", qk:"처음 보는 사람에게 나를 설명해 줄 노래는?", k:["song","explain","self"]}
+    ]
+  };
+  var NOTES = {
+    curric: "2022 개정 교육과정 적용 학년 — 2024년 초1·2, 2025년 초3·4·중1·고1, 2026년 초5·6·중2·고2, 2027년 중3·고3. 위 주제는 성취기준을 그대로 옮긴 것이 아니라 <b>수업에서 쓸 수 있게 질문으로 바꾼 것</b>이므로 학교 진도와 단원에 맞게 고쳐 쓰세요.",
+    fresh: "AI가 방금 만든 질문입니다. <b>사실관계와 시의성은 반드시 확인</b>하세요 — 이 기능은 뉴스를 검색하지 않고 질문을 만들 뿐입니다. 최신 뉴스가 필요하면 Claude 대화창에서 검색을 시켜 그 내용을 테마로 넣어 주세요.",
+    issue: "시사 주제는 <b>2026년 9월 기준</b>입니다. 사실관계는 수업 전에 한 번 확인하시고, 찬반이 갈리는 주제는 학생에게 <b>양쪽을 다 쓰게 한 뒤</b> 자기 입장을 정하게 하면 훨씬 좋은 글이 나옵니다."
+  };
+
+  var topicsEl = $("topics"), noteEl = $("domain-note"), mineEl = $("mytopics");
+  var mine = []; try { mine = JSON.parse(get("ea_mine","[]")); } catch(e){ mine = []; }
+  if (!Array.isArray(mine)) mine = [];
+
+  function isPicked(t){ return picked && picked.q === t.q; }
+  function cardHTML(t, src, idx){
+    var chips = "";
+    for (var j=0;j<t.k.length;j++){ chips += '<span class="chip">'+esc(t.k[j])+'</span>'; }
+    return '<div class="topic'+(isPicked(t)?' on':'')+'">' +
+      (t.lvl ? '<span class="lvl">'+esc(t.lvl)+'</span>' : "") +
+      '<p class="q">'+esc(t.q)+'</p>' +
+      (t.qk ? '<p class="qk">'+esc(t.qk)+'</p>' : "") +
+      '<div class="chips">'+chips+'</div>' +
+      (t.why ? '<p class="why">'+t.why+'</p>' : "") +
+      '<div class="trow"><button class="pick" data-src="'+src+'" data-i="'+idx+'">'+(isPicked(t)?'✓ 이 주제로 진행 중':'고르기')+'</button>' +
+      (src==="mine" ? '<button class="del" data-i="'+idx+'">지우기</button>' : "") + '</div>' +
+      '</div>';
+  }
+  function wire(root){
+    var picks = root.querySelectorAll(".pick");
+    for (var i=0;i<picks.length;i++){
+      picks[i].addEventListener("click", function(e){
+        var src = e.currentTarget.getAttribute("data-src");
+        var idx = parseInt(e.currentTarget.getAttribute("data-i"),10);
+        var t = (src==="mine") ? mine[idx] : BANK[curDomain][idx];
+        picked = (picked && picked.q===t.q) ? null : {q:t.q, k:t.k};
+        set("ea_pick", JSON.stringify(picked));
+        renderTopics(curDomain); renderMine(); renderCtx();
+        if (picked) toast("주제를 담았습니다 — 위 띠에서 계속 보입니다");
+      });
+    }
+    var dels = root.querySelectorAll(".del");
+    for (var d=0;d<dels.length;d++){
+      dels[d].addEventListener("click", function(e){
+        mine.splice(parseInt(e.currentTarget.getAttribute("data-i"),10), 1);
+        set("ea_mine", JSON.stringify(mine)); renderMine();
+      });
+    }
+  }
+  var curDomain = "curric";
+  function renderTopics(key){
+    curDomain = key;
+    var list = BANK[key] || [], html = "";
+    for (var i=0;i<list.length;i++){ html += cardHTML(list[i], "bank", i); }
+    topicsEl.innerHTML = html;
+    noteEl.innerHTML = NOTES[key] || "";
+    wire(topicsEl);
+  }
+  function renderMine(){
+    var html = "";
+    for (var i=0;i<mine.length;i++){ html += cardHTML(mine[i], "mine", i); }
+    mineEl.innerHTML = html;
+    wire(mineEl);
+  }
+  var domainBtns = document.querySelectorAll(".domain");
+  function selectDomain(key){
+    for (var x=0;x<domainBtns.length;x++){
+      domainBtns[x].setAttribute("aria-selected", domainBtns[x].getAttribute("data-domain")===key ? "true":"false");
+    }
+    renderTopics(key);
+  }
+  for (var d2=0; d2<domainBtns.length; d2++){
+    domainBtns[d2].addEventListener("click", function(e){ selectDomain(e.currentTarget.getAttribute("data-domain")); });
+  }
+  $("myadd").addEventListener("click", function(){
+    var qEl = $("myq"), kEl = $("myk");
+    var q = qEl.value.trim();
+    if (!q){ qEl.focus(); toast("질문을 먼저 입력해 주세요"); return; }
+    var ks = kEl.value.split(/[,、·\/]+/).map(function(s){ return s.trim(); }).filter(Boolean).slice(0,5);
+    if (!ks.length) ks = ["(키워드 미정)"];
+    mine.unshift({ q:q, k:ks, lvl:"내 주제" });
+    set("ea_mine", JSON.stringify(mine)); renderMine();
+    qEl.value = ""; kEl.value = ""; qEl.focus();
+    toast("담았습니다 — ‘고르기’를 누르면 이후 단계로 이어집니다");
+  });
+  $("myk").addEventListener("keydown", function(e){ if (e.key==="Enter") $("myadd").click(); });
+  $("myq").addEventListener("keydown", function(e){ if (e.key==="Enter") $("myadd").click(); });
+
+  /* ============ keyword tracker (step 3) ============ */
+  var kwEl = $("kwcheck"), essay = $("essay");
+  function renderKw(){
+    if (!picked){ kwEl.innerHTML = '<span>1단계에서 주제를 고르면 키워드가 여기 표시되고, 본문에 들어갔는지 자동으로 확인됩니다.</span>'; return; }
+    var text = essay.value.toLowerCase(), html = '<span>필수 키워드</span>';
+    for (var i=0;i<picked.k.length;i++){
+      var w = picked.k[i].toLowerCase();
+      var on = w && text.indexOf(w) !== -1;
+      html += '<span class="chip'+(on?' hit':'')+'">'+(on?'✓ ':'')+esc(picked.k[i])+'</span>';
+    }
+    kwEl.innerHTML = html;
+  }
+
+  /* ============ Korean trap finder ============ */
+  var KRULES = [
+    {code:"주어", re:/(^|[.!?]\s*)(?![^.!?]{0,30}?(나는|내가|저는|제가|우리는|그는|그녀는|사람들은|그것은))[^.!?]{0,60}?(생각한다|생각했다|느꼈다|느낀다|좋아한다|싫어한다|했다|였다|이다)/g,
+     msg:"주어가 없는 문장입니다. 한국어는 생략해도 되지만 영어 문장은 주어 없이 서지 못합니다. 옮기기 전에 “누가”를 채워 두세요."},
+    {code:"완충", re:/(것 같다고|것 같다는|것 같다\.|것 같아|인 것 같|듯하다|듯 하다)/g,
+     msg:"“~인 것 같다”가 다른 완곡 표현과 겹치면 영어에서 무너집니다. I think / seem / probably 중 하나만 남기세요."},
+    {code:"강조", re:/(정말 너무|너무 너무|진짜 너무|완전 너무|아주 많이|매우 정말)/g,
+     msg:"강조어를 겹쳐 쓰면 영어로는 very very가 됩니다. 정확한 형용사 한 단어로 바꾸세요 — crushed, thrilled, exhausted."},
+    {code:"강조", re:/(너무|정말|진짜|완전|엄청)\s*(슬프|기쁘|좋|나쁘|힘들|어렵|쉽|많|크)/g,
+     msg:"very + 기본 형용사가 될 자리입니다. 감정의 세기를 담은 단어 하나를 먼저 찾아 두세요."},
+    {code:"긴문장", re:/[^.!?]{85,}?(는데|지만|어서|아서|하고|이며|으며)[^.!?]{25,}?[.!?]/g,
+     msg:"한 문장이 너무 깁니다. 한국어 한 문장이 영어에서는 보통 두세 문장입니다. 옮기기 전에 미리 끊어 두세요."},
+    {code:"피동", re:/(되어졌|되어진|지게 되었|되어지)/g,
+     msg:"이중피동입니다. 영어에서는 능동으로 씁니다. “향상되어졌다” → my grades improved."},
+    {code:"사동", re:/(시켰다|시킨다|시키는|시켜서)/g,
+     msg:"“~시키다”는 대개 영어에서 그냥 타동사입니다. “향상시켰다” → improved."},
+    {code:"명사화", re:/([가-힣]{2,})(의 향상|의 증가|의 감소|의 발전|의 변화|이 있었다|가 있었다)/g,
+     msg:"한자어 추상명사 대신 동사로 미세요. “성적의 향상이 있었다” → my grades improved."},
+    {code:"명사화", re:/[가-힣]{1,4}적인\s*[가-힣]{2,}/g,
+     msg:"“~적인”은 영어에서 한 단어로 압축되는 경우가 많습니다. “수학적인 재능” → a talent for math."},
+    {code:"연결", re:/([.!?]\s*)(그리고|그래서|그러나|하지만)[^.!?]{0,80}[.!?]\s*(그리고|그래서|그러나|하지만)/g,
+     msg:"문장 첫머리 접속사가 연달아 나옵니다. 영어에서는 두 문장을 합치거나 연결어를 바꾸세요."},
+    {code:"이유", re:/(때문에)[^.!?]{0,60}(때문에)/g,
+     msg:"“때문에”가 한 문장에 두 번입니다. because 하나 + 나머지는 다른 방식(분사구, 명사구)으로."},
+    {code:"이중부정", re:/(하지 않을 수 없|없지 않|않지 않)/g,
+     msg:"이중부정은 영어로 옮기면 대개 어색합니다. 긍정문으로 바꿔 두세요."},
+    {code:"우리", re:/(우리나라|우리 나라)/g,
+     msg:"our country가 아니라 Korea로 씁니다. 영어 글의 독자는 ‘우리’ 밖에 있습니다."},
+    {code:"열거", re:/(등등|기타 등|여러 가지 많은)/g,
+     msg:"etc.는 영어 에세이에서 약한 표현입니다. 항목 세 개를 정확히 고르고 끝내세요."},
+    {code:"반복", re:/(라고 생각한다)[\s\S]{0,120}(라고 생각한다)/g,
+     msg:"“~라고 생각한다”가 반복됩니다. 영어에서 I think를 반복하면 주장이 약해집니다. 한 번만 남기세요."}
+  ];
+
+  var kEssay = $("korean"), kFind = $("kfindings"), kCounts = $("kcounts");
+  function kUpdate(){
+    var t = kEssay.value.trim();
+    var sents = t ? (t.match(/[.!?。]+(\s|$)/g) || []).length : 0;
+    kCounts.textContent = "문장 " + sents + " · 글자 " + t.length;
+  }
+  function kScan(){
+    var text = kEssay.value;
+    if (!text.trim()){ kFind.innerHTML = '<div class="finding"><span class="code">—</span><div><p>한국어 문장을 먼저 입력해 주세요.</p></div></div>'; return; }
+    var out = [], seen = {};
+    for (var i=0;i<KRULES.length;i++){
+      var r = KRULES[i], m; r.re.lastIndex = 0;
+      while ((m = r.re.exec(text)) !== null){
+        var hit = m[0].replace(/\s+/g," ").trim();
+        if (hit.length > 46) hit = hit.slice(0,44) + "…";
+        var key = r.code + "|" + hit;
+        if (!seen[key]){ seen[key] = 1; out.push({code:r.code, hit:hit, msg:(EASY && EASY_KO[r.code]) ? EASY_KO[r.code] : r.msg}); }
+        if (m.index === r.re.lastIndex) r.re.lastIndex++;
+        if (out.length > 30) break;
+      }
+    }
+    if (!out.length){
+      kFind.innerHTML = '<div class="finding"><span class="code" style="color:var(--grow);background:var(--grow-bg)">CLEAR</span><div><p>옮기기 전 손볼 자리가 보이지 않습니다. 이제 <b>동사부터</b> 정하면서 한 문장씩 영어로 옮기고, 3단계에 넣어 보세요.</p></div></div>';
+      return;
+    }
+    var html = "";
+    for (var k=0;k<out.length;k++){
+      html += '<div class="finding"><span class="code" style="font-size:10px">'+esc(out[k].code)+'</span><div><span class="hit">'+esc(out[k].hit)+'</span><p>'+out[k].msg+'</p></div></div>';
+    }
+    kFind.innerHTML = html;
+  }
+
+  /* ============ English first-pass checker ============ */
+  var VB = "be|have|do|go|come|see|get|know|think|say|tell|make|take|become|run|walk|keep|hold|bring|happen|occur|need|want|like|love|help|work|play|live|feel|look|seem|mean|leave|put|set|learn|teach|study|read|write|speak|talk|listen|watch|use|find|give|show|try|ask|call|move|turn|start|begin|stop|open|close|change|follow|lead|grow|build|create|remain|include|provide|offer|allow|require|tend|notice|maintain|wipe|tidy|clean|perform|receive|protect|reduce|increase|improve|affect|appear|exist|matter|depend|consist|belong|sound|cost|mind|care|prefer|decide|hope|plan|agree|believe|remember|forget|understand|explain|describe|discuss|support|cause|prevent|expect|enjoy|share|spend|save|buy|sell|pay|eat|drink|sleep|arrive|return|visit|join|meet|wait|stay|travel|drive|carry|throw|catch|break|fix|wash|cook|draw|serve|reflect|represent|involve|apply|argue|claim|suggest|realize|imagine|worry|thank|deserve|manage|handle|repeat|check|review|practice|prepare|organize|arrange|complete|finish|avoid|ignore|remove|replace";
+  var VBING = "receive|put|make|do|go|take|write|read|clean|wipe|tidy|protect|reduce|improve|learn|teach|buy|sell|eat|drink|wash|cook|prepare|organize|arrange|complete|finish|avoid|ignore|share|spend|save|throw|carry|move|remove|replace|repeat|check|review|practice|discuss|explain|describe|build|create|keep|leave|speak|listen";
+  function ing(w){
+    var v = String(w).toLowerCase();
+    if (/[^aeiou]e$/.test(v)) return v.slice(0,-1) + "ing";
+    if (/^[a-z]{2,5}$/.test(v) && /[^aeiou][aeiou][bdgklmnprt]$/.test(v)) return v + v.charAt(v.length-1) + "ing";
+    return v + "ing";
+  }
+  function s3(w){
+    var v = String(w).toLowerCase();
+    if (/(s|x|z|ch|sh)$/.test(v)) return v + "es";
+    if (/[^aeiou]y$/.test(v)) return v.slice(0,-1) + "ies";
+    if (v === "have") return "has";
+    if (v === "do") return "does";
+    if (v === "go") return "goes";
+    if (v === "be") return "is";
+    return v + "s";
+  }
+  var RX = {
+    pronS:   new RegExp("\\b(I|we|you|they)\\s+(" + VB + ")s\\b", "g"),
+    thisV:   new RegExp("\\b(this|that|each|every|another)\\s+([a-z]+)\\s+(" + VB + ")\\b(?=[\\s,.;:]|$)(?!\\s+(?:of|that|to)\\b)", "gi"),
+    bodyV:   new RegExp("\\b(nobody|everybody|somebody|someone|anyone|everyone)\\s+(" + VB + ")\\b(?!\\s*s)", "gi"),
+    plurIs:  /\b((?:these|those|many|several|all|both)\s+(?:[a-z]+\s+){0,2}[a-z]+s)\s+(is|was|has)\b/gi,
+    theseSg: /\b(these|those)\s+((?:[a-z]+\s+){0,2}?)([a-z]{3,}[^s\s])\s+(?=(?:is|are|was|were|done|tend|tends|happen|happens|seem|seems|look|looks)\b)/gi,
+    thatS:   new RegExp("\\b([a-z]+s)\\s+(that|which|who)\\s+(" + VB + ")s\\b", "gi"),
+    prepV:   new RegExp("\\b(without|by|after|before|from|of|about|instead of)\\s+(" + VBING + ")\\b", "gi"),
+    serie:   /\b(on|in|of|with)\s+series\s+of\b/gi
+  };
+  var RULES = [
+    {code:"SVA", re:RX.pronS, msg:"I·we·you·they 뒤의 동사에는 -s를 붙이지 않습니다. I perform / they run."},
+    {code:"SVA", re:RX.thisV, msg:"this·each·every로 시작하는 단수 주어의 동사에는 -s가 필요합니다. This routine happens…"},
+    {code:"SVA", re:RX.bodyV, msg:"nobody·everyone은 단수 취급입니다. Nobody tends to notice."},
+    {code:"SVA", re:RX.plurIs, msg:"복수 주어 뒤에는 are·were·have가 옵니다. These acts are…"},
+    {code:"PLUR", re:RX.theseSg, msg:"these·those 뒤의 명사는 복수형이어야 합니다. these chores."},
+    {code:"SVA", re:RX.thatS, msg:"관계대명사절의 동사는 앞의 명사에 맞춥니다. efforts that keep…"},
+    {code:"VERB", re:RX.prepV, msg:"전치사 뒤에는 동사원형이 아니라 -ing형이 옵니다. without receiving, from putting."},
+    {code:"ART", re:RX.serie, msg:"관사가 빠졌습니다. a series of."},
+    {code:"BE", re:/\b(because|since|when|although|if|while)\s+(?:these|those|the|this|that)\s+[a-z]+\s+(?:done|made|finished|completed|written|kept|taken|given|seen|used|handled|noticed)\b/gi, msg:"수동태에 be동사가 빠졌습니다. because these chores are done…"},
+    {code:"SVA", re:/\b(people|children|men|women|they|we|students)\s+(is|was|has)\b/gi, msg:"복수 주어 뒤에 단수 동사가 왔습니다. people are / they were / we have."},
+    {code:"SVA", re:/\b(people|children|men|women|students)\s+(?:in|of|at|on|from|around|near|with)\s+(?:\w+\s+){0,3}(is|was|has)\b/gi, msg:"주어와 동사 사이에 수식어가 끼어도 수 일치는 주어에 맞춥니다. The people in my town are…"},
+    {code:"SVA", re:/\b(he|she|it)\s+(have|do|go|make|think|say)\b/gi, msg:"3인칭 단수 주어 뒤 동사에 -s가 필요합니다. he has / she does / it goes."},
+    {code:"VERB", re:/\b(said|says|say)\s+(me|him|her|us|them)\b/gi, msg:"say는 사람을 목적어로 바로 받지 않습니다. told me 또는 said to me."},
+    {code:"SPELL", re:/\beveryday\s+(for|in|at|I|we|he|she|they|and)\b/gi, msg:"everyday(형용사, ‘일상의’)와 every day(부사, ‘매일’)는 다릅니다."},
+    {code:"PLUR", re:/\b(two|three|four|five|six|seven|eight|nine|ten|many|several|few)\s+(month|year|day|week|hour|time|person|thing|student|book|word|friend|reason|way)\b/gi, msg:"수사·수량형용사 뒤 명사는 복수형이어야 합니다. three months, many things."},
+    {code:"BE", re:/\b(is|are|am|was|were|be)\s+(depend|consist|belong|happen)\b/gi, msg:"이 동사들은 be동사와 함께 쓰지 않습니다. It depends on…"},
+    {code:"BE", re:/\b(should|must|will|can|would|may|might)\s+(not\s+)?(afraid|able|aware|sure|ready|interested|worried)\b/gi, msg:"형용사 앞에 be가 빠졌습니다. should not be afraid, will be able to."},
+    {code:"VOICE", re:/\b(was|were|is|are|been)\s+(improved|increased|decreased|happened|occurred|risen|appeared)\b/gi, msg:"자동사에는 수동태를 쓰지 않습니다. my score improved."},
+    {code:"ART", re:/\bin\s+(morning|afternoon|evening|future|past|beginning|end)\b/gi, msg:"관사가 빠졌습니다. in the morning, in the future, in the end."},
+    {code:"WORD", re:/\bthe\s+(begin|end of new|success of|different)\b/gi, msg:"품사 형태를 확인하세요. the beginning, the difference."},
+    {code:"CLAUSE", re:/\b(learned|think|thought|know|knew|believe|found|realized)\s+(failure|success|people|it|he|she|they|life|money|time)\s+(is|are|teach|make|give|help)\b/gi, msg:"동사와 절 사이에 that이 필요하고, 그 절의 시제·수도 확인해야 합니다."},
+    {code:"TENSE", re:/\b(yesterday|ago|last (?:year|week|month|night)|when I was)\b[^.!?]{0,80}?\b(is|are|am|go|goes|make|makes|think|thinks|study|studies|want|wants|remember|remembers|follow|follows)\b/gi, msg:"과거 표지가 있는데 현재시제 동사가 함께 쓰였습니다. 문장 전체를 과거로 통일하세요."},
+    {code:"TENSE", re:/\b(thought|knew|felt|realized|remembered|believed|noticed)\b[^.!?]{0,40}?\b(am|is|are)\b/gi, msg:"과거 보고동사 뒤의 절도 과거로 맞춥니다. I thought I was…"},
+    {code:"TENSE", re:/\b(and|but|so|then)\s+(I|we|he|she|they)\s+(follow|remember|want|study|make|think|go|try|feel|start|decide|say|give|take|become)\b/gi, msg:"앞 문장이 과거라면 이 동사도 과거여야 합니다. and I followed it…"},
+    {code:"REDUN", re:/\b(new start|return back|repeat again|final conclusion|free gift|advance planning|very unique|more better)\b/gi, msg:"같은 뜻이 두 번 들어간 중복 표현입니다. 하나만 남기세요."},
+    {code:"WEAK", re:/\bvery\s+(good|bad|sad|happy|big|small|important|nice|difficult|easy|tired|angry)\b/gi, msg:"very + 기본 형용사 대신 정확한 한 단어를 찾아보세요. very sad → discouraged."},
+    {code:"AGREE", re:/\b(am|are|is|was|were)\s+agree\b/gi, msg:"agree는 동사입니다. I am agree → I agree."},
+    {code:"PREP", re:/\b(discuss|explain|mention|answer|approach|contact|marry|resemble|enter)\s+(about|to|with|into)\b/gi, msg:"이 동사는 전치사 없이 목적어를 바로 받습니다. discuss recycling, answer the question."},
+    {code:"PREP", re:/\b(depend|consist|focus|rely|insist)\s+(of|to|in|at)\b/gi, msg:"짝을 이루는 전치사를 확인하세요. depend on, consist of, focus on."},
+    {code:"PREP", re:/\blisten\s+(?!to\b)(music|him|her|them|me|the)\b/gi, msg:"listen 뒤에는 to가 필요합니다. listen to music."},
+    {code:"VERB", re:/\b(want|need|decide|hope|plan|try|promise|agree|refuse|learn)\s+(?!to\b|not\b)(discuss|go|do|make|study|learn|write|read|say|be|buy|help|change|start|understand)\b/gi, msg:"이 동사들 뒤에는 to부정사가 옵니다. want to discuss."},
+    {code:"VERB", re:/\b(can|could|will|would|may|might|must|should)\s+be\s+able\s+to\s+(can|could)\b/gi, msg:"조동사를 겹쳐 쓰지 않습니다. will be able to + 동사원형."},
+    {code:"PLUR", re:/\bpeoples\b/gi, msg:"people 자체가 복수입니다. peoples는 ‘민족들’이라는 뜻입니다."},
+    {code:"NUM", re:/\b(many|a few|few|these|those|number of)\s+(information|advice|knowledge|homework|equipment|furniture|news|research|money)\b/gi, msg:"셀 수 없는 명사입니다. much information, a lot of advice."},
+    {code:"WORD", re:/\b(environment|nature|society|economy|politics|history|culture)\s+(problem|issue|change|system|matter|effect)\b/gi, msg:"명사가 명사를 꾸밀 때 형용사형이 필요합니다. environmental problem, social issue."},
+    {code:"WORD", re:/\balmost\s+(people|students|children|everyone|all\s+of)\b/gi, msg:"almost는 부사입니다. most people, almost all people."},
+    {code:"WORD", re:/\b(in|on)\s+(nowadays|these days|recently)\b/gi, msg:"nowadays·these days 앞에는 전치사를 쓰지 않습니다."},
+    {code:"SPELL", re:/\b(alot|infact|inspite|thier|recieve|becuase|writting)\b/gi, msg:"철자를 확인하세요. a lot, in fact, in spite of, their, receive, because, writing."},
+    {code:"RUN", re:/\band\b[^.!?]{0,70}\band\b[^.!?]{0,70}\band\b/gi, msg:"한 문장에 and가 세 번 이상입니다. 생각 하나마다 문장을 끊으세요."},
+    {code:"STYLE", re:/\b(I think|I believe)\b[^.!?]{0,60}\b(I think|I believe)\b/gi, msg:"같은 문장 안에서 의견 표현이 반복됩니다. 한 번만 쓰세요."}
+  ];
+  var findings = $("findings"), counts = $("counts");
+  function updateCounts(){
+    var t = essay.value.trim();
+    var words = t ? t.split(/\s+/).length : 0;
+    var sents = t ? (t.match(/[.!?]+(\s|$)/g) || []).length : 0;
+    counts.textContent = "단어 " + words + " · 문장 " + sents;
+    renderKw();
+  }
+  function scan(){
+    var text = essay.value, out = [];
+    if (!text.trim()){ findings.innerHTML = '<div class="finding"><span class="code">—</span><div><p>먼저 에세이를 입력해 주세요.</p></div></div>'; return; }
+    for (var i=0;i<RULES.length;i++){
+      var r = RULES[i], m; r.re.lastIndex = 0;
+      while ((m = r.re.exec(text)) !== null){
+        out.push({code:r.code, hit:m[0].replace(/\s+/g," ").trim(), msg:(EASY && EASY_EN[r.code]) ? EASY_EN[r.code] : r.msg});
+        if (m.index === r.re.lastIndex) r.re.lastIndex++;
+        if (out.length > 40) break;
+      }
+    }
+    if (!out.length){
+      findings.innerHTML = '<div class="finding"><span class="code" style="color:var(--grow);background:var(--grow-bg)">CLEAR</span><div><p>표층 패턴 점검에서는 걸린 것이 없습니다. 이제 <b>내용·구성</b>을 볼 차례입니다 — 각 문단이 한 가지만 말하고 있나요? 결론이 도입의 질문에 답하고 있나요?</p></div></div>';
+      return;
+    }
+    var html = "";
+    for (var k=0;k<out.length;k++){
+      html += '<div class="finding"><span class="code">'+esc(out[k].code)+'</span><div><span class="hit">'+esc(out[k].hit)+'</span><p>'+out[k].msg+'</p></div></div>';
+    }
+    findings.innerHTML = html;
+  }
+
+  /* ============ 규칙 기반 자동 분석 (AI 없이도 즉시 동작) ============ */
+  var CONNECT = ["however","therefore","because","although","for example","for instance","in addition","moreover","first","second","finally","in conclusion","on the other hand","as a result","in contrast","besides","instead","meanwhile","furthermore","that is why"];
+  var CODEFIX = {
+    SVA:"주어가 단수인지 복수인지 먼저 정하고 동사를 거기에 맞추세요.",
+    VERB:"동사 형태(to부정사·원형·시제)를 확인하세요.",
+    TENSE:"시제를 하나로 정하고 문단 전체를 그 시제로 통일하세요.",
+    ART:"관사가 필요한 자리인지 확인하세요. in the morning, in the end.",
+    PREP:"이 동사와 짝을 이루는 전치사를 사전에서 확인하세요.",
+    NUM:"셀 수 있는지 없는지에 따라 수식어와 복수형을 바꾸세요.",
+    PLUR:"수사·수량형용사 뒤 명사는 복수형입니다.",
+    WORD:"한국어를 그대로 옮긴 표현입니다. 영어에서 쓰는 짝 표현으로 바꾸세요.",
+    RUN:"한 문장에 생각이 둘 이상 들어 있습니다. 마침표로 끊으세요.",
+    BE:"be동사가 빠졌거나 잘못 들어갔습니다.",
+    VOICE:"자동사에는 수동태를 쓰지 않습니다.",
+    CLAUSE:"동사와 절 사이에 that이 필요한지, 그 절의 시제가 맞는지 보세요.",
+    AGREE:"agree는 그 자체가 동사입니다. be동사를 빼세요.",
+    SPELL:"철자를 확인하세요.",
+    REDUN:"같은 뜻이 두 번 들어갔습니다. 하나만 남기세요.",
+    WEAK:"막연한 형용사 대신 정확한 한 낱말을 찾아보세요.",
+    STYLE:"군더더기·반복 표현입니다. 더 단단하게 다듬으세요."
+  };
+  function clamp5(n){ n = Math.round(n); return n<0?0:(n>5?5:n); }
+  function targetWords(){
+    var m = String(PERSONA[pKey].len).match(/\d+/g) || ["100","200"];
+    return { lo: parseInt(m[0],10), hi: parseInt(m[m.length-1],10) };
+  }
+  function localAnalyze(){
+    var text = essay.value.trim();
+    if (!text) return null;
+    if (AI.corr && !AI.corr.local && AI.essay && String(AI.essay).trim() === text) return AI.corr;
+
+    var low = text.toLowerCase();
+    var words = text.split(/\s+/);
+    var wc = words.length;
+    var sents = text.split(/[.!?]+[\s"')\]]*/).filter(function(s){ return s.trim().length > 1; });
+    var sc = sents.length || 1;
+    var paras = text.split(/\n\s*\n/).filter(function(p){ return p.trim(); }).length || 1;
+    var avg = wc / sc;
+    var lens = sents.map(function(s){ return s.trim().split(/\s+/).length; });
+    var mean = lens.reduce(function(a,b){return a+b;},0) / (lens.length||1);
+    var sd = Math.sqrt(lens.reduce(function(a,b){ return a + (b-mean)*(b-mean); },0) / (lens.length||1));
+    var uniq = {}, alpha = 0;
+    for (var w=0;w<words.length;w++){
+      var t = words[w].toLowerCase().replace(/[^a-z']/g,"");
+      if (t.length>1){ uniq[t] = (uniq[t]||0)+1; alpha++; }
+    }
+    var types = Object.keys(uniq).length;
+    var ttr = alpha ? types/alpha : 0;
+    var longw = words.filter(function(x){ return x.replace(/[^A-Za-z]/g,"").length >= 7; }).length;
+    var conn = 0;
+    for (var ci=0;ci<CONNECT.length;ci++){ if (low.indexOf(CONNECT[ci]) >= 0) conn++; }
+    var openers = {}, dupOpen = 0;
+    for (var si=0;si<sents.length;si++){
+      var o = sents[si].trim().split(/\s+/)[0];
+      if (!o) continue; o = o.toLowerCase();
+      openers[o] = (openers[o]||0)+1;
+      if (openers[o] === 3) dupOpen++;
+    }
+
+    /* 규칙 위반 수집 */
+    var hits = [], byCode = {};
+    for (var i=0;i<RULES.length;i++){
+      var r = RULES[i], m; r.re.lastIndex = 0;
+      while ((m = r.re.exec(text)) !== null){
+        var idx = m.index, s = 0, e = text.length;
+        for (var p = idx; p >= 0; p--){ if (/[.!?\n]/.test(text.charAt(p))){ s = p+1; break; } }
+        for (var q = idx; q < text.length; q++){ if (/[.!?\n]/.test(text.charAt(q))){ e = q+1; break; } }
+        hits.push({ code:r.code, hit:m[0].replace(/\s+/g," ").trim(), sent:text.slice(s,e).replace(/\s+/g," ").trim(), msg:r.msg });
+        byCode[r.code] = (byCode[r.code]||0)+1;
+        if (m.index === r.re.lastIndex) r.re.lastIndex++;
+        if (hits.length > 30) break;
+      }
+      if (hits.length > 30) break;
+    }
+    var density = hits.length / sc;
+
+    /* 키워드 반영 */
+    var kwHave = 0, kwAll = 0;
+    if (picked && picked.k){
+      kwAll = picked.k.length;
+      for (var ki=0;ki<picked.k.length;ki++){
+        if (low.indexOf(String(picked.k[ki]).toLowerCase()) >= 0) kwHave++;
+      }
+    }
+
+    /* 점수 */
+    var tg = targetWords();
+    var lenScore = wc >= tg.lo ? (wc <= tg.hi*1.4 ? 5 : 4) : Math.max(1, 5 * wc / tg.lo);
+    var content = clamp5(lenScore*0.6 + (kwAll ? (kwHave/kwAll)*5 : 3.5)*0.4);
+    var org = clamp5(1.5 + Math.min(2, conn*0.5) + Math.min(1, (paras-1)*0.5) + (sc>=4?0.5:0));
+    var gram = clamp5(5 - density*3.2);
+    var vocab = clamp5((ttr>=0.62?5:ttr>=0.55?4.2:ttr>=0.47?3.4:ttr>=0.4?2.6:2) * 0.7 + Math.min(5, longw/Math.max(1,wc)*28) * 0.3);
+    var expr = clamp5(2 + Math.min(1.6, sd/4) + (avg>=8 && avg<=22 ? 1.2 : 0.4) - dupOpen*0.6 + (/[,;:]/.test(text)?0.5:0));
+
+    /* 코멘트 */
+    var says = {
+      content: "단어 " + wc + "개 (목표 " + PERSONA[pKey].len + "). " +
+        (wc < tg.lo ? "분량이 부족해 근거를 더 넣을 자리가 있습니다." : "분량은 목표에 닿았습니다.") +
+        (kwAll ? " 키워드 " + kwHave + "/" + kwAll + "개를 실제로 썼습니다." : ""),
+      organization: "문단 " + paras + "개 · 문장 " + sc + "개 · 연결어 " + conn + "종. " +
+        (conn < 2 ? "however, for example, therefore 같은 연결어로 문장 사이 관계를 드러내세요." : "문장 사이 관계가 연결어로 드러납니다."),
+      grammar: "표층 규칙 점검에서 " + hits.length + "곳이 걸렸습니다(문장당 " + density.toFixed(1) + "). " +
+        (hits.length ? "가장 많은 코드는 " + topCode(byCode) + "입니다." : "표층 패턴에서는 걸린 것이 없습니다."),
+      vocabulary: "서로 다른 낱말 비율 " + Math.round(ttr*100) + "% · 7자 이상 낱말 " + longw + "개. " +
+        (ttr < 0.5 ? "같은 낱말을 되풀이하고 있습니다. 동의어를 한두 개만 바꿔도 인상이 달라집니다." : "낱말이 겹치지 않게 잘 퍼져 있습니다."),
+      expression: "평균 문장 길이 " + avg.toFixed(1) + "단어 · 길이 편차 " + sd.toFixed(1) + ". " +
+        (sd < 3 ? "문장 길이가 비슷해 리듬이 단조롭습니다. 짧은 문장을 하나 끼워 넣어 보세요." : "긴 문장과 짧은 문장이 섞여 리듬이 있습니다.") +
+        (dupOpen ? " 같은 낱말로 시작하는 문장이 반복됩니다." : "")
+    };
+
+    var keep = [], fix = [], next = [];
+    if (wc >= tg.lo) keep.push("목표 분량을 채워 끝까지 썼습니다 (" + wc + "단어).");
+    if (conn >= 2) keep.push("연결어를 " + conn + "종 써서 문장 사이 관계를 표시했습니다.");
+    if (ttr >= 0.55) keep.push("같은 낱말에 기대지 않고 어휘를 폭넓게 썼습니다.");
+    if (sd >= 3) keep.push("문장 길이를 바꿔 가며 리듬을 만들었습니다.");
+    if (!hits.length) keep.push("표층 문법 패턴 점검에서 걸린 곳이 없습니다.");
+    if (!keep.length) keep.push("끝까지 영어로 써냈습니다 — 이것이 출발점입니다.");
+
+    var order = Object.keys(byCode).sort(function(a,b){ return byCode[b]-byCode[a]; });
+    for (var oi=0; oi<order.length && oi<3; oi++){
+      fix.push(order[oi] + " " + byCode[order[oi]] + "곳 — " + (CODEFIX[order[oi]] || "4단계 표에서 해당 문장을 확인하세요."));
+    }
+    if (wc < tg.lo) fix.push("분량이 " + (tg.lo - wc) + "단어 부족합니다 — 근거 문장 또는 예시를 한 문단 더 쓰세요.");
+    if (conn < 2) fix.push("연결어가 거의 없습니다 — 문단마다 하나씩 넣어 보세요.");
+    if (ttr < 0.5) fix.push("낱말 반복이 많습니다 — 가장 자주 쓴 낱말 두 개만 바꿔 보세요.");
+    if (!fix.length) fix.push("표층에서는 고칠 곳이 적습니다 — 이제 내용과 논리로 넘어가세요.");
+
+    next.push("가장 많이 나온 오류 코드 한 가지만 정해, 다음 글에서 그것만 의식하며 쓰기");
+    if (kwAll && kwHave < kwAll) next.push("빠진 키워드(" + kwAll + "개 중 " + (kwAll-kwHave) + "개)를 넣어 한 문단 더 쓰기");
+    next.push("06단계에서 같은 글을 다른 톤으로 바꿔 보고, 어느 쪽이 목적에 맞는지 고르기");
+    next.push("07단계의 인용문 한 줄을 근거로 삼아 결론 문단 다시 쓰기");
+
+    var corrections = [], sl = splitSents(text);
+    for (var si2=0; si2<sl.length && corrections.length<20; si2++){
+      var one = sl[si2], f2 = fixText(one);
+      if (f2.text.trim() === one.trim()) continue;
+      var whyList = [];
+      for (var wi=0; wi<f2.codes.length; wi++){
+        if (CODEFIX[f2.codes[wi]] && whyList.indexOf(CODEFIX[f2.codes[wi]]) < 0) whyList.push(CODEFIX[f2.codes[wi]]);
+      }
+      corrections.push({ code: f2.codes.join("·"), before: one.trim(), after: f2.text.trim(), why: whyList.join(" ") });
+    }
+    var fixedAll = fixText(text).text;
+    for (var hh=0; hh<hits.length && corrections.length<24; hh++){
+      var dup = false;
+      for (var dq=0; dq<corrections.length; dq++){ if (corrections[dq].before === hits[hh].sent) dup = true; }
+      if (dup) continue;
+      corrections.push({ code: hits[hh].code, before: hits[hh].sent || hits[hh].hit,
+        after: "(직접 고칠 곳) " + hits[hh].hit,
+        why: String(hits[hh].msg).replace(/<[^>]+>/g, "") });
+    }
+
+    var mapTxt = hits.length
+      ? order.map(function(c){ return c + " " + byCode[c] + "곳"; }).join(" · ") + " — 이 중 가장 많은 " + order[0] + "부터 잡으면 오류의 " + Math.round(byCode[order[0]]/hits.length*100) + "%가 줄어듭니다."
+      : "표층 오류 지도는 비어 있습니다. 다음 점검 대상은 문법이 아니라 논리와 근거입니다.";
+
+    var d = {
+      local: true, fixed: fixedAll,
+      corrections: corrections,
+      rubric: { content:content, organization:org, grammar:gram, vocabulary:vocab, expression:expr },
+      says: says, keep: keep, fix: fix, next: next, errorMap: mapTxt
+    };
+    AI.corr = d; AI.essay = essay.value; saveAI();
+    scores = [content, org, gram, vocab, expr];
+    set("ea_scores", JSON.stringify(scores));
+    if (typeof renderAI4 === "function") renderAI4();
+    renderRubric(); drawRadar(); renderVerdict();
+    if (typeof renderSrc5 === "function") renderSrc5();
+    return d;
+  }
+  function topCode(by){
+    var best = "", n = -1;
+    for (var k in by){ if (by[k] > n){ n = by[k]; best = k; } }
+    return best;
+  }
+
+
+  /* ============ 자동 고쳐쓰기 (규칙 기반) ============ */
+  var PLURAL = {person:"people", child:"children", man:"men", woman:"women"};
+  function plu(w){ var l = w.toLowerCase(); if (PLURAL[l]) return PLURAL[l]; if (/(s|x|z|ch|sh)$/i.test(w)) return w+"es"; if (/[^aeiou]y$/i.test(w)) return w.slice(0,-1)+"ies"; return w+"s"; }
+  var ADJF = {environment:"environmental", nature:"natural", society:"social", economy:"economic", politics:"political", history:"historical", culture:"cultural"};
+  var AUTOFIX = [
+    {code:"SVA", re:RX.pronS, to:function(m,a,b){ return a + " " + b; }},
+    {code:"SVA", re:RX.thisV, to:function(m,a,b,c){ return a + " " + b + " " + s3(c); }},
+    {code:"SVA", re:RX.bodyV, to:function(m,a,b){ return a + " " + s3(b); }},
+    {code:"SVA", re:RX.plurIs, to:function(m,a,b){ return a + " " + (b.toLowerCase()==="is"?"are":b.toLowerCase()==="was"?"were":"have"); }},
+    {code:"SVA", re:RX.thatS, to:function(m,a,b,c){ return a + " " + b + " " + c; }},
+    {code:"PLUR", re:RX.theseSg, to:function(m,a,b,c){ return a + " " + b + plu(c) + " "; }},
+    {code:"VERB", re:RX.prepV, to:function(m,a,b){ return a + " " + ing(b); }},
+    {code:"ART", re:RX.serie, to:"$1 a series of"},
+    {code:"BE", re:/\b(because|since|when|although|if|while)\s+((?:these|those|the|this|that)\s+[a-z]+?(s?))\s+(done|made|finished|completed|written|kept|taken|given|seen|used|handled|noticed)\b/gi,
+      to:function(m,a1,np,sfx,pp){ return a1 + " " + np + " " + (sfx === "s" ? "are " : "is ") + pp; }},
+    {code:"AGREE", re:/\b(am|is|are)\s+agree\b/gi, to:"agree"},
+    {code:"AGREE", re:/\b(was|were)\s+agree\b/gi, to:"agreed"},
+    {code:"PREP", re:/\b(discuss|explain|mention|answer|approach|contact|marry|resemble|enter)\s+(about|to|with|into)\s+/gi, to:"$1 "},
+    {code:"PREP", re:/\bdepend\s+(of|to|in)\b/gi, to:"depend on"},
+    {code:"PREP", re:/\bconsist\s+(in|from)\b/gi, to:"consist of"},
+    {code:"PREP", re:/\bfocus\s+(in|to)\b/gi, to:"focus on"},
+    {code:"PREP", re:/\blisten\s+(?!to\b)(music|him|her|them|me|the)\b/gi, to:"listen to $1"},
+    {code:"VERB", re:/\b(want|need|decide|hope|plan|try|promise|agree|refuse|learn)\s+(?!to\b|not\b)(discuss|go|do|make|study|learn|write|read|be|buy|help|change|start|understand)\b/gi, to:"$1 to $2"},
+    {code:"VERB", re:/\b(said|says|say)\s+(me|him|her|us|them)\b/gi, to:function(m,a,b){ return (a==="said"?"told":a==="says"?"tells":"tell")+" "+b; }},
+    {code:"PLUR", re:/\bpeoples\b/gi, to:"people"},
+    {code:"SVA", re:/\b(people|children|men|women|they|we|students)\s+is\b/gi, to:"$1 are"},
+    {code:"SVA", re:/\b(people|children|men|women|students)(\s+(?:in|of|at|on|from|around|near|with)\s+(?:\w+\s+){0,3})is\b/gi, to:"$1$2are"},
+    {code:"SVA", re:/\b(people|children|men|women|they|we|students)\s+was\b/gi, to:"$1 were"},
+    {code:"SVA", re:/\b(people|children|men|women|they|we|students)\s+has\b/gi, to:"$1 have"},
+    {code:"SVA", re:/\b(he|she|it)\s+have\b/gi, to:"$1 has"},
+    {code:"SVA", re:/\b(he|she|it)\s+(do|go|make|think|say|want|need|know)\b/gi, to:function(m,a,b){ return a+" "+(b==="do"?"does":b==="go"?"goes":b==="say"?"says":b+"s"); }},
+    {code:"NUM", re:/\b(many|a few|few)\s+(information|advice|knowledge|homework|equipment|furniture|news|research|money)\b/gi, to:"much $2"},
+    {code:"WORD", re:/\balmost\s+(people|students|children)\b/gi, to:"most $1"},
+    {code:"WORD", re:/\b(in|on)\s+(nowadays|these days)\b/gi, to:"$2"},
+    {code:"WORD", re:/\b(environment|nature|society|economy|politics|history|culture)\s+(problem|issue|change|system|matter|effect)\b/gi, to:function(m,a,b){ return (ADJF[a.toLowerCase()]||a)+" "+b; }},
+    {code:"ART", re:/\bin\s+(morning|afternoon|evening|future|past|beginning|end)\b/gi, to:"in the $1"},
+    {code:"PLUR", re:/\b(two|three|four|five|six|seven|eight|nine|ten|many|several|few)\s+(month|year|day|week|hour|time|person|thing|student|book|word|friend|reason|way)\b/gi, to:function(m,a,b){ return a+" "+plu(b); }},
+    {code:"BE", re:/\b(should|must|will|can|would|may|might)\s+(afraid|able|aware|sure|ready|interested|worried)\b/gi, to:"$1 be $2"},
+    {code:"REDUN", re:/\breturn\s+back\b/gi, to:"return"},
+    {code:"REDUN", re:/\brepeat\s+again\b/gi, to:"repeat"},
+    {code:"REDUN", re:/\bfinal\s+conclusion\b/gi, to:"conclusion"},
+    {code:"REDUN", re:/\bmore\s+better\b/gi, to:"better"},
+    {code:"REDUN", re:/\bvery\s+unique\b/gi, to:"unique"},
+    {code:"SPELL", re:/\balot\b/gi, to:"a lot"},
+    {code:"SPELL", re:/\binfact\b/gi, to:"in fact"},
+    {code:"SPELL", re:/\bthier\b/gi, to:"their"},
+    {code:"SPELL", re:/\brecieve\b/gi, to:"receive"},
+    {code:"SPELL", re:/\bbecuase\b/gi, to:"because"},
+    {code:"SPELL", re:/\bwritting\b/gi, to:"writing"},
+    {code:"SPELL", re:/\beveryday\s+(for|in|at|I|we|he|she|they|and)\b/gi, to:"every day $1"}
+  ];
+  function fixText(t){
+    var out = String(t), used = [];
+    for (var i=0;i<AUTOFIX.length;i++){
+      var f = AUTOFIX[i]; f.re.lastIndex = 0;
+      if (f.re.test(out)){ used.push(f.code); f.re.lastIndex = 0; out = out.replace(f.re, f.to); }
+    }
+    return { text: out, codes: used };
+  }
+  function splitSents(t){ return (String(t).match(/[^.!?\n]+[.!?]*/g) || []).filter(function(s){ return s.trim().length > 1; }); }
+
+  /* ============ 톤 여섯 판 (규칙 기반) ============ */
+  var CONTRACT = [[/\bI am\b/g,"I'm"],[/\byou are\b/gi,"you're"],[/\bit is\b/gi,"it's"],[/\bthat is\b/gi,"that's"],[/\bdo not\b/gi,"don't"],[/\bdoes not\b/gi,"doesn't"],[/\bdid not\b/gi,"didn't"],[/\bcannot\b/gi,"can't"],[/\bwill not\b/gi,"won't"],[/\bis not\b/gi,"isn't"],[/\bare not\b/gi,"aren't"],[/\bI have\b/g,"I've"],[/\bI will\b/g,"I'll"],[/\bwe are\b/gi,"we're"]];
+  var EXPAND = [[/\bI'm\b/g,"I am"],[/\bdon't\b/gi,"do not"],[/\bcan't\b/gi,"cannot"],[/\bit's\b/gi,"it is"],[/\bdidn't\b/gi,"did not"],[/\bI've\b/g,"I have"],[/\bI'll\b/g,"I will"]];
+  var HEDGE = [[/\bmust\b/gi,"may"],[/\balways\b/gi,"often"],[/\bnever\b/gi,"rarely"],[/\ball people\b/gi,"many people"],[/\bI think\b/g,"It appears"],[/\bI believe\b/g,"It can be argued"],[/\bvery\b/gi,"particularly"],[/\ba lot of\b/gi,"a considerable number of"],[/\bBut\b/g,"However,"],[/\bSo\b/g,"Therefore,"]];
+  var LOOSEN = [[/\bHowever,?\b/g,"But"],[/\bTherefore,?\b/g,"So"],[/\bIn conclusion,?\b/g,"In the end,"],[/\bFor example,?\b/g,"Like,"],[/\bnevertheless\b/gi,"still"],[/\bconsiderable\b/gi,"big"]];
+  function subs(t, list){ var o = t; for (var i=0;i<list.length;i++){ o = o.replace(list[i][0], list[i][1]); } return o; }
+  function localTones(){
+    var raw = essay.value.trim();
+    if (!raw) return null;
+    var fx = fixText(raw), base = fx.text;
+    var topic = picked ? picked.q : "this question";
+    var out = {};
+    out.min = { text: base, why: "오류만 고치고 문장은 그대로 두었습니다. 고친 곳 " + fx.codes.length + "종(" + (fx.codes.join(", ") || "없음") + "). 학생의 목소리가 가장 많이 남아 있는 판입니다.", local:true };
+    out.casual = { text: "Honestly? " + subs(subs(base, CONTRACT), LOOSEN) + " That's how I see it, anyway.", why: "축약형과 담화 표지를 넣고 딱딱한 연결어(However, Therefore)를 But, So로 바꿨습니다. 친구에게 말하듯 거리를 좁힌 판입니다.", local:true };
+    out.narr = { text: "I still remember the moment this question first caught me. " + base.replace(/\bI think\b/g, "I remember thinking").replace(/\bIn conclusion,?\b/g, "In the end,") + " The thought stayed with me longer than I expected.", why: "설명을 장면으로 열고 닫았습니다. 생각을 말하는 자리에 기억하는 장면을 넣어 독자가 따라 들어올 자리를 만들었습니다.", local:true };
+    out.persu = { text: "Have you ever asked yourself this: " + topic + " Think about it for a second. " + subs(base, [[/\bI think\b/g,"You may already sense that"]]) + " You do not need to solve all of it today. Start with one page. One page is enough.", why: "질문으로 열고 2인칭으로 청자를 불렀습니다. 마지막은 짧은 문장을 반복해 행동을 요구하는 연설조로 닫았습니다.", local:true };
+    out.acad = { text: "This essay considers " + topic.replace(/\?$/, "") + ". " + subs(subs(base, EXPAND), HEDGE) + " Overall, the evidence discussed here suggests a tendency rather than a rule.", why: "단정(must, always)을 유보(may, often)로 바꾸고 축약형을 풀었습니다. 첫 문장에서 다룰 범위를 밝히고 마지막에서 주장의 세기를 낮췄습니다.", local:true };
+    out.paper = { text: "Previous discussions of this question have tended to emphasise general principles rather than individual experience. This paper approaches it from the latter. " + subs(subs(base, EXPAND), HEDGE) + " This account is limited by its reliance on a single writer's experience; a wider sample would be required before the claim could be generalised. Further work might compare these observations with published studies on the same question.", why: "선행 논의를 요약하는 문장으로 열고, 자기 주장의 한계와 후속 과제를 밝히며 닫았습니다. 논문에서 요구하는 위치 잡기와 한계 진술을 갖춘 판입니다.", local:true };
+    AI.tones = out; saveAI();
+    if (typeof renderTonesAI === "function") renderTonesAI();
+    return out;
+  }
+
+  /* ============ 인문 확장 (선별 목록) ============ */
+  var MUSEBANK = {
+    grow: [
+      {kind:"인물", title:"Optimism", who:"Helen Keller, 1903", quote:"Although the world is full of suffering, it is also full of the overcoming of it.", tr:"세상은 고통으로 가득하지만, 그것을 이겨 내는 일로도 가득하다.", why:"실패와 성장을 다룬 글에 곧바로 붙는 문장입니다. 고통을 부정하지 않으면서도 다음 문장을 여는 방식이 학생이 결론에서 쓸 수 있는 형태입니다.", task:"이 문장을 결론 첫 줄로 삼아 자기 글의 마지막 문단을 다시 써 보세요."},
+      {kind:"책", title:"Worstward Ho", who:"Samuel Beckett, 1983", quote:"Ever tried. Ever failed. No matter. Try again. Fail again. Fail better.", tr:"해 봤다. 실패했다. 상관없다. 다시 해라. 다시 실패해라. 더 낫게 실패해라.", why:"짧은 문장의 반복만으로 리듬을 만드는 예입니다. 문장이 길어질 때 어떻게 끊을지 배우기에 좋습니다.", task:"자기 글에서 가장 긴 문장을 골라 세 문장으로 끊어 보세요."},
+      {kind:"시", title:"The Road Not Taken", who:"Robert Frost, 1916", quote:"Two roads diverged in a wood, and I— / I took the one less traveled by,", tr:"숲속에서 두 갈래 길이 나뉘었고, 나는— / 나는 사람이 덜 다닌 길을 택했다.", why:"선택을 설명하지 않고 장면으로 보여 줍니다. 학생이 ‘나는 …라고 생각했다’로 쓴 자리를 장면으로 바꾸는 연습에 씁니다.", task:"자기 글의 ‘I think’ 문장 하나를 장면 묘사로 바꿔 보세요."},
+      {kind:"예술", title:"富嶽三十六景 神奈川沖浪裏 (가나가와 해변의 높은 파도 아래)", who:"가쓰시카 호쿠사이, 1831", quote:"From the age of six I had a mania for drawing the shapes of things.", tr:"여섯 살 때부터 나는 사물의 형태를 그리는 일에 미쳐 있었다.", why:"거대한 파도 아래 작게 그려진 배는 ‘압도되는 순간’을 설명 없이 보여 줍니다. 어려움을 묘사할 때 크기 대비를 쓰는 법을 배웁니다.", task:"자기 글의 어려움을 크기 대비 한 문장으로 다시 써 보세요."},
+      {kind:"철학", title:"論語 學而 (논어 학이편)", who:"공자, 기원전 5세기", quote:"學而時習之 不亦說乎", tr:"배우고 때때로 익히면 또한 기쁘지 아니한가.", why:"배움을 성취가 아니라 반복의 기쁨으로 봅니다. 점수 이야기로 끝나는 결론을 다른 자리로 옮길 때 쓸 수 있습니다.", task:"‘잘하게 되었다’ 대신 ‘반복했다’로 결론을 다시 써 보세요."}
+    ],
+    nature: [
+      {kind:"인물", title:"Silent Spring", who:"Rachel Carson, 1962", quote:"In nature nothing exists alone.", tr:"자연에서 홀로 존재하는 것은 없다.", why:"환경 글이 ‘보호하자’로 끝나지 않게 하는 관점입니다. 연결을 근거로 삼으면 주장이 구체적으로 바뀝니다.", task:"자기 글에서 두 가지가 어떻게 연결되는지 한 문단으로 써 보세요."},
+      {kind:"책", title:"A Sand County Almanac", who:"Aldo Leopold, 1949", quote:"We abuse land because we regard it as a commodity belonging to us.", tr:"우리가 땅을 함부로 쓰는 것은 그것을 우리에게 속한 상품으로 보기 때문이다.", why:"원인을 태도에서 찾습니다. 학생 글의 ‘사람들이 나쁘다’를 ‘사람들이 무엇으로 보는가’로 바꾸는 전환입니다.", task:"자기 글의 원인 문장을 ‘~로 보기 때문에’ 구조로 다시 써 보세요."},
+      {kind:"시", title:"Wild Geese", who:"Mary Oliver, 1986", quote:"You do not have to be good.", tr:"당신은 착할 필요가 없다.", why:"첫 줄에서 독자의 예상을 꺾습니다. 도입 문장을 진부하지 않게 여는 방법의 예입니다.", task:"자기 글의 첫 문장을 예상을 꺾는 한 줄로 바꿔 보세요."},
+      {kind:"예술", title:"仁王霽色圖 (인왕제색도)", who:"정선, 1751", quote:"비 갠 뒤 인왕산의 젖은 바위를 먹의 농담만으로 그렸다.", tr:"— 화면의 검은 바위와 흰 안개가 대비를 이룬다.", why:"같은 산을 여러 번 보고 그린 그림입니다. 반복 관찰이 묘사를 어떻게 바꾸는지 보여 줍니다.", task:"같은 장소를 두 번 관찰하고 달라진 점만 세 문장으로 쓰세요."},
+      {kind:"철학", title:"道德經 第八章 (도덕경 8장)", who:"노자, 기원전 4세기경", quote:"上善若水 水善利萬物而不爭", tr:"가장 좋은 것은 물과 같다. 물은 만물을 이롭게 하면서도 다투지 않는다.", why:"환경 윤리를 ‘싸움’이 아니라 ‘관계’로 놓습니다. 결론의 어조를 바꿀 때 씁니다.", task:"자기 결론에서 대립 구도를 관계 구도로 바꿔 써 보세요."}
+    ],
+    lang: [
+      {kind:"인물", title:"論語 爲政 (논어 위정편)", who:"공자, 기원전 5세기", quote:"學而不思則罔 思而不學則殆", tr:"배우기만 하고 생각하지 않으면 얻는 것이 없고, 생각만 하고 배우지 않으면 위태롭다.", why:"암기와 사고의 균형을 말합니다. 공부 방법을 다룬 글의 논지를 세울 때 쓸 수 있습니다.", task:"이번 주 자기 공부를 ‘배움’과 ‘생각’ 둘로 나눠 적어 보세요."},
+      {kind:"책", title:"Politics and the English Language", who:"George Orwell, 1946", quote:"Never use a long word where a short one will do.", tr:"짧은 낱말로 될 자리에 긴 낱말을 쓰지 마라.", why:"학생이 어려운 낱말을 넣어 문장을 흐리는 습관에 직접 닿는 규칙입니다.", task:"자기 글에서 가장 긴 낱말 세 개를 짧은 말로 바꿔 보세요."},
+      {kind:"시", title:"Tell all the truth but tell it slant", who:"Emily Dickinson, 1868년경", quote:"Tell all the truth but tell it slant —", tr:"모든 진실을 말하되, 비스듬히 말하라 —", why:"직접 말하지 않고 에두르는 방식이 왜 더 강한지 보여 줍니다. 주장문을 다듬을 때 씁니다.", task:"자기 주장 한 문장을 비유 하나로 바꿔 써 보세요."},
+      {kind:"예술", title:"La Trahison des images (이미지의 배반)", who:"René Magritte, 1929", quote:"Ceci n'est pas une pipe.", tr:"이것은 파이프가 아니다.", why:"말과 사물이 같지 않다는 것을 그림 한 장으로 보여 줍니다. 번역할 때 낱말과 뜻이 어긋나는 지점과 이어집니다.", task:"한국어를 그대로 옮겼다가 어색해진 표현 하나를 찾아 적어 보세요."},
+      {kind:"철학", title:"Tractatus Logico-Philosophicus", who:"Ludwig Wittgenstein, 1921", quote:"The limits of my language mean the limits of my world.", tr:"내 언어의 한계가 내 세계의 한계를 뜻한다.", why:"외국어 학습이 왜 사고의 확장인지 한 문장으로 말합니다. 서론이나 결론에 놓기 좋습니다.", task:"영어로 아직 말하지 못하는 생각 하나를 한국어로 적고, 영어로 옮겨 보세요."}
+    ]
+  };
+  function museKey(){
+    var t = ((picked ? picked.q + " " + picked.k.join(" ") : "") + " " + essay.value).toLowerCase();
+    if (/environment|nature|climate|recycl|animal|forest|earth|plastic|energy|자연|환경/.test(t)) return "nature";
+    if (/language|english|word|read|write|study|learn|book|school|translat|언어|영어|공부/.test(t)) return "lang";
+    return "grow";
+  }
+  function localMuse(){
+    var d = { items: MUSEBANK[museKey()].slice(), local:true };
+    AI.muse = d; saveAI();
+    if (typeof renderMuseAI === "function") renderMuseAI();
+    return d;
+  }
+
+  /* ============ 결과보고서 (규칙 기반) ============ */
+  var STUDYMAP = {
+    SVA:{topic:"주어–동사 수 일치", why:"이번 글에서 가장 많이 걸린 자리입니다. 이것 하나만 잡아도 오류 수가 눈에 띄게 줄어듭니다.", how:"자기 글의 동사에 전부 밑줄을 치고, 각 동사 위에 주어를 화살표로 연결한 뒤 단수·복수를 표시합니다. 10분."},
+    TENSE:{topic:"시제 일관성", why:"과거 표지와 현재 동사가 한 문장에 섞였습니다. 한국어에는 없는 제약이라 의식하지 않으면 계속 나옵니다.", how:"문단 하나를 골라 모든 동사를 과거로 바꿔 쓰고, 바뀌지 않는 동사(진리·습관)만 남깁니다. 15분."},
+    VERB:{topic:"동사 뒤 형태(to부정사·원형)", why:"want, decide, hope 뒤의 형태가 흔들립니다. 동사마다 정해진 짝이 있습니다.", how:"오늘 쓴 글에서 동사 다섯 개를 골라 사전에서 뒤따르는 형태를 확인하고 예문을 하나씩 옮겨 씁니다. 15분."},
+    PREP:{topic:"동사와 전치사의 짝", why:"discuss about, depend of처럼 한국어 조사를 그대로 옮긴 자리입니다.", how:"자주 쓰는 동사 열 개의 전치사 짝을 카드로 만들어 사흘 동안 아침마다 소리 내어 읽습니다. 10분."},
+    ART:{topic:"관사 a/an/the", why:"한국어에 없는 범주여서 규칙보다 노출이 필요합니다.", how:"짧은 영어 글 한 편을 인쇄해 모든 관사에 동그라미를 치고, 왜 그 관사인지 세 곳만 설명해 봅니다. 20분."},
+    PLUR:{topic:"복수형과 수량 표현", why:"수사 뒤 명사가 단수로 남는 자리가 반복됩니다.", how:"자기 글의 명사를 모두 표시하고 셀 수 있는지 없는지 두 칸으로 나눠 적습니다. 10분."},
+    NUM:{topic:"셀 수 없는 명사", why:"information, advice 같은 낱말에 many를 붙였습니다.", how:"셀 수 없는 명사 열 개를 적고 각각 much / a piece of 로 예문을 만듭니다. 10분."},
+    WORD:{topic:"한국어식 표현 바꾸기", why:"한국어 구조를 그대로 옮겨 영어에서 쓰지 않는 짝이 만들어졌습니다.", how:"어색했던 표현을 영어 검색창에 큰따옴표로 묶어 넣어 실제로 쓰이는지 확인합니다. 15분."},
+    RUN:{topic:"문장 끊기", why:"and로 이어 붙인 긴 문장이 논지를 흐립니다.", how:"가장 긴 문장을 골라 생각 단위마다 마침표를 찍어 세 문장으로 나눕니다. 10분."},
+    AGREE:{topic:"동사와 be동사 구분", why:"agree, like처럼 그 자체가 동사인 말 앞에 be동사를 넣었습니다.", how:"be동사를 쓰는 자리(형용사·명사 앞)와 쓰지 않는 자리를 두 칸으로 나눠 예문을 다섯 개씩 적습니다. 10분."},
+    SPELL:{topic:"철자와 띄어쓰기", why:"a lot, in fact처럼 붙여 쓴 자리가 있습니다.", how:"틀린 낱말만 모아 손으로 다섯 번씩 쓰고, 다음 글에서 찾아 표시합니다. 10분."},
+    STYLE:{topic:"군더더기 덜어내기", why:"같은 표현이 반복되어 문장의 힘이 줄었습니다.", how:"자기 글에서 지워도 뜻이 그대로인 낱말을 열 개 찾아 지웁니다. 10분."},
+    BE:{topic:"be동사 빠짐", why:"조동사 뒤 형용사 앞에서 be가 빠졌습니다.", how:"‘조동사 + be + 형용사’ 형태로 문장 다섯 개를 만들어 봅니다. 10분."},
+    REDUN:{topic:"중복 표현", why:"같은 뜻이 두 번 들어간 자리가 있습니다.", how:"자기 글에서 뜻이 겹치는 낱말 짝을 찾아 하나씩 지웁니다. 10분."},
+    VOICE:{topic:"수동태 오용", why:"자동사에 수동태를 썼습니다.", how:"자기 글의 be+p.p.를 모두 찾아, 목적어가 없는 것은 능동으로 되돌립니다. 15분."},
+    CLAUSE:{topic:"that절 연결", why:"동사와 절 사이의 연결이 끊깁니다.", how:"think/know/believe로 시작하는 문장 다섯 개를 that을 넣어 다시 씁니다. 10분."},
+    WEAK:{topic:"정확한 낱말 고르기", why:"very + 기본 형용사에 기대고 있습니다.", how:"very가 붙은 자리를 모두 찾아 한 낱말로 바꿉니다. 10분."}
+  };
+  var BGMAP = {
+    nature:[{area:"기후·생태의 기본 수치", why:"환경 글은 감정이 아니라 수치와 사례에서 설득력이 나옵니다.", start:"우리 시·군의 재활용률 한 가지를 찾아 글에 넣어 보세요."},
+            {area:"지역 사례 한 가지", why:"‘지구’보다 ‘우리 동네’가 훨씬 구체적인 근거가 됩니다.", start:"가까운 하천이나 공원의 변화 기록을 한 문단으로 정리하세요."}],
+    lang:[{area:"영어 글의 문단 관습", why:"한국어 글과 달리 영어 문단은 첫 문장이 주제를 먼저 밝힙니다.", start:"읽은 영어 글 한 편에서 각 문단의 첫 문장만 모아 적어 보세요."},
+          {area:"장르에 따른 어조 차이", why:"같은 내용도 편지·기사·논문에서 다른 어조를 씁니다.", start:"같은 문단을 편지체와 기사체로 각각 바꿔 써 보세요."}],
+    grow:[{area:"이야기의 구조(사건–전환–의미)", why:"경험 글은 사건만 나열하면 남는 것이 없습니다. 전환점이 필요합니다.", start:"자기 글에서 ‘그때부터 달라졌다’에 해당하는 한 문장을 찾아 표시하세요."},
+          {area:"근거로 쓸 사실 한 가지", why:"개인 경험에 사실 하나가 붙으면 주장의 무게가 달라집니다.", start:"주제와 관련된 통계나 사례를 하나만 찾아 문단 끝에 붙이세요."}]
+  };
+  function localReport(){
+    if (!AI.corr) localAnalyze();
+    var v = PERSONA[pKey], total = scores.reduce(function(a,b){ return a+b; }, 0);
+    var names = ["내용","구성","문법","어휘","표현력"], nEun = ["내용은","구성은","문법은","어휘는","표현력은"];
+    var lo = 0, hi = 0;
+    for (var i=1;i<5;i++){ if (scores[i] < scores[lo]) lo = i; if (scores[i] > scores[hi]) hi = i; }
+    var cefr = total<=8 ? "A1" : total<=14 ? "A2" : total<=18 ? "A2+ → B1" : total<=22 ? "B1+ → B2" : "B2 이상";
+    var codes = [];
+    if (AI.corr && AI.corr.errorMap){ codes = (AI.corr.errorMap.match(/\b[A-Z]{2,6}\b/g) || []); }
+    var uniqCodes = [];
+    for (var c=0;c<codes.length;c++){ if (uniqCodes.indexOf(codes[c]) < 0 && STUDYMAP[codes[c]]) uniqCodes.push(codes[c]); }
+    if (!uniqCodes.length) uniqCodes = ["TENSE","WORD","STYLE"];
+
+    var level = "지금 총점은 " + total + "/25이고, 이 글만 놓고 보면 " + cefr + " 구간입니다. " +
+      nEun[hi] + " 이미 자기 힘으로 되고 있습니다 — " + (AI.corr && AI.corr.says ? String(AI.corr.says[["content","organization","grammar","vocabulary","expression"][hi]]).split(".")[0] + "." : "") + " " +
+      "아직 안 되는 쪽은 " + names[lo] + "입니다. " +
+      (uniqCodes.length ? "표층에서는 " + uniqCodes.slice(0,2).join("·") + " 유형이 되풀이됩니다. " : "") +
+      "목표는 " + v.cefr + "이고 분량 기준은 " + v.len + "이므로, 다음 넉 주는 " + names[lo] + "만 붙잡는 것이 가장 빠릅니다.";
+
+    var study = [];
+    for (var s=0; s<uniqCodes.length && s<3; s++){ study.push(STUDYMAP[uniqCodes[s]]); }
+    while (study.length < 3){ study.push(STUDYMAP[["TENSE","WORD","RUN","STYLE"][study.length]] || STUDYMAP.STYLE); }
+
+    var mk = museKey(), bank = MUSEBANK[mk];
+    var readings = bank.map(function(x){
+      return { title:x.title, author:x.who, kind:(x.kind==="시"?"시":x.kind==="책"?"책":x.kind==="인물"?"글":"글"), level:v.name + " 수준에서 발췌로", why:x.why };
+    }).slice(0,5);
+    readings.push({ title:"자기 글 다시 쓰기", author:"— 본인", kind:"글", level:"매주 1편", why:"새 글을 계속 쓰는 것보다, 쓴 글을 두 번 고쳐 쓰는 편이 " + names[lo] + " 개선에는 더 빠릅니다." });
+
+    var d = { local:true, level:level, study:study, readings:readings, background:BGMAP[mk],
+      plan30:[
+        "1주차 — " + study[0].topic + "만 본다. " + study[0].how,
+        "2주차 — " + study[1].topic + "을(를) 더한다. 1주차 항목은 확인만 한다.",
+        "3주차 — 추천 읽을거리에서 한 편을 읽고, 그 글의 문단 구조를 따라 한 편 쓴다.",
+        "4주차 — 1주차에 쓴 글을 다시 꺼내 고쳐 쓰고, 처음 글과 나란히 놓고 비교한다."
+      ] };
+    AI.report = d; saveAI();
+    if (typeof renderReport === "function") renderReport();
+    var pb = $("repPrint"); if (pb) pb.disabled = false;
+    var wb = $("weekBtn"); if (wb) wb.hidden = false;
+    return d;
+  }
+
+  /* ============ 1~4주차 활동지 (규칙 기반) ============ */
+  function localWeeks(){
+    if (!AI.report) localReport();
+    var r = AI.report, v = PERSONA[pKey], st = r.study || [];
+    var rd = (r.readings && r.readings[0]) || { title:"추천 읽을거리", why:"" };
+    var weeks = [
+      { n:1, goal:"이번 주는 " + st[0].topic + " 하나만 본다. 반드시 성공하는 주로 만든다.", focus:st[0].topic,
+        activities:[ {title:"내 글에서 찾기", how:"3단계에 쓴 글을 인쇄하거나 화면에 띄우고, " + st[0].topic + "에 해당하는 곳에 전부 표시한다. 고치지는 않는다.", min:10},
+                     {title:"다섯 곳만 고치기", how:"표시한 곳 가운데 다섯 곳만 골라 고쳐 쓴다. 나머지는 그대로 둔다.", min:15} ],
+        reading:{ what:rd.title + " 가운데 한 대목", why:"이번 주 항목이 실제 글에서 어떻게 쓰이는지 눈으로 확인하기 위해서입니다." },
+        check:["표시한 곳이 몇 군데인지 숫자로 적었다","다섯 곳을 고쳐 썼다","고친 이유를 한 줄로 말할 수 있다"],
+        output:"표시와 수정이 남은 종이 한 장" },
+      { n:2, goal:"" + st[1].topic + "을(를) 더한다. 1주차 항목은 확인만 한다.", focus:st[1].topic,
+        activities:[ {title:"연습하기", how:st[1].how, min:15},
+                     {title:"짧은 글 한 편", how:"같은 주제로 " + v.len + " 분량의 글을 새로 쓴다. 이번 주 항목만 의식하고 나머지는 신경 쓰지 않는다.", min:25} ],
+        reading:{ what:(r.readings[1] ? r.readings[1].title : rd.title), why:"문단이 어떻게 시작하고 닫히는지만 보면 됩니다." },
+        check:["1주차 항목이 이번 글에서 줄었다","이번 주 항목을 세 번 이상 의식했다","새 글을 끝까지 썼다"],
+        output:"새로 쓴 글 한 편" },
+      { n:3, goal:"읽은 글의 구조를 빌려 쓴다.", focus:"구성 — 문단의 시작과 근거",
+        activities:[ {title:"문단 첫 문장 모으기", how:"읽은 글에서 각 문단의 첫 문장만 옮겨 적는다. 그 글이 어떤 순서로 나아가는지 화살표로 그린다.", min:15},
+                     {title:"구조 빌려 쓰기", how:"그 순서를 그대로 따라 자기 주제로 한 편 쓴다. 내용은 자기 것, 순서는 빌린 것.", min:25} ],
+        reading:{ what:(r.readings[2] ? r.readings[2].title : rd.title), why:"이번 주는 내용보다 구조를 보기 위해 읽습니다." },
+        check:["문단 첫 문장을 모두 옮겨 적었다","순서를 그림으로 그렸다","같은 순서로 한 편 썼다"],
+        output:"구조 도식 한 장과 글 한 편" },
+      { n:4, goal:"1주차 글을 다시 꺼내 고쳐 쓰고, 처음과 나란히 놓는다.", focus:"되돌아보기 — 네 주 동안의 변화",
+        activities:[ {title:"다시 쓰기", how:"1주차에 쓴 글을 지금 아는 것으로 처음부터 다시 쓴다. 원본은 지우지 않는다.", min:25},
+                     {title:"나란히 놓고 세기", how:"처음 글과 다시 쓴 글에서 " + st[0].topic + " 오류가 각각 몇 개인지 세어 적는다.", min:10} ],
+        reading:{ what:"자기가 쓴 네 편", why:"남의 글보다 자기 글의 변화가 이 주의 교재입니다." },
+        check:["다시 쓴 글을 완성했다","오류 수를 숫자로 비교했다","다음에 붙잡을 항목 하나를 정했다"],
+        output:"처음 글과 다시 쓴 글을 나란히 붙인 비교표" }
+    ];
+    var d = { weeks: weeks, local:true };
+    AI.weeks = d; saveAI();
+    if (typeof renderWeeks === "function") renderWeeks();
+    return d;
+  }
+
+  /* ============ prompt builder ============ */
+  $("copyPrompt").addEventListener("click", function(){
+    var v = PERSONA[pKey];
+    var lines = [];
+    lines.push("아래 영어 에세이를 첨삭해 주세요.");
+    lines.push("");
+    lines.push("[쓴 사람] " + v.name + " · 목표 분량 " + v.len + " · 목표 CEFR " + v.cefr);
+    if (picked){
+      lines.push("[주제] " + picked.q);
+      lines.push("[필수 키워드] " + picked.k.join(", "));
+    }
+    if (kEssay.value.trim()){
+      lines.push("");
+      lines.push("[한국어 초안]");
+      lines.push(kEssay.value.trim());
+    }
+    lines.push("");
+    lines.push("[영어 에세이]");
+    lines.push(essay.value.trim());
+    lines.push("");
+    lines.push("[요청 순서]");
+    lines.push("1. 원문 · 수정 · 오류코드 3열 표로 문장 첨삭. 코드는 SVA/TENSE/VERB/BE/VOICE/ART/PLUR/PREP/CLAUSE/FORM/WC/REDUN/SPELL/AWK 중에서만.");
+    lines.push("2. 코드 빈도를 세어 ‘다음에 고칠 단 한 가지’를 지목.");
+    lines.push("3. 내용·구성·문법·어휘·표현력 5항목을 각 5점으로 채점하고 총점과 CEFR 추정. 항목마다 글에서 인용한 근거 한 문장.");
+    lines.push("4. 살릴 것 3개 / 고칠 것 3개 / 다음 과제 3개.");
+    lines.push("5. 같은 생각·사건을 유지한 채 여섯 가지 톤으로 리라이팅 — ① 최소 수정(제출용 정본) ② 캐주얼(구어체·축약형) ③ 서사적 ④ 설득·연설조 ⑤ 학술적 ⑥ 아카데믹 논문체(인용·한계 진술 포함). 각각 아래에 ‘무엇이 달라졌나’ 2~3문장.");
+    lines.push("6. 이 주제와 이어지는 인물 · 책 · 시 · 예술 · 철학을 하나씩. 원문 인용 + 한국어 번역 + ‘왜 이 글인가’ + 짧은 과제.");
+    lines.push("7. 마지막에 다시 쓰기 위한 질문 3~4개.");
+    lines.push("");
+    lines.push("설명은 한국어로, 예문은 영어로 써 주세요.");
+
+    var txt = lines.join("\n");
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.style.position="fixed"; ta.style.left="-9999px";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); toast("첨삭 요청문을 복사했습니다"); }
+      catch(e){ toast("복사에 실패했습니다 — 직접 선택해 복사해 주세요"); }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ toast("첨삭 요청문을 복사했습니다 — Claude에 붙여넣으세요"); }, fallback);
+    } else { fallback(); }
+  });
+
+  /* ============ rubric + radar chart ============ */
+  var CRIT = [
+    {k:"내용", en:"Content", goal:"구체적 사례 한 장면 넣기"},
+    {k:"구성", en:"Organization", goal:"문단 연결어와 결론 정리"},
+    {k:"문법", en:"Grammar", goal:"과거시제 일관성"},
+    {k:"어휘", en:"Vocabulary", goal:"정확한 한 단어 찾기"},
+    {k:"표현력", en:"Expression", goal:"문장 길이의 리듬 만들기"}
+  ];
+  var EXAMPLE = [4,4,2,3,3];
+  var TARGET = {
+    elem:[4,3,3,3,3], mid:[4,4,3,3,3], high:[4,4,4,4,4], uni:[5,5,4,4,4],
+    adult:[4,3,3,3,3], writer:[4,4,4,5,5],
+    teacher:[4,4,4,4,4], lecturer:[4,4,3,4,4], prof:[5,5,5,5,4]
+  };
+  var scores = EXAMPLE.slice();
+  try { var sv = JSON.parse(get("ea_scores","null")); if (Array.isArray(sv) && sv.length===5) scores = sv; } catch(e){}
+
+  var svgNS = "http://www.w3.org/2000/svg";
+  var CX = 230, CY = 168, R = 118;
+  function pt(i, v){
+    var a = -Math.PI/2 + i * (2*Math.PI/5), r = R * (v/5);
+    return [CX + r*Math.cos(a), CY + r*Math.sin(a)];
+  }
+  function poly(vals){
+    var s = "";
+    for (var i=0;i<5;i++){ var p = pt(i, vals[i]); s += (i?" ":"") + p[0].toFixed(1)+","+p[1].toFixed(1); }
+    return s;
+  }
+  function el(name, attrs, text){
+    var n = document.createElementNS(svgNS, name);
+    for (var a in attrs){ n.setAttribute(a, attrs[a]); }
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  var radar = $("radar"), tip = $("tip");
+
+  function drawRadar(){
+    var target = TARGET[pKey] || TARGET.high;
+    while (radar.firstChild) radar.removeChild(radar.firstChild);
+    radar.appendChild(el("title", {id:"radar-t"}, "5항목 점수 프로필 — 내용 "+scores[0]+", 구성 "+scores[1]+", 문법 "+scores[2]+", 어휘 "+scores[3]+", 표현력 "+scores[4]+" (각 5점 만점)"));
+
+    for (var ring=1; ring<=5; ring++){
+      radar.appendChild(el("polygon", {points:poly([ring,ring,ring,ring,ring]), fill:"none", stroke:"var(--rule)", "stroke-width": ring===5?1.4:1}));
+    }
+    for (var i=0;i<5;i++){
+      var p = pt(i,5);
+      radar.appendChild(el("line", {x1:CX, y1:CY, x2:p[0], y2:p[1], stroke:"var(--rule)", "stroke-width":1}));
+    }
+    [1,3,5].forEach(function(v){
+      radar.appendChild(el("text", {x:CX+5, y:CY - R*(v/5) + 4, "font-size":9.5, fill:"var(--ink-faint)", "font-family":"var(--mono)"}, String(v)));
+    });
+
+    radar.appendChild(el("polygon", {points:poly(target), fill:"none", stroke:"var(--ink-faint)", "stroke-width":1.6, "stroke-dasharray":"5 4", "stroke-linejoin":"round"}));
+    radar.appendChild(el("polygon", {points:poly(scores), fill:"var(--acc-soft)", stroke:"var(--acc)", "stroke-width":2, "stroke-linejoin":"round"}));
+
+    for (var j=0;j<5;j++){
+      var q = pt(j, scores[j]);
+      radar.appendChild(el("circle", {cx:q[0], cy:q[1], r:5, fill:"var(--acc)", stroke:"var(--surface)", "stroke-width":2}));
+      var hot = el("circle", {cx:q[0], cy:q[1], r:15, fill:"transparent", style:"cursor:pointer"});
+      (function(idx, cx, cy){
+        function show(){
+          tip.hidden = false;
+          tip.innerHTML = "<b>"+CRIT[idx].k+"</b> "+scores[idx]+"/5 · 기준선 "+ (TARGET[pKey]||TARGET.high)[idx];
+          tip.style.left = (cx/460*100) + "%";
+          tip.style.top = (cy/340*100) + "%";
+        }
+        hot.addEventListener("mouseenter", show);
+        hot.addEventListener("focus", show);
+        hot.addEventListener("mouseleave", function(){ tip.hidden = true; });
+        hot.addEventListener("blur", function(){ tip.hidden = true; });
+      })(j, q[0], q[1]);
+      radar.appendChild(hot);
+
+      var lp = pt(j, Math.min(5, scores[j] + 0.55));
+      var anchor = Math.abs(lp[0]-CX) < 12 ? "middle" : (lp[0] > CX ? "start" : "end");
+      radar.appendChild(el("text", {x:lp[0], y:lp[1]+4, "font-size":12, "font-weight":600, fill:"var(--acc)", "text-anchor":anchor, "font-family":"var(--mono)"}, String(scores[j])));
+    }
+
+    for (var a2=0;a2<5;a2++){
+      var ap = pt(a2, 5), dx = ap[0]-CX, dy = ap[1]-CY;
+      var lx = CX + dx*1.19, ly = CY + dy*1.19 + 4;
+      var an = Math.abs(dx) < 12 ? "middle" : (dx > 0 ? "start" : "end");
+      radar.appendChild(el("text", {x:lx, y:ly, "font-size":13, fill:"var(--ink-soft)", "text-anchor":an, "font-family":"var(--sans)"}, CRIT[a2].k));
+    }
+  }
+
+  function renderRubric(){
+    var crits = document.querySelectorAll("#rubric .crit");
+    for (var c=0;c<crits.length;c++){
+      var idx = parseInt(crits[c].getAttribute("data-c"),10);
+      var nm = crits[c].querySelector(".name");
+      if (!nm.hasAttribute("data-full")) nm.setAttribute("data-full", nm.innerHTML);
+      nm.innerHTML = EASY ? (CRIT_EASY[idx] + ' <small>' + CRIT[idx].en + '</small>') : nm.getAttribute("data-full");
+      var box = crits[c].querySelector(".dots"), h = "";
+      for (var n=1;n<=5;n++){
+        h += '<button class="dot'+(n<=scores[idx]?' on':'')+'" data-c="'+idx+'" data-v="'+n+'" aria-label="'+CRIT[idx].k+' '+n+'점"></button>';
+      }
+      box.innerHTML = h + '<span class="score">'+scores[idx]+'/5</span>';
+    }
+    var dots = document.querySelectorAll("#rubric .dot");
+    for (var d=0;d<dots.length;d++){
+      dots[d].addEventListener("click", function(e){
+        var ci = parseInt(e.currentTarget.getAttribute("data-c"),10);
+        var v = parseInt(e.currentTarget.getAttribute("data-v"),10);
+        scores[ci] = (scores[ci] === v) ? v-1 : v;
+        if (scores[ci] < 0) scores[ci] = 0;
+        set("ea_scores", JSON.stringify(scores));
+        renderRubric(); drawRadar(); renderVerdict();
+      });
+    }
+  }
+  function renderVerdict(){
+    var total = scores.reduce(function(a,b){ return a+b; }, 0);
+    var cefr = total<=8 ? "A1" : total<=14 ? "A2" : total<=18 ? "A2+ → B1" : total<=22 ? "B1+ → B2" : "B2 이상";
+    var lo = 0; for (var i=1;i<5;i++){ if (scores[i] < scores[lo]) lo = i; }
+    $("v-total").textContent = total + " / 25";
+    $("v-cefr").textContent = cefr;
+    $("v-next").textContent = EASY ? GOAL_EASY[lo] : CRIT[lo].goal;
+    var v = PERSONA[pKey];
+    $("chartsub").textContent = v.name + " 기준선과 비교";
+    $("lg-target").textContent = v.name + " 기준선";
+  }
+  $("resetScore").addEventListener("click", function(){
+    scores = EXAMPLE.slice(); set("ea_scores", JSON.stringify(scores));
+    renderRubric(); drawRadar(); renderVerdict();
+    toast("예시 글의 점수로 되돌렸습니다");
+  });
+  var toneBtns = document.querySelectorAll(".tonebtn"), tonePanels = document.querySelectorAll(".tonepanel");
+  for (var tb=0;tb<toneBtns.length;tb++){
+    toneBtns[tb].addEventListener("click", function(e){
+      var key = e.currentTarget.getAttribute("data-tone");
+      for (var x=0;x<toneBtns.length;x++){ toneBtns[x].setAttribute("aria-selected", toneBtns[x]===e.currentTarget ? "true":"false"); }
+      for (var p=0;p<tonePanels.length;p++){ tonePanels[p].hidden = (tonePanels[p].getAttribute("data-panel") !== key); }
+    });
+  }
+  var boxes = document.querySelectorAll("#checklist input");
+  for (var c=0;c<boxes.length;c++){
+    (function(box){
+      var k = "ea_" + box.getAttribute("data-k");
+      if (get(k,"0") === "1") box.checked = true;
+      box.addEventListener("change", function(){ set(k, box.checked ? "1":"0"); });
+    })(boxes[c]);
+  }
+
+
+
+  /* ============================================================
+     오프라인 앱판 — 서버 없이 동작합니다.
+     AI 첨삭은 "요청문 복사 → 아무 AI에 붙여넣기 → 답을 다시 붙여넣기"로 이어집니다.
+     ============================================================ */
+  var AI = {};
+  try { AI = JSON.parse(get("ea_ai","{}")) || {}; } catch(e){ AI = {}; }
+  function saveAI(){ try{ set("ea_ai", JSON.stringify(AI)); }catch(e){} }
+
+  var CODES = ["SVA","TENSE","VERB","BE","VOICE","ART","PLUR","PREP","CLAUSE","FORM","WC","REDUN","SPELL","AWK"];
+
+  function copyText(txt, okMsg){
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.style.position="fixed"; ta.style.left="-9999px";
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); toast(okMsg); }catch(e){ toast("복사에 실패했습니다 — 직접 선택해 복사해 주세요"); }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ toast(okMsg); }, fallback);
+    } else fallback();
+  }
+  function saveFile(filename, text, mime){
+    try{
+      var blob = new Blob([text], {type: (mime||"text/plain") + ";charset=utf-8"});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 800);
+      return true;
+    }catch(e){ toast("파일을 만들지 못했습니다"); return false; }
+  }
+  function grabJSON(raw){
+    var t = String(raw||"").trim();
+    if (!t) return null;
+    t = t.replace(/^```(?:json)?/i,"").replace(/```$/,"").trim();
+    var i = t.indexOf("{"), j = t.lastIndexOf("}");
+    if (i < 0 || j < i) return null;
+    try { return JSON.parse(t.slice(i, j+1)); } catch(e){ return null; }
+  }
+
+  /* ---------- 붙여넣기 다리 ---------- */
+  var BRIDGES = [
+    { id:"trans", host:"transState", label:"한→영 추천 글", prompt:promptTranslate, apply:applyTrans, hint:"직역·추천 글이 아래에 나옵니다" },
+    { id:"corr", host:"aistate",   label:"첨삭 · 평가",   prompt:promptCorrection, apply:applyCorr,   hint:"4·5단계가 내 글로 바뀝니다" },
+    { id:"toneA", host:"toneState", label:"톤 ①②③",      prompt:function(){ return promptTones(["min","casual","narr"]); },   apply:applyTones, hint:"①②③ 탭이 내 글로 바뀝니다" },
+    { id:"toneB", host:"toneState", label:"톤 ④⑤⑥",      prompt:function(){ return promptTones(["persu","acad","paper"]); }, apply:applyTones, hint:"④⑤⑥ 탭이 내 글로 바뀝니다" },
+    { id:"muse", host:"museState", label:"인문 확장",     prompt:promptMuse,       apply:applyMuse,   hint:"7단계가 내 주제로 바뀝니다" },
+    { id:"rep",  host:"repState",  label:"결과보고서",    prompt:promptReport,     apply:applyReport, hint:"8단계 보고서가 만들어집니다" },
+    { id:"week", host:"weekState", label:"1~4주차 활동지", prompt:promptWeeks,      apply:applyWeeks,  hint:"활동지 네 장이 아래에 나옵니다" }
+  ];
+  function buildBridges(){
+    var lastFor = {};
+    for (var i=0;i<BRIDGES.length;i++){
+      (function(B){
+        var host = $(B.host); if (!host) return;
+        var wrap = document.createElement("div");
+        wrap.className = "bridge";
+        wrap.innerHTML =
+          '<button class="btn ghost" data-a="toggle" style="font-size:13px;padding:6px 12px">＋ AI로 더 정밀하게 — ' + B.label + ' (선택)</button>' +
+          '<div class="bridge-row" hidden>' +
+            '<button class="btn" data-a="copy">① ' + B.label + ' 요청문 복사</button>' +
+            '<button class="btn ghost" data-a="open">② AI 답 붙여넣기</button>' +
+            '<span class="bridge-note"></span>' +
+          '</div>' +
+          '<div class="bridge-box" hidden>' +
+            '<textarea placeholder="AI가 준 JSON 답을 통째로 붙여넣으세요. ```json 같은 표시가 섞여 있어도 됩니다."></textarea>' +
+            '<div class="bridge-row"><button class="btn" data-a="apply">적용하기</button><button class="btn ghost" data-a="close">닫기</button></div>' +
+          '</div>';
+        var after = lastFor[B.host] || host;
+        host.parentNode.insertBefore(wrap, after.nextSibling);
+        lastFor[B.host] = wrap;
+        var box = wrap.querySelector(".bridge-box"), ta = wrap.querySelector("textarea"), note = wrap.querySelector(".bridge-note");
+        var row = wrap.querySelector(".bridge-row"), tgl = wrap.querySelector('[data-a="toggle"]');
+        wrap.addEventListener("click", function(e){
+          var a = e.target.getAttribute && e.target.getAttribute("data-a"); if (!a) return;
+          if (a === "toggle"){
+            row.hidden = !row.hidden;
+            tgl.textContent = (row.hidden ? "＋" : "−") + " AI로 더 정밀하게 — " + B.label + " (선택)";
+            if (row.hidden) box.hidden = true;
+            return;
+          }
+          if (a === "copy"){
+            if (B.id === "trans" && !kEssay.value.trim()){ kEssay.focus(); toast("2단계에 한국어 초안을 먼저 써 주세요"); return; }
+            if (B.id === "week" && !AI.report){ toast("먼저 결과보고서를 만들어 주세요"); return; }
+            if (!essay.value.trim() && B.id !== "muse" && B.id !== "trans"){ toast("3단계에 영어 글을 먼저 써 주세요"); return; }
+            copyText(B.prompt(), "요청문을 복사했습니다 — AI에 붙여넣고 답을 받아 오세요");
+            box.hidden = false; ta.focus();
+          }
+          if (a === "open"){ box.hidden = !box.hidden; if (!box.hidden) ta.focus(); }
+          if (a === "close"){ box.hidden = true; }
+          if (a === "apply"){
+            var d = grabJSON(ta.value);
+            if (!d){ note.textContent = "JSON을 찾지 못했습니다. 답 전체를 그대로 붙여넣어 주세요."; return; }
+            try { B.apply(d); note.textContent = "적용했습니다 — " + B.hint; ta.value = ""; box.hidden = true; toast("적용했습니다"); }
+            catch(err){
+              note.textContent = (err && err.code === "template_echo")
+                ? "AI가 서식 설명을 그대로 돌려줬습니다 — 실제 내용이 아닙니다. 요청문을 다시 복사해 물어봐 주세요."
+                : (err && err.code === "empty_fill")
+                ? "AI가 내용을 채우지 않고 빈 서식만 돌려줬습니다. 요청문을 다시 복사해 물어봐 주세요."
+                : "형식이 맞지 않습니다. 요청문을 다시 복사해 물어봐 주세요.";
+            }
+          }
+        });
+      })(BRIDGES[i]);
+    }
+  }
+
+  function applyCorr(d){
+    guard(d);
+    if (!d.rubric) throw new Error("no rubric");
+    AI.corr = d; AI.essay = essay.value; saveAI();
+    scores = [d.rubric.content,d.rubric.organization,d.rubric.grammar,d.rubric.vocabulary,d.rubric.expression]
+      .map(function(n){ n = parseInt(n,10); return (isNaN(n)?3:Math.max(0,Math.min(5,n))); });
+    set("ea_scores", JSON.stringify(scores));
+    renderAI4(); renderRubric(); drawRadar(); renderVerdict(); renderSrc5();
+  }
+  function applyTrans(d){ guard(d); AI.trans = d; saveAI(); renderTrans(); }
+  function applyWeeks(d){ guard(d); AI.weeks = d; saveAI(); renderWeeks(); }
+  function applyTones(d){
+    guard(d);
+    var cur = AI.tones || {};
+    for (var k in d){ if (d[k] && d[k].text) cur[k] = d[k]; }
+    AI.tones = cur; saveAI(); renderTonesAI();
+  }
+  function applyMuse(d){ guard(d); AI.muse = d; saveAI(); renderMuseAI(); }
+  function applyReport(d){ guard(d); AI.report = d; saveAI(); renderReport(); $("repPrint").disabled = false; $("repSave").disabled = false; }
+
+  /* ---------- 렌더러 ---------- */
+  function isStale(){
+    return !!(AI.corr && AI.essay && essay.value.trim() !== String(AI.essay).trim());
+  }
+  function staleBanner(){
+    return isStale() ? '<p class="srcnote" style="color:var(--mark);background:var(--mark-bg)">3단계 글이 이 첨삭 이후에 바뀌었습니다. <b>요청문을 다시 복사해</b> 첨삭을 새로 받으세요.</p>' : "";
+  }
+  function renderAI4(){
+    var box = $("ai4"), ex = $("ex4");
+    if (!AI.corr){ box.innerHTML = ""; ex.hidden = false; return; }
+    var d = AI.corr, rows = "";
+    var list = (Array.isArray(d.corrections) ? d.corrections : []).filter(function(x){ return x && (String(x.before||"").trim() || String(x.after||"").trim()); });
+    for (var i=0;i<list.length;i++){
+      var c = list[i];
+      rows += '<div class="diff-row"><div class="before">'+esc(c.before||"")+'</div>' +
+              '<div class="after"><ins>'+esc(c.after||"")+'</ins></div>' +
+              '<div class="why">'+esc(c.code||"")+'</div></div>';
+    }
+    if (!rows) rows = '<div class="diff-row"><div class="before">—</div><div class="after">고칠 곳을 찾지 못했습니다.</div><div class="why">CLEAR</div></div>';
+    var whys = "";
+    for (var j=0;j<list.length;j++){ if (list[j].why) whys += '<li data-code="'+esc(list[j].code||"")+'"><b>'+esc(list[j].code||"")+'</b> · '+esc(list[j].why)+'</li>'; }
+    box.innerHTML = staleBanner() +
+      '<div class="aibadge">' + (d.local ? '✦ 자동 분석 (규칙 기반)' : '✦ 내 글 첨삭') + '</div>' +
+      '<div class="diff"><div class="diff-row diff-head"><div class="before">원문</div><div class="after">수정</div><div class="why">코드</div></div>' + rows + '</div>' +
+      (whys ? '<h3>왜 고쳤나</h3><ul style="margin:0;padding-left:19px;font-size:14px;line-height:1.75;color:var(--ink-soft)">'+whys+'</ul>' : "") +
+      (d.errorMap ? '<h3>내 오류 지도</h3><p class="sub">'+esc(d.errorMap)+'</p>' : "");
+    ex.hidden = true;
+    buildCodeFilter(box);
+  }
+  function renderSrc5(){
+    var n = $("src5"); if (!n) return;
+    if (AI.corr){
+      n.innerHTML = isStale()
+        ? '<b style="color:var(--mark)">3단계 글이 바뀌었습니다.</b> 아래 점수는 바뀌기 전 글 기준입니다 — 첨삭을 새로 받으세요.'
+        : (AI.corr.local
+            ? '점수와 코멘트가 <b>내 글의 자동 분석</b>으로 채워졌습니다(분량·연결어·어휘·문장 리듬·표층 오류 계산). 점을 눌러 손으로 고칠 수 있고, AI 첨삭 답을 붙여넣으면 이 값이 갱신됩니다.'
+            : '점수와 코멘트가 <b>내 글 기준</b>으로 채워졌습니다. 점을 눌러 손으로 고칠 수도 있습니다.');
+      var d = AI.corr, crits = document.querySelectorAll("#rubric .crit"), keys = ["content","organization","grammar","vocabulary","expression"];
+      for (var i=0;i<crits.length;i++){
+        var say = crits[i].querySelector(".say");
+        if (!say.hasAttribute("data-ex")) say.setAttribute("data-ex", say.innerHTML);
+        if (d.says && d.says[keys[i]]) say.textContent = d.says[keys[i]];
+      }
+      var cols = document.querySelectorAll(".threecol > div"), sets = [d.keep, d.fix, d.next];
+      for (var c=0;c<cols.length && c<3;c++){
+        var listEl = cols[c].querySelector("ul,ol");
+        if (!listEl.hasAttribute("data-ex")) listEl.setAttribute("data-ex", listEl.innerHTML);
+        if (Array.isArray(sets[c]) && sets[c].length){
+          var h = ""; for (var k=0;k<sets[c].length;k++){ h += "<li>"+esc(sets[c][k])+"</li>"; }
+          listEl.innerHTML = h;
+        }
+      }
+    } else {
+      n.innerHTML = '아래 점수는 <b>예시 학생 글</b> 기준입니다. 3단계에서 첨삭을 받으면 자기 글의 점수로 바뀝니다.';
+    }
+  }
+  var TONEKEYS = [["min","① 최소 수정"],["casual","② 캐주얼"],["narr","③ 서사적"],["persu","④ 설득·연설조"],["acad","⑤ 학술적"],["paper","⑥ 아카데믹·논문체"]];
+  function renderTonesAI(){
+    if (!AI.tones) return;
+    for (var i=0;i<TONEKEYS.length;i++){
+      var key = TONEKEYS[i][0], d = AI.tones[key];
+      var panel = document.querySelector('.tonepanel[data-panel="'+key+'"]');
+      if (!panel || !d || !d.text) continue;
+      var prose = panel.querySelector(".prose"), why = panel.querySelector(".tonewhy");
+      var paras = String(d.text).split(/\n{2,}/), h = "";
+      for (var j=0;j<paras.length;j++){ if (paras[j].trim()) h += "<p>"+esc(paras[j].trim())+"</p>"; }
+      prose.innerHTML = h;
+      if (d.why) why.innerHTML = "<b>무엇이 달라졌나</b> — " + esc(d.why);
+      var line = panel.querySelector(".toneline");
+      if (line && line.textContent.indexOf("내 글") === -1) line.insertAdjacentHTML("afterbegin", '<span style="color:var(--acc)">✦ 내 글</span>');
+    }
+  }
+  function renderMuseAI(){
+    var box = $("ai7"), ex = $("ex7");
+    if (!AI.muse || !AI.muse.items || !AI.muse.items.length){ if(box) box.innerHTML=""; if(ex) ex.hidden=false; return; }
+    var h = '<div class="aibadge">✦ 내 주제</div>';
+    var it = AI.muse.items.filter(function(x){ return x && String(x.title||"").trim(); });
+    if (!it.length){ box.innerHTML = ""; ex.hidden = false; return; }
+    for (var i=0;i<it.length;i++){
+      var m = it[i];
+      h += '<div class="muse-item"><div class="muse-kind">'+esc(m.kind||"")+'</div><div>' +
+           '<h4>'+esc(m.title||"")+'</h4><p class="who">'+esc(m.who||"")+'</p>' +
+           (m.quote ? '<blockquote>'+esc(m.quote)+(m.tr?'<span class="tr">'+esc(m.tr)+'</span>':'')+'</blockquote>' : '') +
+           '<p class="link"><b>왜 이 글인가</b> — '+esc(m.why||"")+ (m.task ? ' <b>과제</b>: '+esc(m.task) : '') +'</p></div></div>';
+    }
+    box.innerHTML = h; ex.hidden = true;
+  }
+  function renderReport(){
+    var box = $("report"); if (!box) return;
+    var d = AI.report;
+    if (!d){ box.innerHTML = '<p class="note">아직 보고서가 없습니다. 위 ① 요청문을 복사해 AI에 물어본 뒤, 답을 ②에 붙여넣으세요.</p>'; return; }
+    var v = PERSONA[pKey], total = scores.reduce(function(a,b){return a+b;},0);
+    var cefr = total<=8?"A1":total<=14?"A2":total<=18?"A2+ → B1":total<=22?"B1+ → B2":"B2 이상";
+    var name = ($("stuName") && $("stuName").value.trim()) || "";
+    var h = '<div class="rep"><div class="rephead">' +
+      (name ? '<div><span>학생</span><b>'+esc(name)+'</b></div>' : '') +
+      '<div><span>유형</span><b>'+esc(v.name)+'</b></div>' +
+      '<div><span>총점</span><b>'+total+' / 25</b></div>' +
+      '<div><span>CEFR 추정</span><b>'+cefr+'</b></div>' +
+      '<div><span>작성일</span><b>'+new Date().toLocaleDateString("ko-KR")+'</b></div></div>';
+    if (picked) h += '<p class="note" style="margin-top:10px">주제 · '+esc(picked.q)+'</p>';
+    if (d.level) h += '<h3>지금 수준</h3><p class="lead">'+esc(d.level)+'</p>';
+    if (Array.isArray(d.study) && d.study.length){
+      h += '<h3>공부가 필요한 부분</h3><ul>';
+      for (var i=0;i<d.study.length;i++){ var t=d.study[i];
+        h += '<li><b>'+esc(t.topic||"")+'</b> — '+esc(t.why||"")+'<br><span style="color:var(--grow)">연습</span> '+esc(t.how||"")+'</li>'; }
+      h += '</ul>';
+    }
+    if (Array.isArray(d.readings) && d.readings.length){
+      h += '<h3>읽으면 좋은 책과 글</h3><div class="repcards">';
+      for (var j=0;j<d.readings.length;j++){ var r=d.readings[j];
+        h += '<div class="repcard"><span class="k">'+esc(r.kind||"읽을거리")+(r.level?' · '+esc(r.level):'')+'</span>' +
+             '<h4>'+esc(r.title||"")+'</h4><p class="by">'+esc(r.author||"")+'</p><p>'+esc(r.why||"")+'</p></div>'; }
+      h += '</div>';
+    }
+    if (Array.isArray(d.background) && d.background.length){
+      h += '<h3>더 필요한 배경지식</h3><ul>';
+      for (var k=0;k<d.background.length;k++){ var b=d.background[k];
+        h += '<li><b>'+esc(b.area||"")+'</b> — '+esc(b.why||"")+'<br><span style="color:var(--muse)">시작</span> '+esc(b.start||"")+'</li>'; }
+      h += '</ul>';
+    }
+    if (Array.isArray(d.plan30) && d.plan30.length){
+      h += '<h3>앞으로 4주</h3><ul class="plan">';
+      for (var m=0;m<d.plan30.length;m++){ h += '<li>'+esc(d.plan30[m])+'</li>'; }
+      h += '</ul>';
+    }
+    h += '<p class="note" style="margin-top:26px">이 보고서는 글 한 편을 근거로 만든 참고 자료입니다. 추천 도서는 구할 수 있는지 확인한 뒤 쓰세요.</p></div>';
+    box.innerHTML = h;
+  }
+  function reportHTML(){
+    var css = '<style>body{font-family:system-ui,"Malgun Gothic",sans-serif;color:#1B2440;max-width:760px;margin:40px auto;padding:0 24px;line-height:1.7}' +
+      'h1{font-size:26px;border-bottom:2px solid #1B2440;padding-bottom:10px}h3{font-size:18px;margin-top:30px;border-bottom:1px solid #D7DDE9;padding-bottom:7px}' +
+      '.rephead{background:#EEF1F7;border-radius:6px;padding:16px;display:flex;flex-wrap:wrap;gap:22px;margin-bottom:10px}' +
+      '.rephead span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7D869F}.rephead b{font-size:16px}' +
+      '.repcards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.repcard{border:1px solid #D7DDE9;border-radius:5px;padding:14px}' +
+      '.repcard .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9C6B1F;display:block;margin-bottom:6px}' +
+      '.repcard h4{margin:0 0 3px;font-size:16px}.repcard .by{margin:0 0 8px;font-size:12px;color:#7D869F}.repcard p{margin:0;font-size:13px;color:#4A5470}' +
+      'ul{padding-left:20px}li{margin-bottom:9px}.note{font-size:12.5px;color:#7D869F}</style>';
+    return '<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>영어 에세이 학습 결과보고서</title>' + css +
+      '</head><body><h1>영어 에세이 학습 결과보고서</h1>' + ($("report").innerHTML || "") + ($("weeks") ? $("weeks").innerHTML : "") + '</body></html>';
+  }
+
+  /* ---------- 주제 새로 만들기 (요청문 방식) ---------- */
+  function askFresh(){
+    var theme = $("freshTheme").value.trim();
+    if (!theme){ $("freshTheme").focus(); toast("테마를 먼저 입력해 주세요"); return; }
+    copyText(promptFresh(theme, true), "요청문을 복사했습니다 — AI에 붙여넣고 받은 답을 아래에 넣으세요");
+    $("freshPaste").hidden = false;
+  }
+  function applyFresh(){
+    var d = grabJSON($("freshText").value);
+    if (!d || !d.items){ toast("JSON을 찾지 못했습니다"); return; }
+    if (hasTemplateEcho(d)){ toast("AI가 서식 설명을 그대로 돌려줬습니다 — 다시 물어봐 주세요"); return; }
+    var theme = $("freshTheme").value.trim() || "새 주제";
+    for (var i=0;i<d.items.length;i++){ d.items[i].lvl = "새 질문 · " + theme; }
+    BANK.fresh = d.items;
+    $("freshTab").hidden = false; selectDomain("fresh");
+    $("freshText").value = ""; $("freshPaste").hidden = true;
+    toast("새 질문 " + d.items.length + "개를 넣었습니다");
+  }
+
+  /* ---------- 결과 저장 (이 기기에 저장) ---------- */
+  function allRecords(){ try{ return JSON.parse(get("ea_records","[]")) || []; }catch(e){ return []; } }
+  function saveRecord(){
+    var note = $("dbnote"), row = recordRow();
+    if (!row.student){ $("stuName").focus(); toast("학생 이름을 먼저 적어 주세요"); return; }
+    var rows = allRecords(); rows.push(row);
+    try{ set("ea_records", JSON.stringify(rows)); }
+    catch(e){ note.textContent = "저장 공간이 가득 찼습니다. CSV로 내보낸 뒤 기록을 비워 주세요."; return; }
+    note.innerHTML = "이 기기에 저장했습니다 — <b>" + esc(row.student) + "</b> · " + row.total + "/25 · 지금까지 " + rows.length + "건. CSV로 내보내 구글 시트에 올리세요.";
+    toast("결과를 저장했습니다");
+  }
+  function downloadCsv(){
+    var note = $("dbnote"), rows = allRecords();
+    if (!rows.length) rows = [recordRow()];
+    if (saveFile("essay-results-"+new Date().toISOString().slice(0,10)+".csv", buildCsv(rows), "text/csv"))
+      note.innerHTML = "CSV " + rows.length + "건을 내려받았습니다. 구글 시트에서 <b>파일 → 가져오기</b>로 여세요.";
+  }
+  function clearRecords(){
+    if (!allRecords().length){ toast("저장된 기록이 없습니다"); return; }
+    if (!window.confirm("이 기기에 저장된 기록을 모두 지웁니다. CSV로 내보냈는지 확인하셨나요?")) return;
+    try{ localStorage.removeItem("ea_records"); }catch(e){}
+    $("dbnote").textContent = "기록을 모두 지웠습니다.";
+  }
+
+  /* ============ boot ============ */
+  kEssay.addEventListener("input", kUpdate);
+  $("kscan").addEventListener("click", kScan);
+  $("kclear").addEventListener("click", function(){ kEssay.value=""; kFind.innerHTML=""; kUpdate(); kEssay.focus(); });
+  essay.addEventListener("input", function(){ updateCounts(); if (typeof renderAI4 === "function") renderAI4(); if (typeof renderSrc5 === "function") renderSrc5(); });
+  $("scan").addEventListener("click", function(){
+    try{
+      scan();
+      var d = localAnalyze();
+      if (!d){ essay.focus(); toast("3단계에 영어 글을 먼저 써 주세요"); return; }
+      var nfix = 0;
+      for (var q=0;q<d.corrections.length;q++){ if (String(d.corrections[q].after).indexOf("(직접 고칠 곳)") < 0) nfix++; }
+      idle($("aistate"), "첨삭 완료 — 고친 문장 " + nfix + "개 · 총점 " + scores.reduce(function(a,b){return a+b;},0) + "/25 · 4단계로 이동합니다");
+      toast("첨삭 완료 — 4단계를 보세요");
+      go(4);
+    }catch(err){
+      idle($("aistate"), "첨삭 중 문제가 생겼습니다: " + ((err && err.message) ? err.message : String(err)));
+    }
+  });
+  $("freshBtn").addEventListener("click", askFresh);
+  $("freshApply").addEventListener("click", applyFresh);
+  $("clearRec").addEventListener("click", clearRecords);
+  $("freshTheme").addEventListener("keydown", function(e){ if (e.key==="Enter") askFresh(); });
+  $("weekBtn").addEventListener("click", function(){ if (localWeeks()) toast("활동지를 만들었습니다"); });
+  $("regenTone").addEventListener("click", function(){ if (localTones()) toast("여섯 톤을 만들었습니다"); else toast("3단계에 영어 글을 먼저 써 주세요"); });
+  $("regenMuse").addEventListener("click", function(){ localMuse(); toast("7단계를 주제에 맞게 채웠습니다"); });
+  $("repBtn").addEventListener("click", function(){
+    if (!essay.value.trim()){ toast("3단계에 영어 글을 먼저 써 주세요"); return; }
+    localReport(); toast("결과보고서를 만들었습니다");
+  });
+  $("saveDb").addEventListener("click", saveRecord);
+  $("csvBtn").addEventListener("click", downloadCsv);
+  $("repPrint").addEventListener("click", function(){
+    document.body.setAttribute("data-print","report");
+    window.print();
+    setTimeout(function(){ document.body.removeAttribute("data-print"); }, 500);
+  });
+  $("repSave").addEventListener("click", function(){
+    if (saveFile("essay-report-" + new Date().toISOString().slice(0,10) + ".html", reportHTML(), "text/html"))
+      toast("보고서 파일을 내려받았습니다");
+  });
+  $("clear").addEventListener("click", function(){ essay.value=""; findings.innerHTML=""; updateCounts(); essay.focus(); });
+
+  EASY = (get("ea_easy","0") === "1") || pKey === "elem";
+  document.body.setAttribute("data-easy", EASY ? "1" : "0");
+  easyBtn.setAttribute("aria-pressed", EASY ? "true" : "false");
+  easyBtn.textContent = EASY ? "🧸 쉬운 화면 켜짐" : "🧸 쉬운 화면";
+  buildGuides();
+  renderProfile();
+  renderRubric(); drawRadar(); renderVerdict();
+  buildBridges();
+  renderAI4(); renderSrc5(); renderTonesAI(); renderMuseAI(); renderReport(); renderTrans(); renderWeeks();
+  buildCodeFilter($("ex4"));
+  if (AI.report){ $("repPrint").disabled = false; $("repSave").disabled = false; }
+  renderTopics(EASY ? "kid" : "curric");
+  if (EASY) selectDomain("kid");
+  renderMine();
+  applyEasyText();
+  renderCtx();
+  kUpdate(); kScan();
+  updateCounts(); scan();
+  go(parseInt(get("ea_step","0"),10) || 0, true);
+})();
+</script>
+
+</body>
+</html>
