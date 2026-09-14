@@ -15,6 +15,7 @@ from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, field_validator
 
 try:
@@ -141,6 +142,12 @@ store = Store()
 app = FastAPI(title="AI Data Assistant API", version="1.0.0", description="1차 미션 제출용 시계열 데이터·대화 API")
 origins = [x.strip() for x in os.getenv("ALLOWED_ORIGINS", "*").split(",")]
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+
+
+@app.get("/", include_in_schema=False)
+def mission_home() -> FileResponse:
+    """Render 기본 주소에서 미션 대시보드를 표시합니다."""
+    return FileResponse(os.path.join(os.path.dirname(__file__), "mission.html"))
 
 
 def iso(value: date) -> str:
